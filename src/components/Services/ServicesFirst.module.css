@@ -1,0 +1,275 @@
+.servicesContainer {
+  width: 100%;
+  height: 2311.95px;
+  background-color: white;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Intro Section Styles */
+.introSection {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.introTitle {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.introSubtitle {
+  font-size: 1.3rem;
+  color: #a79e79;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.introText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+/* Services Grid Title */
+.servicesGridTitle {
+  text-align: center;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.servicesGridTitle::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #a79e79;
+  margin: 15px auto 0;
+}
+
+/* Why Choose Section */
+.whyChooseSection {
+  margin-top: 80px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.whyChooseTitle {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.whyChooseList {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+
+.whyChooseList li {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.whyChooseList li::before {
+  content: '•';
+  color: #a79e79;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.callToAction {
+  font-size: 1.3rem;
+  color: #a79e79;
+  font-weight: 600;
+  margin-top: 40px;
+  font-style: italic;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .introTitle {
+    font-size: 2rem;
+  }
+  
+  .introSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .introText {
+    font-size: 1rem;
+  }
+  
+  .servicesGridTitle,
+  .whyChooseTitle {
+    font-size: 1.7rem;
+  }
+  
+  .whyChooseList li {
+    font-size: 1rem;
+  }
+  
+  .callToAction {
+    font-size: 1.1rem;
+  }
+}
+
+.servicesContent {
+  width: 90%;
+  max-width: 1370px;
+}
+
+.masonryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.masonryItem {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+.serviceCard {
+  position: relative;
+  width: 379.98px;
+  height: 340px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.serviceImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.serviceImage::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+
+.serviceTitle {
+  position: relative;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  width: 100%;
+  z-index: 2;
+}
+
+.serviceOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.363);
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.serviceCard:hover .serviceOverlay {
+  opacity: 1;
+}
+
+.serviceOverlay h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #a79e79;
+}
+
+.serviceOverlay p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1200px) {
+  .masonryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .masonryGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .serviceCard {
+    width: 100%;
+  }
+  
+  .servicesContainer {
+    height: auto;
+    padding-bottom: 40px;
+  }
+}
+
+/* Add these to your existing styles */
+.clickableTitle {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.clickableTitle:hover {
+  color: #a79e79;
+  transform: translateX(5px);
+}
+
+.clickableTitle::after {
+  content: '→';
+  margin-left: 8px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.clickableTitle:hover::after {
+  opacity: 1;
+  margin-left: 12px;
+}
+
+/* Accessibility focus styles */
+.clickableTitle:focus {
+  outline: 2px solid #4dabf7;
+  outline-offset: 2px;
+}

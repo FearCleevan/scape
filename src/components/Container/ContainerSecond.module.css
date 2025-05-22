@@ -1,0 +1,177 @@
+.container {
+  height: 953px;
+  background-image: url('../../assets/gallery/Asset10.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add this new overlay element */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity (0.4) to control darkness */
+  z-index: 0;
+}
+
+.contentWrapper {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 1; /* Ensure content stays above the overlay */
+}
+
+.leftSection {
+  width: 45%;
+  color: white;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s ease-out;
+}
+
+.leftSection.fadeIn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.heading {
+  font-size: 61.487px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.heading span {
+  color: #a79e79;
+}
+
+.subText {
+  font-size: 20px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.paragraph {
+  font-size: 20px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  max-width: 80%;
+}
+
+.smallText {
+  font-size: 16px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.mediumText {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.rightSection {
+  width: 45%;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imageContainer {
+  position: absolute;
+  width: 502.63px;
+  height: 389.91px;
+  overflow: hidden;
+  border: 1px solid #000;
+}
+
+.imageContainer:first-child {
+  left: 60%;
+  top: -10%;
+  transition: top 1.2s ease-out 0.3s;
+}
+
+.imageContainer:last-child {
+  right: 35%;
+  bottom: -100%;
+  transition: bottom 1.2s ease-out 0.3s;
+}
+
+.imageContainer.slideDown {
+  top: 20%;
+}
+
+.imageContainer.slideUp {
+  bottom: 20%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  .contentWrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .leftSection,
+  .rightSection {
+    width: 90%;
+  }
+
+  .leftSection {
+    margin-bottom: 40px;
+  }
+
+  .imageContainer {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .imageContainer:first-child,
+  .imageContainer:last-child {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: auto;
+    padding: 80px 0;
+  }
+
+  .heading {
+    font-size: 42px;
+  }
+
+  .paragraph {
+    max-width: 100%;
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 300px;
+  }
+}
