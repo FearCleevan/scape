@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Landscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import LandscapeFirst from './LandscapeFirst';
 
 const Landscape = () => {
   return (
@@ -38,6 +39,7 @@ const Landscape = () => {
           <p className={styles.tagline}>Landscape</p>
         </div>
       </div>
+      <LandscapeFirst />
       <Footer />
     </div>
   );

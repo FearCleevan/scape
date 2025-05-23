@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import styles from './Testimonials.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
 import { Link } from 'react-router-dom';
+import TestimonialsFirst from './TestimonialsFirst';
 
 const Testimonials = () => {
   return (
@@ -36,6 +37,8 @@ const Testimonials = () => {
           <p className={styles.tagline}>Testimonials</p>
         </div>
       </div>
+
+      <TestimonialsFirst/>
       <Footer />
     </div>
   );

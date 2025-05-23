@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Courtscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import CourtscapeFirst from './CourtscapeFirst';
 
 
 const Courtscape = () => {
@@ -39,6 +40,7 @@ const Courtscape = () => {
           <p className={styles.tagline}>Courtscape</p>
         </div>
       </div>
+      <CourtscapeFirst />
       <Footer />
     </div>
   );

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: "Bai Jamjuree", sans-serif !important;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -18,9 +24,10 @@
 }
 
 .logoImage {
-  height: 100px; /* Adjust based on your logo's aspect ratio */
+  height: 100px;
   width: auto;
   transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.7)); /* Added shadow */
 }
 
 .logoImage:hover {
@@ -37,7 +44,7 @@
   transform: translateX(-50%);
   text-align: center;
   margin: 0 auto;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Increased shadow */
 }
 
 .menuButton {
@@ -50,6 +57,7 @@
   display: block;
   transition: transform 0.3s ease;
   margin-right: 2rem;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7)); /* Added shadow */
 }
 
 .menuButton:hover {

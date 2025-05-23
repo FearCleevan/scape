@@ -37,7 +37,7 @@ const Portfolio = () => {
           <div className={styles.breadcrumb}>
             <Link to="/" className={styles.breadcrumbLink}>Home</Link>
             <span className={styles.breadcrumbSeparator}></span>
-            <span className={styles.activeBreadcrumb}>Portfolio</span>
+            <span className={styles.activeBreadcrumb}>Portfolio / Scape Gallery</span>
           </div>
           <p className={styles.tagline}>Portfolio</p>
 

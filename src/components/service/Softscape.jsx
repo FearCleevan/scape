@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Softscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import SoftscapeFirst from './SoftscapeFirst';
 
 
 const Softscape = () => {
@@ -40,6 +41,7 @@ const Softscape = () => {
           <p className={styles.tagline}>Softscape</p>
         </div>
       </div>
+      <SoftscapeFirst />
       <Footer />
     </div>
   );

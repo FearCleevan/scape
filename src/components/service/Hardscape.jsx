@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Hardscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import HardscapeFirst from './HardscapeFirst';
 
 
 const Hardscape = () => {
@@ -39,6 +40,7 @@ const Hardscape = () => {
           <p className={styles.tagline}>Hardscape</p>
         </div>
       </div>
+      <HardscapeFirst/>
       <Footer />
     </div>
   );

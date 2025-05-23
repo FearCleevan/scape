@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Firescape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import FirescapeFirst from './FirescapeFirst';
 
 
 const Firescape = () => {
@@ -39,6 +40,7 @@ const Firescape = () => {
           <p className={styles.tagline}>Firescape</p>
         </div>
       </div>
+      <FirescapeFirst />
       <Footer />
     </div>
   );

@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Nightscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import NightscapeFirst from './NightscapeFirst';
 
 
 const Nightscape = () => {
@@ -39,6 +40,7 @@ const Nightscape = () => {
           <p className={styles.tagline}>Nightscape</p>
         </div>
       </div>
+      <NightscapeFirst />
       <Footer />
     </div>
   );

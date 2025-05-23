@@ -2,8 +2,10 @@ import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Socials.module.css';
+import Social from './SocialFirst';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
 import { Link } from 'react-router-dom';
+import SocialFirst from './SocialFirst';
 
 
 const Socials = () => {
@@ -35,6 +37,7 @@ const Socials = () => {
           <p className={styles.tagline}>Social Videos / Blog</p>
         </div>
       </div>
+      <SocialFirst />
       <Footer />
     </div>
   );

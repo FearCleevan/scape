@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Poolscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import PoolscapeFirst from './PoolscapeFirst';
 
 
 const Poolscape = () => {
@@ -39,6 +40,7 @@ const Poolscape = () => {
           <p className={styles.tagline}>Poolscape</p>
         </div>
       </div>
+      <PoolscapeFirst />
       <Footer />
     </div>
   );

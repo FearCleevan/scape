@@ -1,5 +1,6 @@
 // src/App.jsx
-import { Routes, Route } from 'react-router-dom'; // Remove BrowserRouter import
+import { Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/scroll/ScrollToTop';
 import Home from './pages/Home/Home';
 import Team from './components/About/Team';
 import Services from './components/Services/Services';
@@ -16,29 +17,39 @@ import Socials from './components/socials/Socials';
 import Contact from './components/contact/Contact';
 import Faq from './components/faq/Faq';
 import Testimonials from './components/About/Testimonials';
+import Vlog from './components/blog/Vlog';
+import DGallery from './components/portfolios/3DGallery';
+import DroneShot from './components/portfolios/DroneShot';
+import SocialVideo from './components/portfolios/SocialVideo';
 
 function App() {
   return (
-    // Remove the <Router> wrapper since it's already in main.jsx
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/team" element={<Team />} />
-      <Route path="/testimonials" element={<Testimonials />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/portfolio" element={<Portfolio />} />
-      <Route path="/social" element={<Socials />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/faq" element={<Faq />} />
-      <Route path="/services/landscape" element={<Landscape />} />
-      <Route path="/services/hardscape" element={<Hardscape />} />
-      <Route path="/services/softscape" element={<Softscape />} />
-      <Route path="/services/poolscape" element={<Poolscape />} />
-      <Route path="/services/nightscape" element={<Nightscape />} />
-      <Route path="/services/waterscape" element={<Waterscape />} />
-      <Route path="/services/firescape" element={<Firescape />} />
-      <Route path="/services/courtscape" element={<Courtscape />} />
-      {/* Add other routes here */}
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio/3d-gallery" element={<DGallery />} />
+        <Route path="/portfolio/drone-shots" element={<DroneShot />} />
+        <Route path="/portfolio/social-videos" element={<SocialVideo />} />
+        <Route path="/social" element={<Socials />} />
+        <Route path="/social/:slug" element={<Vlog />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/services/landscape" element={<Landscape />} />
+        <Route path="/services/hardscape" element={<Hardscape />} />
+        <Route path="/services/softscape" element={<Softscape />} />
+        <Route path="/services/poolscape" element={<Poolscape />} />
+        <Route path="/services/nightscape" element={<Nightscape />} />
+        <Route path="/services/waterscape" element={<Waterscape />} />
+        <Route path="/services/firescape" element={<Firescape />} />
+        <Route path="/services/courtscape" element={<Courtscape />} />
+        {/* Add other routes here */}
+      </Routes>
+    </>
   );
 }
 

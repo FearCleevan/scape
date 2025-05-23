@@ -11,15 +11,15 @@ const ContactSecond = () => {
             {/* Google Map Embed */}
             <iframe
               title="Scape Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209387036!2d-111.8762209241746!3d40.7587389713896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5138d57f8d5%3A0x8a4a4b4e0d9f5b5e!2s123%20Landscape%20Way%2C%20Salt%20Lake%20City%2C%20UT%2084101!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3043.96574092203!2d-111.7321382!3d40.2975386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874d9b339f7826c1%3A0x70f8823243fb1c27!2s1420%20W%20Center%20St%2C%20Orem%2C%20UT%2084057%2C%20USA!5e0!3m2!1sen!2sus!4v1716396220000"
               width="600"
               height="861"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               className={styles.map}
-            ></iframe>
-            
+            />
+
             {/* Map Info Card */}
             <div className={styles.mapInfoCard}>
               <h3>Scape</h3>
@@ -32,9 +32,9 @@ const ContactSecond = () => {
                 </div>
                 <span>142 reviews</span>
               </div>
-              <a 
-                href="https://www.google.com/maps/place/123+Landscape+Way,+Salt+Lake+City,+UT+84101" 
-                target="_blank" 
+              <a
+                href="https://www.google.com/maps/place/1420+W+Center+St,+Orem,+UT+84057,+USA/@40.2975386,-111.7321382,17z/data=!3m1!4b1!4m5!3m4!1s0x874d9b339f7826c1:0x70f8823243fb1c27!8m2!3d40.2975386!4d-111.7295579?entry=ttu&g_ep=EgoyMDI1MDUxNS4xIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={styles.viewLargerLink}
               >
@@ -43,15 +43,15 @@ const ContactSecond = () => {
             </div>
           </div>
         </div>
-        
+
         <div className={styles.formSection}>
           <p className={styles.sectionSubtitle}>Our Contact</p>
           <h2 className={styles.sectionTitle}>Get a Free Quote Now!</h2>
           <p className={styles.sectionDescription}>
-            Our award-winning team is dedicated to bringing your dream outdoor space to life, 
+            Our award-winning team is dedicated to bringing your dream outdoor space to life,
             offering both beauty and functionality with a warranty that guarantees satisfaction.
           </p>
-          
+
           <form className={styles.contactForm}>
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
@@ -61,7 +61,7 @@ const ContactSecond = () => {
                 <input type="email" placeholder="Email" required />
               </div>
             </div>
-            
+
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <input type="text" placeholder="Street Address" required />
@@ -70,13 +70,13 @@ const ContactSecond = () => {
                 <input type="tel" placeholder="Phone Number" required />
               </div>
             </div>
-            
+
             <div className={styles.formRow}>
               <div className={styles.formGroupFull}>
                 <textarea placeholder="Comment" rows="5" required></textarea>
               </div>
             </div>
-            
+
             <button type="submit" className={styles.submitButton}>
               GET MY FREE QUOTE
             </button>

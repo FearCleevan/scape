@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Waterscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import WaterscapeFirst from './WaterscapeFirst';
 
 
 const Waterscape = () => {
@@ -39,6 +40,7 @@ const Waterscape = () => {
           <p className={styles.tagline}>Waterscape</p>
         </div>
       </div>
+      <WaterscapeFirst />
       <Footer />
     </div>
   );
