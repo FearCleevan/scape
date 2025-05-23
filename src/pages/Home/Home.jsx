@@ -32,8 +32,9 @@ const Home = () => {
       <Header />
       <div className={styles.mainContent}>
         <div className={styles.content}>
-          <h1>SCAPE</h1>
-          <p className={styles.tagline}>LIVING LUXURY</p>
+          <h1>
+            <span className={styles.underlinedS}>s</span>cape
+          </h1>
           <div className={styles.projectsCta}>
             <span>Featured Projects</span>
             <FiChevronDown className={styles.arrowIcon} />

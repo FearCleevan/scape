@@ -1,8 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ContactSecond.module.css';
 import { FaStar, FaMapMarkerAlt } from 'react-icons/fa';
 
+const squareFootOptions = [
+  'Under 1,000 sq ft',
+  '1,000 - 2,500 sq ft',
+  '2,500 - 5,000 sq ft',
+  '5,000 - 10,000 sq ft',
+  '10,000+ sq ft'
+];
+
+const budgetOptions = [
+  'Under $5,000',
+  '$5,000 - $15,000',
+  '$15,000 - $30,000',
+  '$30,000 - $50,000',
+  '$50,000+'
+];
+
+const timeFrameOptions = [
+  'Immediately',
+  '1-3 months',
+  '3-6 months',
+  '6-12 months',
+  '1 year+'
+];
+
 const ContactSecond = () => {
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccessMsg("");
+    setErrorMsg("");
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // convert FormData to application/x-www-form-urlencoded
+    const params = new URLSearchParams();
+    for (let [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+
+    // Google Apps Script endpoint
+    const url = "https://script.google.com/macros/s/AKfycbx5u74Ht1SpqqIMqtSl3TWr_HkHK7egW4YZndZOsPs6LXN7Bz60uxgN2XsaCWJErEquIQ/exec";
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString()
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSuccessMsg(`Thank you! Your request was submitted successfully on ${data.date} at ${data.time}.`);
+        form.reset();
+      } else {
+        setErrorMsg("Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setErrorMsg("Submission failed. Please try again.", err);
+    }
+    setLoading(false);
+  };
+
   return (
     <div className={styles.contactSecondContainer}>
       <div className={styles.contactSecondContent}>
@@ -52,34 +117,132 @@ const ContactSecond = () => {
             offering both beauty and functionality with a warranty that guarantees satisfaction.
           </p>
 
-          <form className={styles.contactForm}>
+          <form className={styles.contactForm} autoComplete="off" onSubmit={handleSubmit}>
+            {/* Row 1: First Name, Last Name */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
-                <input type="text" placeholder="First Name" required />
+                <label className={styles.formInputLabel}>First Name*</label>
+                <input type="text" name="firstName" placeholder="Enter your first name" required />
               </div>
               <div className={styles.formGroup}>
-                <input type="email" placeholder="Email" required />
+                <label className={styles.formInputLabel}>Last Name*</label>
+                <input type="text" name="lastName" placeholder="Enter your last name" required />
               </div>
             </div>
 
+            {/* Row 2: Email, Phone/Mobile */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
-                <input type="text" placeholder="Street Address" required />
+                <label className={styles.formInputLabel}>Email*</label>
+                <input type="email" name="email" placeholder="your@email.com" required />
               </div>
               <div className={styles.formGroup}>
-                <input type="tel" placeholder="Phone Number" required />
+                <label className={styles.formInputLabel}>Phone/Mobile*</label>
+                <input type="tel" name="phone" placeholder="(555) 555-5555" required />
               </div>
             </div>
 
+            {/* Own Home or Lot */}
             <div className={styles.formRow}>
               <div className={styles.formGroupFull}>
-                <textarea placeholder="Comment" rows="5" required></textarea>
+                <label className={styles.formLabel}>Do you currently own your home or lot?*</label>
+                <div className={styles.radioGroup}>
+                  <label><input type="radio" name="ownHome" value="Yes" required /> Yes</label>
+                  <label><input type="radio" name="ownHome" value="No" /> No</label>
+                </div>
               </div>
             </div>
 
-            <button type="submit" className={styles.submitButton}>
-              GET MY FREE QUOTE
+            {/* Lot Location */}
+            <div className={styles.formRow}>
+              <div className={styles.formGroupFull}>
+                <label className={styles.formInputLabel}>Where is your lot located or what is your desired location?*</label>
+                <input
+                  type="text"
+                  name="lotLocation"
+                  placeholder="e.g. Orem, UT or another location"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Home Size (select), Yard Size (select) */}
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label className={styles.formInputLabel}>Home Size*</label>
+                <select name="homeSize" required defaultValue="">
+                  <option value="" disabled>Select size</option>
+                  {squareFootOptions.map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formInputLabel}>Yard Size*</label>
+                <select name="yardSize" required defaultValue="">
+                  <option value="" disabled>Select size</option>
+                  {squareFootOptions.map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Budget (select) */}
+            <div className={styles.formRow}>
+              <div className={styles.formGroupFull}>
+                <label className={styles.formInputLabel}>Landscaping Budget*</label>
+                <select name="budget" required defaultValue="">
+                  <option value="" disabled>Select budget</option>
+                  {budgetOptions.map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Timeframe (select) */}
+            <div className={styles.formRow}>
+              <div className={styles.formGroupFull}>
+                <label className={styles.formInputLabel}>When would you like to begin your landscape project?*</label>
+                <select name="timeframe" required defaultValue="">
+                  <option value="" disabled>Select timeframe</option>
+                  {timeFrameOptions.map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Already have design plans? */}
+            <div className={styles.formRow}>
+              <div className={styles.formGroupFull}>
+                <label className={styles.formLabel}>Do you already have design plans for your landscape project?*</label>
+                <div className={styles.radioGroup}>
+                  <label><input type="radio" name="hasDesignPlans" value="Yes" required /> Yes</label>
+                  <label><input type="radio" name="hasDesignPlans" value="No" /> No</label>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Comments */}
+            <div className={styles.formRow}>
+              <div className={styles.formGroupFull}>
+                <label className={styles.formInputLabel}>What else should we know about your landscape project?*</label>
+                <textarea
+                  name="additionalInfo"
+                  placeholder="Tell us about your vision, features, or questions"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <button type="submit" className={styles.submitButton} disabled={loading}>
+              {loading ? "Submitting..." : "SUBMIT FORM"}
             </button>
+            {successMsg && <div className={styles.successMsg}>{successMsg}</div>}
+            {errorMsg && <div className={styles.errorMsg}>{errorMsg}</div>}
           </form>
         </div>
       </div>

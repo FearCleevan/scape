@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600;700&display=swap');
+
+* {
+  font-family: "Bai Jamjuree", sans-serif !important;
+}
+
+.quoteContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  animation: float 3s ease-in-out infinite;
+}
+
+.quoteButton {
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #a79e79;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.quoteButton:hover {
+  background-color: #8c8465;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.quoteButton:focus {
+  box-shadow: 0 0 0 3px rgba(167, 158, 121, 0.5);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modalTitle {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.modalSubtitle {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.quoteForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.quoteForm input,
+.quoteForm textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.quoteForm input:focus,
+.quoteForm textarea:focus {
+  border-color: #a79e79;
+  outline: none;
+}
+
+.submitButton {
+  background-color: #a79e79;
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submitButton:hover {
+  background-color: #8c8465;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s;
+}
+
+.closeButton:hover {
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .quoteContainer {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .quoteButton {
+    padding: 12px 20px;
+    font-size: 12px;
+  }
+
+  .modalContent {
+    padding: 20px;
+  }
+
+  .modalTitle {
+    font-size: 20px;
+  }
+
+  .modalSubtitle {
+    font-size: 14px;
+  }
+}
+
+.successMessage {
+  text-align: center;
+  padding: 40px 12px;
+  color: #fff;
+  font-size: 20px;
+  background: #a79e79;
+  animation: fadeInScale 0.7s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loadingSpinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  font-size: 18px;
+  color: #a79e79;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 6px solid #a79e79;
+  border-top: 6px solid #eee;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.successButton {
+  background: #fff;
+  color: #a79e79;
+  border: 1px solid #a79e79;
+  padding: 8px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .18s, color .18s;
+}
+
+.successButton:hover {
+  background: #a79e79;
+  color: #fff;
+}

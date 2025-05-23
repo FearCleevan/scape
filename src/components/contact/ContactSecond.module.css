@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
-  font-family: "Bai Jamjuree", sans-serif !important;
+  font-family: "Bai Jamjuree", "Poppins", sans-serif !important;
 }
 
 .contactSecondContainer {
   width: 100%;
-  height: 1061.78px;
-  background-color: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f8f8 0%, #f5f2ea 100%);
   padding: 80px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .contactSecondContent {
@@ -19,62 +19,73 @@
   max-width: 1368px;
   display: flex;
   gap: 60px;
+  background: #fff;
+  box-shadow: 0 8px 40px rgba(167, 158, 121, 0.14);
+  padding: 50px 40px;
 }
 
 .mapSection {
   flex: 1;
+  min-width: 360px;
 }
 
 .mapContainer {
   position: relative;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #ece8dd;
+  overflow: hidden;
+  background: #faf9f5;
+  box-shadow: 0 4px 18px rgba(160, 150, 110, 0.09);
 }
 
 .map {
   width: 100%;
-  height: 861px;
-  border-radius: 4px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 720px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
 }
 
 .mapInfoCard {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 250px;
+  top: 24px;
+  left: 24px;
+  background: #fff;
+  padding: 20px 18px;
+  box-shadow: 0 2px 12px rgba(35, 30, 15, 0.08);
+  width: 232px;
+  border: 1px solid #ece8dd;
+  z-index: 2;
 }
 
 .mapInfoCard h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 8px;
   color: #2c3e50;
+  letter-spacing: 0.2px;
 }
 
 .rating {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  font-size: 15px;
 }
 
 .stars {
   display: flex;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .starFilled {
   color: #FFD700;
-  font-size: 14px;
-  margin-right: 2px;
+  font-size: 15px;
+  margin-right: 1.5px;
 }
 
 .starEmpty {
   color: #e0e0e0;
-  font-size: 14px;
-  margin-right: 2px;
+  font-size: 15px;
+  margin-right: 1.5px;
 }
 
 .rating span {
@@ -85,10 +96,12 @@
 .viewLargerLink {
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 13px;
   color: #a79e79;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s;
+  font-weight: 500;
+  margin-top: 9px;
 }
 
 .viewLargerLink:hover {
@@ -96,131 +109,204 @@
 }
 
 .viewLargerLink svg {
-  margin-right: 5px;
-  font-size: 14px;
+  margin-right: 6px;
+  font-size: 15px;
 }
 
 .formSection {
-  flex: 1;
+  flex: 1.15;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 10px;
 }
 
 .sectionSubtitle {
   color: #a79e79;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   text-transform: uppercase;
 }
 
 .sectionTitle {
-  font-size: 45px;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 20px;
-  line-height: 1.2;
+  font-size: 42px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 18px;
+  line-height: 1.19;
 }
 
 .sectionDescription {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 40px;
+  font-size: 15.5px;
+  color: #594f2b;
+  line-height: 1.56;
+  margin-bottom: 38px;
+  max-width: 550px;
 }
 
 .contactForm {
   width: 100%;
+  margin-top: 11px;
 }
 
 .formRow {
   display: flex;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .formGroup {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .formGroupFull {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 25px;
-  border: 1px solid #e0e0e0;
+.formInputLabel, .formLabel {
   font-size: 15px;
-  transition: border-color 0.3s ease;
+  font-weight: 600;
+  color: #94844e;
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
 }
 
-input:focus, textarea:focus {
+input, select, textarea {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1px solid #ece8dd;
+  font-size: 15px;
+  background: #fcfcfa;
+  color: #2c3e50;
+  transition: border-color 0.3s;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: #a79e79;
+  background: #fff;
 }
 
 textarea {
   resize: vertical;
-  min-height: 220px;
+  min-height: 110px;
+  font-size: 15.5px;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 24px;
+  margin-top: 7px;
+  font-size: 15px;
+  color: #2c3e50;
+  align-items: center;
+}
+
+.radioGroup label {
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.radioGroup input[type="radio"] {
+  accent-color: #a79e79;
+  margin-right: 4px;
+  transform: translateY(0.5px);
 }
 
 .submitButton {
-  width: 300px; /* Fixed width */
-  padding: 18px;
-  background-color: #000;
-  color: white;
-  border: none; /* Removed border */
-  border-radius: 0; /* No border radius */
-  font-size: 15px;
-  font-weight: 600;
+  width: 100%;
+  max-width: 340px;
+  padding: 18px 0;
+  background-image: linear-gradient(90deg, #a79e79 0%, #8b7c5a 100%);
+  color: #fff;
+  border: none;
+  font-size: 17px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: auto; /* Aligns to left */
-  margin-left: 0; /* Ensures left alignment */
-  display: block; /* Makes margin-auto work */
+  transition: background 0.25s, color 0.17s;
+  margin-top: 12px;
+  box-shadow: 0 2px 12px rgba(167, 158, 121, 0.07);
+  align-self: flex-start;
 }
 
 .submitButton:hover {
-  background-color: #a79e79;
+  background-image: linear-gradient(90deg, #8b7c5a 0%, #a79e79 100%);
+  color: #fffbea;
+}
+
+.successMsg {
+  color: #246b43;
+  background: #eafbe7;
+  padding: 13px 16px;
+  margin-top: 16px;
+  font-size: 16px;
+  border: 1px solid #b2e2c6;
+}
+
+.errorMsg {
+  color: #ad2323;
+  background: #ffeaea;
+  padding: 13px 16px;
+  margin-top: 16px;
+  font-size: 16px;
+  border: 1px solid #f7b6b6;
 }
 
 @media (max-width: 1200px) {
   .contactSecondContent {
     flex-direction: column;
     gap: 40px;
+    padding: 30px 5vw;
   }
-  
+
   .mapSection, .formSection {
     width: 100%;
+    min-width: 0;
+    padding-left: 0;
   }
-  
+
   .map {
-    height: 500px;
+    height: 340px;
   }
-  
+
   .contactSecondContainer {
-    height: auto;
-    padding: 60px 0;
+    padding: 40px 0;
   }
 }
 
 @media (max-width: 768px) {
   .sectionTitle {
-    font-size: 36px;
+    font-size: 27px;
   }
-  
+
   .formRow {
     flex-direction: column;
-    gap: 15px;
+    gap: 8px;
   }
-  
+
   .mapInfoCard {
-    width: 180px;
-    padding: 15px;
+    width: 150px;
+    padding: 10px;
+    left: 10px;
+    top: 10px;
+  }
+
+  .contactSecondContent {
+    padding: 17px 2vw;
   }
 }

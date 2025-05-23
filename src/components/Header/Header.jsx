@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import styles from './Header.module.css';
 import logo from '../../assets/images/ScapeLogoW.png';
+import GetQuote from '../getquote/GetQuote';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -123,6 +124,7 @@ const Header = () => {
           ))}
         </ul>
       </nav>
+      <GetQuote />
     </header>
   );
 };
