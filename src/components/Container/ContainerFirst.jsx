@@ -127,8 +127,13 @@ const ContainerFirst = () => {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     }}
-                    spaceBetween={30}
-                    slidesPerView={3}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    breakpoints={{
+                        768: {
+                            slidesPerView: 3
+                        }
+                    }}
                     loop={true}
                     autoplay={{
                         delay: 3500,

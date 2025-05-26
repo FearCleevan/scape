@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import styles from './Header.module.css';
@@ -8,7 +8,17 @@ import GetQuote from '../getquote/GetQuote';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleDropdown = (name) => {
     setOpenDropdown(openDropdown === name ? null : name);
@@ -38,7 +48,7 @@ const Header = () => {
       ]
     },
     { path: '/portfolio', name: 'Portfolio' },
-    { path: '/social', name: 'Social Media' },
+    // { path: '/social', name: 'Social Media' },
     { path: '/contact', name: 'Contact Us' },
     { path: '/faq', name: 'FAQ' }
   ];
@@ -56,7 +66,7 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className={styles.tagline}>
+      <div className={`${styles.tagline} ${scrolled ? styles.taglineHidden : ''}`}>
         Designing Landscapes that Build Relationships
       </div>
 

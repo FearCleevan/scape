@@ -3,6 +3,7 @@
 * {
   font-family: "Bai Jamjuree", sans-serif !important;
 }
+
 .homeContainer {
   position: relative;
   display: flex;
@@ -47,7 +48,6 @@
 }
 
 .content h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 175px;
   font-weight: 700;
   position: absolute;
@@ -57,7 +57,6 @@
 }
 
 .tagline {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   font-size: 80px;
   position: absolute;
@@ -192,5 +191,39 @@
   .breadcrumbSeparator::after {
     font-size: 10px;
     right: -6px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tagline {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumb {
+    top: 100px;
+    padding-left: 15px;
+    width: 95%;
+  }
+  
+  .breadcrumbLink,
+  .activeBreadcrumb {
+    font-size: 12px;
+  }
+  
+  .breadcrumbSeparator::after {
+    font-size: 10px;
+    right: -6px;
+  }
+
+  .tagline {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tagline {
+    font-size: 32px;
   }
 }

@@ -100,9 +100,7 @@ const WaterscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Waterscape</h1>
         <p className={styles.introText}>
-          Waterscape brings your outdoor vision to life with a range of captivating water features, each designed to infuse your landscape with tranquility and visual elegance—whether or not you have a pool. Our expertise includes the creation of graceful fountains, cascading waterfalls, serene ponds, and bubbling streams, all crafted to serve as peaceful focal points and promote a deep sense of relaxation.
-          <br /><br />
-          Every feature is thoughtfully designed and installed to harmonize with your unique space and style, delivering a stunning, low-maintenance outdoor retreat tailored to your lifestyle. Let us transform your yard into a sanctuary where the calming presence of water enhances every moment.
+          Waterscape brings your outdoor vision to life with a variety of captivating water features designed to enhance the beauty and tranquility of your landscape&mdash;with or without the installation of a pool. Our water features encompass elegant fountains, cascading waterfalls, serene ponds, and bubbling streams, each crafted to create a peaceful focal point and promote a sense of calm in your yard. Every element is thoughtfully designed and installed to harmonize with your space, delivering a stunning, low-maintenance outdoor retreat tailored to your lifestyle.
         </p>
       </div>
       <div className={styles.featuresSection}>

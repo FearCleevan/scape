@@ -19,44 +19,52 @@ const ServicesFirst = () => {
   const services = [
     {
       title: 'LANDSCAPE',
-      description: 'Tailored outdoor spaces harmonizing hardscape and softscape for beauty, function, and longevity. We blend your vision with expert planning to elevate curb appeal and create havens for relaxation.',
-      image: Asset1
+      description:
+        "Landscape design is the art and science of creating harmonious outdoor spaces tailored to your unique vision and lifestyle. Our collaborative process blends hardscape and softscape elements—patios, walkways, trees, and gardens—to deliver thoughtfully designed landscapes that enhance curb appeal and provide a perfect retreat for relaxation or recreation.",
+      image: Asset1,
     },
     {
       title: 'HARDSCAPE',
-      description: 'Patios, walkways, retaining walls, and outdoor kitchens built with precision. We use premium materials (stone, pavers, concrete) to add structure and elegance to your property.',
-      image: Asset2
+      description:
+        "Hardscape enhances your outdoor spaces with expertly designed, durable features—patios, walkways, retaining walls, and outdoor kitchens—that provide structure and usability. Crafted from premium materials, our hardscape solutions are tailored to complement your natural surroundings and elevate your outdoor living experience.",
+      image: Asset2,
     },
     {
       title: 'SOFTSCAPE',
-      description: 'Lush planting designs with native trees, shrubs, and flowers. Our selections thrive in Utah\'s climate, offering year-round color, shade, and ecological benefits.',
-      image: Asset3
+      description:
+        "Softscape brings your landscape to life with carefully selected plants, trees, shrubs, and flowers that add beauty, color, and year-round interest. We design thriving, picturesque environments that support biodiversity and reflect your preferences and Utah’s climate.",
+      image: Asset3,
     },
     {
       title: 'POOLSCAPE',
-      description: 'Custom pools paired with integrated landscaping. We handle everything from excavation to finishing touches like lighting and water features for a seamless backyard oasis.',
-      image: Asset1
+      description:
+        "Poolscape specializes in creating your dream backyard oasis through comprehensive pool construction and landscaping. From custom pool design and installation to elegant patios and lush plantings, we handle every detail for a seamless, stunning outdoor retreat you’ll love year-round.",
+      image: Asset1,
     },
     {
       title: 'NIGHTSCAPE',
-      description: 'Ambient lighting and weatherproof A/V systems to extend your outdoor enjoyment after dark. Think pathway lights, fire feature accents, and hidden speakers.',
-      image: Asset2
+      description:
+        "Nightscape elevates your outdoor experience with ambient lighting and outdoor A/V systems. We design and install pathway lights, accent lighting, and weatherproof speakers, creating a warm, inviting atmosphere perfect for gatherings or quiet evenings under the stars.",
+      image: Asset2,
     },
     {
       title: 'WATERSCAPE',
-      description: 'Serene fountains, waterfalls, or ponds that add movement and tranquility—no pool required. Designed for low maintenance and high visual impact.',
-      image: Asset3
+      description:
+        "Waterscape brings tranquility to your space with captivating water features—fountains, waterfalls, ponds, and streams—designed to harmonize with your landscape. Each water element is thoughtfully installed for stunning, low-maintenance beauty with or without a pool.",
+      image: Asset3,
     },
     {
       title: 'FIRESCAPE',
-      description: 'Cozy fire pits, fireplaces, or modern fire tables to gather around. Perfect for Utah\'s cool evenings and mountain views.',
-      image: Asset1
+      description:
+        "Firescape creates inviting outdoor areas with custom fire features—fire pits, fireplaces, and modern fire tables—perfect for gathering with family and friends on cool evenings. Our expert designs add warmth, charm, and an unforgettable ambiance to your yard.",
+      image: Asset1,
     },
     {
       title: 'COURTSCAPE',
-      description: 'Sport courts (basketball, pickleball, tennis) with professional surfacing and lighting. We optimize space for active lifestyles.',
-      image: Asset2
-    }
+      description:
+        "Courtscape specializes in dynamic outdoor spaces with custom sport court installations for basketball, tennis, and pickleball. Our courts are built for durability and performance, complemented by professional lighting and seamless integration into your landscape for years of recreation.",
+      image: Asset2,
+    },
   ];
 
   return (
@@ -66,13 +74,8 @@ const ServicesFirst = () => {
         <div className={styles.introSection}>
           <h1 className={styles.introTitle}>Bringing Your Outdoor Vision to Life</h1>
           <h2 className={styles.introSubtitle}>Full-Service Landscape Design & Build</h2>
-          
           <p className={styles.introText}>
-            At SCAPE, we don't just design landscapes—we craft immersive outdoor experiences. 
-            Born from the merger of Peak Property Services and KC Property Services, we unite 
-            50+ years of expertise to transform your yard into a personalized retreat. From sleek 
-            modern patios to lush garden sanctuaries, every project reflects our commitment to 
-            innovation, craftsmanship, and sustainability.
+            At scape, we believe exceptional landscapes do more than beautify—they connect people, foster memories, and strengthen communities. Born from the merger of Peak Property Services and KC Property Services, we unite 50+ years of expertise to deliver transformative outdoor spaces. Guided by our mission of designing landscapes that build relationships, we blend sustainable innovation and timeless artistry to create environments that inspire connection and reflect your unique vision.
           </p>
         </div>
 
@@ -84,14 +87,14 @@ const ServicesFirst = () => {
           {services.map((service, index) => (
             <div key={index} className={styles.masonryItem}>
               <div className={styles.serviceCard}>
-                <div 
+                <div
                   className={styles.serviceImage}
                   style={{ backgroundImage: `url(${service.image})` }}
                 >
                   <div className={styles.serviceTitle}>{service.title}</div>
                 </div>
                 <div className={styles.serviceOverlay}>
-                  <h3 
+                  <h3
                     className={styles.clickableTitle}
                     onClick={() => handleServiceClick(service.title)}
                     role="button"
@@ -109,16 +112,23 @@ const ServicesFirst = () => {
 
         {/* Why Choose Us Section */}
         <div className={styles.whyChooseSection}>
-          <h2 className={styles.whyChooseTitle}>Why Choose SCAPE?</h2>
+          <h2 className={styles.whyChooseTitle}>Why Choose scape?</h2>
           <ul className={styles.whyChooseList}>
-            <li><strong>Heritage:</strong> Decades of trusted service under founders Steve Mortensen and Kent Christensen</li>
-            <li><strong>Holistic Approach:</strong> From concept to installation, we handle every detail</li>
-            <li><strong>Local Expertise:</strong> Tailored solutions for Utah's unique climate and terrain</li>
-            <li><strong>Art Meets Function:</strong> Spaces designed to inspire and endure</li>
+            <li>
+              <strong>Heritage:</strong> Built on the legacy of Steve Mortensen and Kent Christensen, with over 50 years of trusted service.
+            </li>
+            <li>
+              <strong>Holistic Approach:</strong> From concept to installation, we handle every detail for seamless results.
+            </li>
+            <li>
+              <strong>Local Expertise:</strong> Tailored solutions for Utah’s unique climate and terrain.
+            </li>
+            <li>
+              <strong>Art Meets Function:</strong> Outdoor spaces designed for inspiration, connection, and lasting beauty.
+            </li>
           </ul>
-          
           <div className={styles.callToAction}>
-            Let's reimagine your outdoor potential.
+            Let’s reimagine your outdoor potential.
           </div>
         </div>
       </div>

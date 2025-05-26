@@ -13,14 +13,16 @@ import Waterscape from './components/service/Waterscape';
 import Firescape from './components/service/Firescape';
 import Courtscape from './components/service/Courtscape';
 import Portfolio from './components/portfolio/Portfolio';
-import Socials from './components/socials/Socials';
+// import Socials from './components/socials/Socials';
 import Contact from './components/contact/Contact';
 import Faq from './components/faq/Faq';
 import Testimonials from './components/About/Testimonials';
-import Vlog from './components/blog/Vlog';
+// import Vlog from './components/blog/Vlog';
 import DGallery from './components/portfolios/3DGallery';
 import DroneShot from './components/portfolios/DroneShot';
 import SocialVideo from './components/portfolios/SocialVideo';
+import Unsubscribe from './pages/Unsubscribe';
+import NewsletterVerification from './pages/NewsletterVerificartion';
 
 function App() {
   return (
@@ -35,8 +37,8 @@ function App() {
         <Route path="/portfolio/3d-gallery" element={<DGallery />} />
         <Route path="/portfolio/drone-shots" element={<DroneShot />} />
         <Route path="/portfolio/social-videos" element={<SocialVideo />} />
-        <Route path="/social" element={<Socials />} />
-        <Route path="/social/:slug" element={<Vlog />} />
+        {/* <Route path="/social" element={<Socials />} />
+        <Route path="/social/:slug" element={<Vlog />} /> */}
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/services/landscape" element={<Landscape />} />
@@ -47,6 +49,8 @@ function App() {
         <Route path="/services/waterscape" element={<Waterscape />} />
         <Route path="/services/firescape" element={<Firescape />} />
         <Route path="/services/courtscape" element={<Courtscape />} />
+        <Route path="/verify-newsletter" element={<NewsletterVerification />} />
+        <Route path="/unsubscribe" element={<Unsubscribe />} />
         {/* Add other routes here */}
       </Routes>
     </>

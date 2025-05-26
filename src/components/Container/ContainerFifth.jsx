@@ -19,7 +19,7 @@ const ContainerFifth = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (hasAnimated) return;
-      
+
       const element = containerRef.current;
       const elementPosition = element.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
@@ -40,7 +40,7 @@ const ContainerFifth = () => {
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={styles.container}
     >
@@ -48,26 +48,23 @@ const ContainerFifth = () => {
       <div className={styles.backgroundImage}>
         <img src={backgroundImage} alt="Team background" className={styles.image} />
       </div>
-      
+
       {/* Dark Overlay */}
       <div className={styles.imageOverlay}></div>
 
       <div className={styles.contentWrapper}>
         {/* Left Section - Text Content */}
         <div className={`${styles.leftSection} ${isVisible ? styles.fadeIn : ''}`}>
-          <h2 className={styles.heading}>Team Work</h2>
-          <p className={styles.subText}>A True Partnership is what we are all about!</p>
+          <h2 className={styles.heading}>Genuine <span>Teamwork</span></h2>
+          <p className={styles.subText}>Partnership is our foundation</p>
           <p className={styles.paragraph}>
-            Giving us the honor of building your pool, makes us who we are . . . . Team Poolscapes!
+            At scape, we see every project as a collaboration—with you at the center. Our unified team approach is built on open communication and mutual respect.
           </p>
           <p className={styles.paragraph}>
-            Trust, transparency & integrity are our focus as a business.
+            We’re honored to build spaces that strengthen bonds between families, friends, and communities—environments where lasting memories are created together.
           </p>
           <p className={styles.paragraph}>
-            We aim to produce an environment that is open to a team oriented build and we wouldn't want to do it any other way.
-          </p>
-          <p className={styles.paragraph}>
-            Team Poolscapes all the way! Will you be joining us too?
+            Join Team scape and let’s create something extraordinary, together.
           </p>
           <button className={styles.button} onClick={handleGetStarted}>
             Get Started

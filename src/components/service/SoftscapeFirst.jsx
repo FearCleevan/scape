@@ -100,11 +100,7 @@ const SoftscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Softscape</h1>
         <p className={styles.introText}>
-          Softscape brings your outdoor spaces to life with a vibrant palette of living features. Our softscape services celebrate the artistry and science of integrating plants, trees, shrubs, flowers, and lawns, all selected to enrich your landscape’s beauty, foster biodiversity, and complement your lifestyle.
-          <br /><br />
-          These organic elements introduce color, texture, and seasonal variety, supporting a healthy ecosystem while providing shade, privacy, and year-round interest. Whether you envision a flourishing garden, a tranquil green lawn, or a sustainable planting design, our team tailors every detail to your personal preferences and local environment.
-          <br /><br />
-          Experience the enduring impact of thoughtfully planned softscape—where nature’s beauty thrives in harmony with your home.
+          Softscape brings your outdoor spaces to life with beautifully designed elements, which encompass the living, natural features of your landscape. Softscaping includes plants, trees, shrubs, flowers, and grass, carefully selected to enhance beauty, provide shade, and promote biodiversity. These organic components add color, texture, and seasonal interest while supporting a healthy ecosystem. Whether you desire a vibrant garden, a serene lawn, or a sustainable planting plan, our softscape expertise ensures a thriving, picturesque environment tailored to your preferences and local climate.
         </p>
       </div>
       <div className={styles.featuresSection}>

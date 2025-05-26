@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './About.module.css';
 import Asset1 from '../../assets/images/Asset1.jpg';
 import Asset2 from '../../assets/images/Asset2.jpg';
@@ -52,7 +53,9 @@ const About = () => {
                                 space while prioritizing environmental responsibility. Our commitment to sustainability includes
                                 native plants, water-saving designs, and recycling materials whenever possible.
                             </p>
-                            <button className={styles.ctaButton}>Book a Free Consultation</button>
+                            <Link to="/contact" className={styles.ctaButton}>
+                                Book a Free Consultation
+                            </Link>
                         </div>
                     </div>
                 </div>

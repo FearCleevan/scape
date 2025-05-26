@@ -12,7 +12,7 @@ const ContainerSecond = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (hasAnimated) return;
-      
+
       const element = containerRef.current;
       const elementPosition = element.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
@@ -29,7 +29,7 @@ const ContainerSecond = () => {
   }, [hasAnimated]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={styles.container}
       style={{ backgroundImage: `url(${Asset10})` }}
@@ -37,30 +37,29 @@ const ContainerSecond = () => {
       <div className={styles.contentWrapper}>
         {/* Left Section - Text Content */}
         <div className={`${styles.leftSection} ${isVisible ? styles.fadeIn : ''}`}>
-          <h2 className={styles.heading}>Master-Planned <span>Luxury</span></h2>
-          <p className={styles.subText}>20+ years | 1,000+ projects | A+ Satisfaction.</p>
-          <p className={styles.paragraph}>Trust, transparency & integrity are our focus as a business.</p>
+          <h2 className={styles.heading}>Building <span>Connections</span></h2>
+          <p className={styles.subText}>50+ years experience | Merged Excellence | Relationship-Driven Spaces.</p>
+          <p className={styles.paragraph}>At scape, we believe landscapes are about more than beauty—they’re about connecting people and creating memories.</p>
           <p className={styles.paragraph}>
-            Family owned & operated since 2001, Poolscapes continues to push the industry with 
-            innovative Pool designs & aims to set the tone for an A+ Customer experience.
+            Our legacy, shaped by decades of partnership and innovation, stands for trust, transparency, and creative excellence. From intimate retreats to expansive estates, we design environments that inspire connection and reflect your unique vision.
           </p>
-          <p className={styles.smallText}>Recent Google Reviews</p>
-          <p className={styles.mediumText}>Poolscapes Gallery</p>
+          <p className={styles.smallText}>Hear from Our Clients</p>
+          <p className={styles.mediumText}>scape Project Gallery</p>
         </div>
 
         {/* Right Section - Images */}
         <div className={styles.rightSection}>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideDown : ''}`}>
-            <img 
-              src={Asset11} 
-              alt="Luxury landscape design" 
+            <img
+              src={Asset11}
+              alt="Luxury landscape design"
               className={styles.image}
             />
           </div>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideUp : ''}`}>
-            <img 
-              src={Asset12} 
-              alt="Modern pool design" 
+            <img
+              src={Asset12}
+              alt="Modern pool design"
               className={styles.image}
             />
           </div>

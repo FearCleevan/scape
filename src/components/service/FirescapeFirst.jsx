@@ -100,9 +100,7 @@ const FirescapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Firescape</h1>
         <p className={styles.introText}>
-          Firescape creates inviting outdoor spaces with expertly crafted fire features, adding warmth and charm to your landscape. Our fire features include custom fire pits, elegant fireplaces, and modern fire tables—perfect for gathering with family and friends on cool evenings while enhancing your yard’s ambiance.
-          <br /><br />
-          Every design is tailored to complement your outdoor living style, with integrated seating, safety-focused construction, and beautiful hardscape elements. Let us help you create a welcoming retreat where memories are made around the glow of the fire.
+          Firescape creates inviting outdoor spaces with our expertly crafted fire features and complementary services, designed to add warmth and charm to your landscape. Our fire features include custom fire pits, elegant fireplaces, and modern fire tables, perfect for gathering with family and friends on cool evenings while enhancing your yard’s ambiance.
         </p>
       </div>
       <div className={styles.featuresSection}>

@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   font-family: "Bai Jamjuree", sans-serif !important;
 }
 
 .container {
-  height: 953px;
+  min-height: 953px;
+  height: auto;
   background-image: url('../../assets/gallery/Asset10.jpg');
   background-attachment: fixed;
   background-position: center;
@@ -16,9 +17,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
-/* Add this new overlay element */
+/* Overlay for darkening */
 .container::before {
   content: '';
   position: absolute;
@@ -26,7 +28,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity (0.4) to control darkness */
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
@@ -36,9 +38,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 700px;
   height: 100%;
   position: relative;
-  z-index: 1; /* Ensure content stays above the overlay */
+  z-index: 1;
+  flex-wrap: wrap;
 }
 
 .leftSection {
@@ -46,7 +50,9 @@
   color: white;
   opacity: 0;
   transform: translateX(-50px);
-  transition: all 1s ease-out;
+  transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
+  min-width: 300px;
+  box-sizing: border-box;
 }
 
 .leftSection.fadeIn {
@@ -59,6 +65,7 @@
   font-weight: 700;
   margin-bottom: 30px;
   line-height: 1.2;
+  word-break: break-word;
 }
 
 .heading span {
@@ -76,6 +83,7 @@
   margin-bottom: 20px;
   line-height: 1.6;
   max-width: 80%;
+  word-break: break-word;
 }
 
 .smallText {
@@ -96,34 +104,83 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 300px;
+  box-sizing: border-box;
 }
 
+/* Images - Animation and Responsive */
 .imageContainer {
   position: absolute;
-  width: 502.63px;
-  height: 389.91px;
+  width: 38vw;
+  min-width: 220px;
+  max-width: 500px;
+  height: 32vw;
+  min-height: 180px;
+  max-height: 400px;
   overflow: hidden;
   border: 1px solid #000;
+  background: #222;
+  box-sizing: border-box;
+  opacity: 0;
+  transition:
+    opacity 0.6s cubic-bezier(0.77, 0, 0.175, 1),
+    transform 1.15s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Slide Down Animation for first image (from top) */
+.imageContainer.slideDown {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideDownAnim 1.15s cubic-bezier(0.77, 0, 0.175, 1) both;
+}
+
+/* Slide Up Animation for second image (from bottom) */
+.imageContainer.slideUp {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideUpAnim 1.15s cubic-bezier(0.77, 0, 0.175, 1) both;
+}
+
+@keyframes slideDownAnim {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpAnim {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .imageContainer:first-child {
-  left: 60%;
+  left: 58%;
   top: -10%;
-  transition: top 1.2s ease-out 0.3s;
+  transition: top 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.3s;
 }
 
 .imageContainer:last-child {
-  right: 35%;
+  right: 33%;
   bottom: -100%;
-  transition: bottom 1.2s ease-out 0.3s;
-}
-
-.imageContainer.slideDown {
-  top: 20%;
-}
-
-.imageContainer.slideUp {
-  bottom: 20%;
+  transition: bottom 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.3s;
 }
 
 .image {
@@ -132,52 +189,144 @@
   object-fit: cover;
 }
 
-@media (max-width: 1200px) {
-  .contentWrapper {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .leftSection,
-  .rightSection {
-    width: 90%;
-  }
-
-  .leftSection {
-    margin-bottom: 40px;
-  }
-
+/* Responsiveness for image sizing and layout */
+@media (max-width: 1400px) {
   .imageContainer {
-    position: relative;
-    margin-bottom: 20px;
-  }
-
-  .imageContainer:first-child,
-  .imageContainer:last-child {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    right: auto;
+    width: 32vw;
+    min-width: 180px;
+    max-width: 400px;
+    height: 26vw;
+    min-height: 120px;
+    max-height: 320px;
   }
 }
-
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .container {
+    min-height: 700px;
+    padding: 60px 0;
+  }
+  .contentWrapper {
+    flex-direction: column;
+    min-height: 0;
     height: auto;
-    padding: 80px 0;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2.5rem;
   }
-
-  .heading {
-    font-size: 42px;
+  .leftSection, .rightSection {
+    width: 100%;
+    min-width: 0;
   }
-
+  .leftSection {
+    margin-bottom: 40px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
   .paragraph {
     max-width: 100%;
   }
-
+  .rightSection {
+    height: auto;
+    align-items: center;
+    justify-content: flex-start;
+  }
   .imageContainer {
-    width: 100%;
-    height: 300px;
+    position: relative;
+    width: 70vw;
+    min-width: 160px;
+    max-width: 400px;
+    height: 36vw;
+    min-height: 130px;
+    max-height: 260px;
+    margin: 0 auto 20px auto;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .imageContainer {
+    width: 85vw;
+    min-width: 120px;
+    max-width: 320px;
+    height: 34vw;
+    min-height: 90px;
+    max-height: 180px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .container {
+    min-height: 520px;
+    padding: 40px 0;
+  }
+  .contentWrapper {
+    flex-direction: column;
+    padding: 0;
+    gap: 1.2rem;
+  }
+  .leftSection {
+    margin-bottom: 24px;
+    padding: 0 5px;
+    text-align: center;
+    font-size: 16px;
+  }
+  .heading {
+    font-size: 35px;
+  }
+  .subText, .paragraph, .mediumText {
+    font-size: 16px;
+  }
+  .smallText {
+    font-size: 14px;
+    margin-top: 25px;
+  }
+  .imageContainer {
+    width: 96vw;
+    min-width: 90px;
+    max-width: 340px;
+    height: 170px;
+    min-height: 90px;
+    max-height: 210px;
+    margin-bottom: 14px;
+  }
+}
+
+/* Extra Small screens */
+@media (max-width: 480px) {
+  .container {
+    min-height: 340px;
+    padding: 18px 0;
+  }
+  .heading {
+    font-size: 23px;
+    margin-bottom: 18px;
+  }
+  .leftSection {
+    padding: 0 1px;
+    font-size: 13px;
+  }
+  .subText, .paragraph, .mediumText {
+    font-size: 12px;
+  }
+  .smallText {
+    font-size: 11px;
+    margin-top: 16px;
+  }
+  .imageContainer {
+    width: 99vw;
+    min-width: 65px;
+    max-width: 250px;
+    height: 110px;
+    min-height: 60px;
+    max-height: 140px;
+    margin-bottom: 10px;
+    border-width: 0.5px;
   }
 }

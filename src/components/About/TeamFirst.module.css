@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   font-family: "Bai Jamjuree", sans-serif !important;
@@ -12,11 +12,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* allow to grow on mobile/tablet if content overflows */
+  height: auto;
+  box-sizing: border-box;
 }
 
 .teamContent {
-  width: 90%;
+  width: 100%;
   max-width: 1368px;
+  margin: 0;
 }
 
 .teamMembers {
@@ -29,15 +33,21 @@
   color: white;
   position: relative;
   transition: transform 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  background: rgba(30, 30, 30, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+.memberCard:focus,
 .memberCard:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .memberImageContainer {
   width: 100%;
-  height: 385px;
+  height: 485px; /* Increased from 385px to 485px */
   overflow: hidden;
   position: relative;
 }
@@ -49,113 +59,222 @@
   transition: transform 0.5s ease;
 }
 
-.memberCard:hover .memberImage {
-  transform: scale(1.05);
-}
-
-.memberOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  backdrop-filter: blur(5px);
-}
-
-.memberCard:hover .memberOverlay {
-  opacity: 1;
-}
-
-.overlayContent {
-  text-align: center;
-  color: white;
-}
-
-.overlayContent h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #a79e79;
-}
-
-.overlayRole {
-  font-size: 16px;
-  margin-bottom: 15px;
-  font-weight: 500;
-}
-
-.overlayBio {
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.overlayEmail {
-  font-size: 13px;
-  color: #a79e79;
-}
-
 .memberInfo {
   margin-top: 15px;
   text-align: center;
+  padding-bottom: 18px;
 }
 
 .memberName {
   font-size: 20px;
   margin-bottom: 5px;
+  font-weight: 600;
 }
 
 .memberRole {
   font-size: 16px;
   color: #aaa;
+  font-weight: 500;
 }
 
-@media (max-width: 1024px) {
-  .teamMembers {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-  
-  .memberImageContainer {
-    height: 350px;
-  }
+/* Profile Split View */
+.profileDetailSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
 }
 
-@media (max-width: 768px) {
-  .teamMembers {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  
-  .memberImageContainer {
-    height: 300px;
-  }
-  
-  .memberName {
-    font-size: 18px;
-  }
-  
-  .memberRole {
-    font-size: 14px;
-  }
+.profileContactWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  max-width: none;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
 }
 
-@media (max-width: 480px) {
-  .teamMembers {
-    grid-template-columns: 1fr;
-  }
-  
-  .memberImageContainer {
-    height: 400px;
-  }
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  background: rgba(30, 30, 30, 0.92);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
+  flex: 2 1 0%;
+  min-width: 350px;
+  width: 0;
+  padding: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
 }
 
-/* Add this to your existing styles */
+.profileImage {
+  width: 310px;
+  height: 370px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  border: none;
+}
+
+.profileContent {
+  width: 100%;
+  text-align: left;
+  margin-top: 16px;
+}
+
+.profileName {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #a79e79;
+}
+
+.profileRole {
+  font-size: 1.2rem;
+  color: #eee;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.profileBio {
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.profileEmail {
+  font-size: 1rem;
+  color: #a79e79;
+  margin-bottom: 1.5rem;
+}
+
+.profileEmail a {
+  color: #a79e79;
+  text-decoration: underline;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.profileEmail a:hover,
+.profileEmail a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Contact Card */
+.contactCard {
+  background: rgba(30, 30, 30, 0.92);
+  flex: 1 1 0%;
+  min-width: 250px;
+  width: 0;
+  padding: 32px 32px 18px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  border: none;
+}
+
+.contactForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactForm h3 {
+  text-align: center;
+  color: #a79e79;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.inputRow {
+  display: flex;
+  gap: 12px;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #3a3a3a;
+  margin-bottom: 0;
+  font-size: 1rem;
+  background: #222;
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: border 0.2s;
+  border-radius: 0;
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  border: 1.5px solid #a79e79;
+  color: #222;
+}
+
+.contactForm textarea {
+  min-height: 70px;
+  max-height: 160px;
+  resize: vertical;
+}
+
+.submitButton {
+  background: #a79e79;
+  color: #222;
+  padding: 0.7rem 2.5rem;
+  border: none;
+  border-radius: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  box-shadow: 0 2px 8px rgba(167, 158, 121, 0.13);
+  min-width: 170px;
+  text-align: center;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.submitButton:hover,
+.submitButton:focus {
+  background: #fff;
+  color: #a79e79;
+  transform: translateY(-2px) scale(1.04);
+  text-decoration: none;
+}
+
+.socialIcons {
+  margin-top: 16px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.socialIcons a {
+  color: #a79e79;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.socialIcons a:hover,
+.socialIcons a:focus {
+  color: #fff;
+  transform: scale(1.18);
+}
+
+/* Team Heading */
 .teamHeading {
   text-align: center;
   color: white;
@@ -176,9 +295,185 @@
   margin: 15px auto 0;
 }
 
-@media (max-width: 768px) {
+.backButton {
+  margin-bottom: 35px;
+  display: inline-block;
+  background: transparent;
+  color: #a79e79;
+  border: 2px solid #a79e79;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: none;
+  outline: none;
+}
+
+.backButton:hover,
+.backButton:focus {
+  background: #a79e79;
+  color: #181818;
+  border: 2px solid #fff;
+}
+
+.contactOrText {
+  display: block;
+  text-align: center;
+  color: #aaa;
+  font-size: 1rem;
+  margin: 1.4rem 0 0.4rem 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) {
+  .teamContainer {
+    padding: 50px 0;
+    min-height: 0;
+  }
+
+  .teamMembers {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 18px;
+  }
+
+  .memberImageContainer {
+    height: 340px;
+  }
+
+  .profileContactWrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .profileCard,
+  .contactCard {
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+    padding: 22px;
+  }
+
+  .profileImage {
+    width: 180px;
+    height: 220px;
+  }
+
   .teamHeading {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .teamContainer {
+    padding: 30px 0;
+    min-height: 0;
+  }
+
+  .teamContent {
+    width: 100%;
+  }
+
+  .teamMembers {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+  }
+
+  .memberImageContainer {
+    height: 200px;
+  }
+
+  .memberName {
+    font-size: 15px;
+  }
+
+  .memberRole {
+    font-size: 12px;
+  }
+
+  .teamHeading {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .profileCard,
+  .contactCard {
+    padding: 10px;
+  }
+
+  .profileImage {
+    width: 110px;
+    height: 140px;
+  }
+
+  .profileName {
+    font-size: 1rem;
+  }
+
+  .profileRole {
+    font-size: 0.95rem;
+  }
+
+  .profileBio {
+    font-size: 0.88rem;
+  }
+
+  .profileEmail {
+    font-size: 0.88rem;
+  }
+
+  .submitButton {
+    font-size: 0.95rem;
+    min-width: 100px;
+    padding: 0.4rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamContainer {
+    padding: 14px 0;
+    min-height: 0;
+  }
+
+  .teamMembers {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .memberImageContainer {
+    height: 500px;
+  }
+
+  .profileCard,
+  .contactCard {
+    padding: 6px;
+  }
+
+  .profileImage {
+    width: 70px;
+    height: 95px;
+  }
+
+  .profileContent {
+    padding: 0 2px;
+  }
+
+  .profileName {
+    font-size: 0.89rem;
+  }
+
+  .profileBio {
+    font-size: 0.82rem;
+  }
+
+  .profileContactWrapper {
+    gap: 0;
   }
 }

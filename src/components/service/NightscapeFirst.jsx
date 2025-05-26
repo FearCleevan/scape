@@ -100,9 +100,7 @@ const NightscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Nightscape</h1>
         <p className={styles.introText}>
-          Nightscape elevates your outdoor living experience with specialized outdoor lighting and audio-visual (A/V) solutions designed to transform ambiance and entertainment after dark. Our custom lighting installations—featuring pathway illumination, accent lighting, and energy-efficient LED systems—create a warm, inviting, and safe atmosphere for evening gatherings or peaceful nights outdoors.
-          <br /><br />
-          Extend your enjoyment with integrated A/V systems, including weatherproof speakers, outdoor TVs, and smart controls, all seamlessly blended into your landscape. From thoughtful design to expert installation, we ensure your outdoor space is perfectly suited for hosting memorable events or relaxing in style beneath the stars.
+          Nightscape elevates your outdoor living experience with our specialized services in outdoor lighting and audio-visual (A/V) systems, designed to enhance both ambiance and entertainment. Our outdoor lighting solutions include custom installations of pathway lights, accent lighting, and energy-efficient LED systems, creating a warm, safe, and inviting atmosphere for evening gatherings or late-night relaxation. Additionally, our A/V systems bring high-quality sound and visuals to your backyard, with weatherproof speakers, outdoor TVs, and smart controls seamlessly integrated into your landscape. From design to installation, we ensure these features complement your space, making it perfect for hosting events or enjoying a quiet night under the stars.
         </p>
       </div>
       <div className={styles.featuresSection}>

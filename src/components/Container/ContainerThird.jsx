@@ -18,7 +18,7 @@ const ContainerThird = () => {
 
     const handleScroll = () => {
       if (hasAnimated) return;
-      
+
       const element = containerRef.current;
       const elementPosition = element.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
@@ -35,7 +35,7 @@ const ContainerThird = () => {
   }, [hasAnimated]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={styles.container}
     >
@@ -50,38 +50,36 @@ const ContainerThird = () => {
       >
         <source src={BackgroundVideo} type="video/mp4" />
       </video>
-      
+
       {/* Dark Overlay */}
       <div className={styles.videoOverlay}></div>
 
       <div className={styles.contentWrapper}>
         {/* Left Section - Text Content */}
         <div className={`${styles.leftSection} ${isVisible ? styles.fadeIn : ''}`}>
-          <h2 className={styles.heading}>Award Winning <span>Design</span></h2>
-          <p className={styles.subText}>We LOVE a good challenge!</p>
+          <h2 className={styles.heading}>Award-Winning <span>Craft</span></h2>
+          <p className={styles.subText}>Designs that Inspire Community</p>
           <p className={styles.paragraph}>
-            From placing 1st in Local Pool build Awards to Winning the Grand Prize during 
-            International Design competitions, we've done it all in recent years!
+            Our team is honored to be recognized locally and internationally for transforming outdoor spaces into legacies. These awards reflect our dedication to blending sustainable innovation with timeless artistry.
           </p>
           <p className={styles.paragraph}>
-            We are always looking to push the boundaries of function & style, we strive to 
-            break the mold & know our clients enjoy their award winning designs.
+            We push boundaries so your landscape becomes a gathering place—where relationships flourish and every detail supports your lifestyle and dreams.
           </p>
         </div>
 
         {/* Right Section - Images */}
         <div className={styles.rightSection}>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideDown : ''}`}>
-            <img 
-              src={Asset28} 
-              alt="Award winning design" 
+            <img
+              src={Asset28}
+              alt="Award winning design"
               className={styles.image}
             />
           </div>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideUp : ''}`}>
-            <img 
-              src={Asset29} 
-              alt="Innovative pool design" 
+            <img
+              src={Asset29}
+              alt="Innovative pool design"
               className={styles.image}
             />
           </div>

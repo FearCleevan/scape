@@ -119,3 +119,15 @@
     font-size: 15px;
   }
 }
+
+.faqLink {
+  color: #a79e79;
+  text-decoration: underline;
+  transition: color 0.2s;
+  font-weight: 500;
+  word-break: break-all;
+}
+.faqLink:hover {
+  color: #7d7549;
+  text-decoration: none;
+}

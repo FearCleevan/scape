@@ -100,9 +100,7 @@ const CourtscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Courtscape</h1>
         <p className={styles.introText}>
-          Courtscape specializes in creating dynamic outdoor spaces with our custom sport court installation services, designed to bring fun, fitness, and functionality to your backyard. Our courts are built for basketball, tennis, pickleball, and more, using the highest quality materials for durability, safety, and top performance.
-          <br /><br />
-          Each project is tailored to your needs—complete with professional-grade lighting for evening play and seamless integration into your existing landscape. Whether for friendly matches, family fun, or serious practice, our courts provide a versatile, long-lasting area for recreation and enjoyment.
+          Courtscape specializes in creating dynamic outdoor spaces with our sport court installation services and related offerings, tailored to bring fun and functionality to your backyard. Our sport courts are custom-built for activities like basketball, tennis, or pickleball, using high-quality materials to ensure durability, safety, and optimal performance. Beyond the courts, we enhance your space with complementary features such as professional-grade sports lighting for evening play. Every detail is designed to integrate seamlessly into your landscape, providing a versatile, long-lasting area for recreation and family enjoyment.
         </p>
       </div>
       <div className={styles.featuresSection}>

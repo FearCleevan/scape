@@ -245,8 +245,10 @@
   color: #a79e79;
   font-size: 22px;
   pointer-events: none;
+  -webkit-user-select: none;
   user-select: none;
 }
+
 
 /* Responsive Styles */
 @media (max-width: 1200px) {

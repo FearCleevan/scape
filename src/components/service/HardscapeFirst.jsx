@@ -100,11 +100,7 @@ const HardscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Hardscape</h1>
         <p className={styles.introText}>
-          Hardscape elevates your outdoor spaces with expertly designed features that provide both structure and timeless beauty. Our approach to hardscaping centers on the artful use of non-living elements—patios, walkways, retaining walls, driveways, and outdoor kitchens—crafted from premium stone, brick, and concrete.
-          <br /><br />
-          These enduring components not only enhance the aesthetic appeal of your landscape, but also improve usability, drainage, and the longevity of your yard. Whether you envision a sophisticated gathering area or a functional pathway, our hardscape solutions are tailored to harmonize with your natural surroundings and transform your outdoor living experience.
-          <br /><br />
-          Trust our expertise to design and install hardscapes that balance elegance, practicality, and seamless integration with the environment—inviting you to enjoy your outdoor spaces for years to come.
+          Hardscape enhances your outdoor spaces with expertly designed hardscape features, which refer to the non-living elements that provide structure and functionality to your landscape. Hardscaping includes durable components like patios, walkways, retaining walls, driveways, and outdoor kitchens, crafted from materials such as stone, brick, or concrete. These elements not only add aesthetic appeal but also improve usability, drainage, and longevity of your yard. Whether you’re looking to create a cozy seating area or a practical pathway, our hardscape solutions are tailored to complement your natural surroundings and elevate your outdoor living experience.
         </p>
       </div>
       <div className={styles.featuresSection}>

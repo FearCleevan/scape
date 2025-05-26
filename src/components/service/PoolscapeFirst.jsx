@@ -100,11 +100,7 @@ const PoolscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Poolscape</h1>
         <p className={styles.introText}>
-          Poolscape specializes in transforming your backyard into a luxurious oasis with custom pool construction and outdoor living solutions. Our process begins with inspired design and collaborative planning, ensuring your pool is tailored to your unique vision, lifestyle, and space.
-          <br /><br />
-          From excavation and expert installation to seamless integration of plumbing, electrical, and advanced safety features, we manage each detail with precision and care. Beyond the pool itself, we elevate your surroundings with elegant hardscaping, vibrant softscaping, and custom amenities—outdoor leisure spaces, distinctive lighting, and tranquil water features—all orchestrated to create a seamless, stunning retreat for year-round enjoyment.
-          <br /><br />
-          Experience the artistry and craftsmanship of Poolscape, where every element is designed to enhance both the beauty and functionality of your outdoor sanctuary.
+          Poolscape specializes in creating your dream backyard oasis through our comprehensive pool construction services, tailored to enhance both beauty and functionality. Our process begins with expert design and planning, where we collaborate with you to craft a custom pool that fits your vision and space. We handle every detail, from excavation and pool installation to plumbing, electrical work, and safety features like fencing. Beyond the pool, we enhance your yard with surrounding features such as elegant hardscaping for patios and walkways, lush softscaping with plants and trees, and even custom additions like outdoor leisure spaces, lighting or water features, ensuring a seamless, stunning outdoor retreat for you to enjoy year-round.
         </p>
       </div>
       <div className={styles.featuresSection}>

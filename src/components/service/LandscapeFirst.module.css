@@ -20,6 +20,7 @@
     transform: scale(1.08);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -33,6 +34,7 @@
   margin: 0 auto 0 auto;
   text-align: center;
 }
+
 .introTitle {
   font-size: 56px;
   font-weight: 800;
@@ -82,7 +84,7 @@
 
 .serviceCard {
   background: #f7f7f7;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06);
   padding: 26px 32px 22px 32px;
   min-width: 288px;
   max-width: 350px;
@@ -95,7 +97,7 @@
 }
 
 .serviceCard:hover {
-  box-shadow: 0 8px 32px 0 rgba(130,130,130,0.16);
+  box-shadow: 0 8px 32px 0 rgba(130, 130, 130, 0.16);
   transform: translateY(-7px) scale(1.025);
 }
 
@@ -163,7 +165,7 @@
   width: 555px;
   height: 370.07px;
   overflow: hidden;
-  box-shadow: 0 7px 32px 0 rgba(0,0,0,0.10);
+  box-shadow: 0 7px 32px 0 rgba(0, 0, 0, 0.10);
   background: #f2f2f2;
   position: relative;
   cursor: pointer;
@@ -173,8 +175,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.27s cubic-bezier(.22,1,.36,1);
-  animation: showcaseZoomOut 0.65s cubic-bezier(.22,1,.36,1) both;
+  transition: transform 0.27s cubic-bezier(.22, 1, .36, 1);
+  animation: showcaseZoomOut 0.65s cubic-bezier(.22, 1, .36, 1) both;
 }
 
 @keyframes showcaseZoomOut {
@@ -182,6 +184,7 @@
     transform: scale(1.12);
     opacity: 0.7;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -191,7 +194,7 @@
 .showcaseImgWrapper:hover .showcaseImg {
   transform: scale(1.09);
   z-index: 1;
-  box-shadow: 0 8px 36px 0 rgba(150,150,100,0.13);
+  box-shadow: 0 8px 36px 0 rgba(150, 150, 100, 0.13);
 }
 
 /* Responsive Design */
@@ -201,6 +204,7 @@
     grid-template-rows: repeat(8, 370.07px);
     gap: 24px 0;
   }
+
   .showcaseImgWrapper {
     width: 95vw;
     max-width: 555px;
@@ -212,12 +216,16 @@
   .introSection {
     padding: 40px 8px 18px 8px;
   }
-  .servicesSection, .showcaseSection {
+
+  .servicesSection,
+  .showcaseSection {
     padding: 0 10px;
   }
+
   .showcaseImgWrapper {
     height: 200px;
   }
+
   .showcaseGrid {
     grid-template-rows: repeat(8, minmax(160px, 1fr));
   }

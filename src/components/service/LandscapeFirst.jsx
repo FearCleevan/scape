@@ -102,11 +102,7 @@ const LandscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Landscape</h1>
         <p className={styles.introText}>
-          Landscape design is the artful orchestration of space, texture, and living elements—an elegant union of science and inspiration. Our philosophy is to craft outdoor sanctuaries that not only reflect your unique vision, but also enhance your lifestyle and blend seamlessly with the surrounding environment.
-          <br /><br />
-          From the initial spark of an idea to the final flourish of installation, our experts thoughtfully integrate hardscape features—like refined patios and graceful walkways—with lush, tailored plantings. The result is a masterpiece that elevates your home’s curb appeal and offers a tranquil haven for relaxation, recreation, and gatherings with loved ones.
-          <br /><br />
-          Let us transform your property into a timeless retreat, where every detail is designed to inspire, delight, and endure for years to come.
+          Landscape design is the art and science of creating harmonious outdoor spaces tailored to your unique vision and lifestyle. This landscape design process involves planning and integrating hardscape (like patios and walkways) and softscape (such as plants and trees) to enhance the beauty, functionality, and sustainability of your property. Our expert landscape design team collaborates with you to craft custom layouts that reflect your preferences, optimize space, and complement the natural environment. From initial concept to final installation, we deliver thoughtfully designed landscapes that elevate your home’s curb appeal and provide a perfect retreat for relaxation or recreation for your family and friends.
         </p>
       </div>
       <div className={styles.servicesSection}>
