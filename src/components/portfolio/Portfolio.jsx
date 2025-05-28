@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Added useLocation
+import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import PortfolioFirst from './PortfolioFirst';
 import Footer from '../Footer/Footer';
@@ -7,13 +7,6 @@ import styles from './Portfolio.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
 
 const Portfolio = () => {
-  const location = useLocation(); // Get current route location
-
-  // Helper function to check if a route is active
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
-
   return (
     <div className={styles.homeContainer}>
       {/* Fullscreen video background */}
@@ -40,34 +33,6 @@ const Portfolio = () => {
             <span className={styles.activeBreadcrumb}>Portfolio / Scape Gallery</span>
           </div>
           <p className={styles.tagline}>Portfolio</p>
-
-          {/* Gallery Navigation Buttons */}
-          <div className={styles.galleryNav}>
-            <Link 
-              to="/portfolio" 
-              className={`${styles.galleryButton} ${isActive('/portfolio') ? styles.active : ''}`}
-            >
-              Scape Gallery
-            </Link>
-            <Link 
-              to="/portfolio/3d-gallery" 
-              className={`${styles.galleryButton} ${isActive('/portfolio/3d-gallery') ? styles.active : ''}`}
-            >
-              3D Gallery
-            </Link>
-            <Link 
-              to="/portfolio/drone-shots" 
-              className={`${styles.galleryButton} ${isActive('/portfolio/drone-shots') ? styles.active : ''}`}
-            >
-              Drone Shots
-            </Link>
-            <Link 
-              to="/portfolio/social-videos" 
-              className={`${styles.galleryButton} ${isActive('/portfolio/social-videos') ? styles.active : ''}`}
-            >
-              Social Videos
-            </Link>
-          </div>
         </div>
       </div>
       <PortfolioFirst />

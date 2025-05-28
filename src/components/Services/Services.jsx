@@ -28,9 +28,9 @@ const Services = () => {
       <div className={styles.mainContent}>
         <div className={styles.content}>
           <div className={styles.breadcrumb}>
-            <Link to="/" className={styles.breadcrumbLink}>Home</Link>
+            <Link to="/" className={styles.breadcrumbLink}>home</Link>
             <span className={styles.breadcrumbSeparator}></span>
-            <span className={styles.activeBreadcrumb}>Services</span>
+            <span className={styles.activeBreadcrumb}>services</span>
           </div>
           <p className={styles.tagline}>SERVICES</p>
         </div>

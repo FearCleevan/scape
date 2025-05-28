@@ -29,11 +29,11 @@ const Team = () => {
       <div className={styles.mainContent}>
         <div className={styles.content}>
           <div className={styles.breadcrumb}>
-            <Link to="/" className={styles.breadcrumbLink}>Home</Link>
+            <Link to="/" className={styles.breadcrumbLink}>home</Link>
             <span className={styles.breadcrumbSeparator}></span>
-            <span className={styles.activeBreadcrumb}>Scape Team / About Us</span>
+            <span className={styles.activeBreadcrumb}>scape team / about us</span>
           </div>
-          <p className={styles.tagline}>ABOUT US</p>
+          <p className={styles.tagline}>about us</p>
         </div>
       </div>
 

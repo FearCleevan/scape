@@ -4,8 +4,8 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Softscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import softscapeLogo from '../../assets/services/softscape.png';
 import SoftscapeFirst from './SoftscapeFirst';
-
 
 const Softscape = () => {
   return (
@@ -31,14 +31,18 @@ const Softscape = () => {
 
           {/* Breadcrumb Navigation */}
           <div className={styles.breadcrumb}>
-            <Link to="/" className={styles.breadcrumbLink}>Home</Link>
+            <Link to="/" className={styles.breadcrumbLink}>home</Link>
             <span className={styles.breadcrumbSeparator} aria-hidden="true" />
-            <Link to="/services" className={styles.breadcrumbLink}>Services</Link>
+            <Link to="/services" className={styles.breadcrumbLink}>services</Link>
             <span className={styles.breadcrumbSeparator} aria-hidden="true" />
-            <span className={styles.activeBreadcrumb}>Softscape</span>
+            <span className={styles.activeBreadcrumb}>softscape</span>
           </div>
 
-          <p className={styles.tagline}>Softscape</p>
+          <img
+            src={softscapeLogo}
+            alt="Softscape"
+            className={styles.taglineImage}
+          />
         </div>
       </div>
       <SoftscapeFirst />

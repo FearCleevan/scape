@@ -4,8 +4,8 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Hardscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import hardscapeLogo from '../../assets/services/hardscape.png';
 import HardscapeFirst from './HardscapeFirst';
-
 
 const Hardscape = () => {
   return (
@@ -30,14 +30,18 @@ const Hardscape = () => {
         <div className={styles.content}>
           {/* Breadcrumb Navigation */}
           <div className={styles.breadcrumb}>
-            <Link to="/" className={styles.breadcrumbLink}>Home</Link>
+            <Link to="/" className={styles.breadcrumbLink}>home</Link>
             <span className={styles.breadcrumbSeparator} aria-hidden="true" />
-            <Link to="/services" className={styles.breadcrumbLink}>Services</Link>
+            <Link to="/services" className={styles.breadcrumbLink}>services</Link>
             <span className={styles.breadcrumbSeparator} aria-hidden="true" />
-            <span className={styles.activeBreadcrumb}>Hardscape</span>
+            <span className={styles.activeBreadcrumb}>hardscape</span>
           </div>
 
-          <p className={styles.tagline}>Hardscape</p>
+          <img
+            src={hardscapeLogo}
+            alt="Hardscape"
+            className={styles.taglineImage}
+          />
         </div>
       </div>
       <HardscapeFirst/>

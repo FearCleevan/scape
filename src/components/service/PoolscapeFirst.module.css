@@ -34,11 +34,11 @@
 }
 .introTitle {
   font-size: 56px;
-  font-weight: 800;
+  font-weight: 400;
   color: #a79e79;
   margin-bottom: 24px;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .introText {

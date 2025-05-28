@@ -4,8 +4,8 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Waterscape.module.css';
 import backgroundVideo from '../../assets/videos/Background1.mp4';
+import waterscapeLogo from '../../assets/services/waterscape.png';
 import WaterscapeFirst from './WaterscapeFirst';
-
 
 const Waterscape = () => {
   return (
@@ -30,14 +30,18 @@ const Waterscape = () => {
         <div className={styles.content}>
           {/* Breadcrumb Navigation */}
           <div className={styles.breadcrumb}>
-            <Link to="/" className={styles.breadcrumbLink}>Home</Link>
+            <Link to="/" className={styles.breadcrumbLink}>home</Link>
             <span className={styles.breadcrumbSeparator} aria-hidden="true" />
-            <Link to="/services" className={styles.breadcrumbLink}>Services</Link>
+            <Link to="/services" className={styles.breadcrumbLink}>services</Link>
             <span className={styles.breadcrumbSeparator} aria-hidden="true" />
-            <span className={styles.activeBreadcrumb}>Waterscape</span>
+            <span className={styles.activeBreadcrumb}>waterscape</span>
           </div>
 
-          <p className={styles.tagline}>Waterscape</p>
+          <img
+            src={waterscapeLogo}
+            alt="Waterscape"
+            className={styles.taglineImage}
+          />
         </div>
       </div>
       <WaterscapeFirst />

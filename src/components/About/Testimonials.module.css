@@ -47,7 +47,6 @@
 }
 
 .content h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 175px;
   font-weight: 700;
   position: absolute;
@@ -57,13 +56,13 @@
 }
 
 .tagline {
-  font-weight: 800;
+  font-weight: 400;
   font-size: 80px;
   position: absolute;
   left: 50%;
   bottom: 22%;
   transform: translateX(-50%);
-  text-transform: uppercase;
+  text-transform: lowercase;
   margin-top: 10px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }

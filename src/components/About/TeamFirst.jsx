@@ -14,31 +14,31 @@ import Rene from '../../assets/teams/Rene Ignacio-LPD.jpg';
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const teamMembers = [
-  {
-    name: 'Peter J. Novak',
-    role: 'Chief Executive Officer',
-    image: Peter,
-    email: 'Peter.Novak@scapedbm.com',
-    bio: (
-      <>
-        <p>
-          Peter J. Novak is the Chief Executive Officer at scape, where he focuses on the implementation and oversight of the processes and procedures that create a unified experience for all stakeholders, including the owners, operators, vendors, subcontractors and most importantly, the company’s clients. Mr. Novak, strongly believes in fostering an inclusive environment and allows for client relationships that truly grow into friendships.
-        </p>
-        <p>
-          Mr. Novak was raised primarily in Utah, and obtained his Bachelor’s of Science (B.S.) degree in Finance from the University of Utah. Thereafter, Mr. Novak obtained his Juris Doctorate (J.D.) from the University of Nevada Las Vegas and his Post-Doctoral Masters (LL.M) from Boston University. Mr. Novak began his career at Morgan Stanley as stock trader before completing law school and working in large law firm practices in San Francisco, Las Vegas and Washington, primarily focused on various aspects of real estate development, finance and the construction industry.
-        </p>
-        <p>
-          Mr. Novak spent the prior 10 years working for a private equity group where he specialized in founding, capitalizing and incubating small to medium sized businesses. In that position, Mr. Novak served in various roles including CEO, President, COO, Managing Director, General Counsel and Chief Legal Officer to several startups. Through this position Mr. Novak successfully structured, formed and deployed over $250 million in private equity and debt financings into over a hundred active business units all across the United States, some of which eventually went public on the NASDAQ or NYSE.
-        </p>
-        <p>
-          Outside of work Mr. Novak enjoys spending time in the gym, training for races, taking yoga classes, fine dining from his own kitchen or out of on the town, and attending live music events.
-        </p>
-        <p>
-          At scape, Mr. Novak hopes to build an enthusiastic team that provides a meaningful service to the community, which will foster a lasting impact in the lives of all those we do business with.
-        </p>
-      </>
-    ),
-  },
+  // {
+  //   name: 'Peter J. Novak',
+  //   role: 'Chief Executive Officer',
+  //   image: Peter,
+  //   email: 'Peter.Novak@scapedbm.com',
+  //   bio: (
+  //     <>
+  //       <p>
+  //         Peter J. Novak is the Chief Executive Officer at scape, where he focuses on the implementation and oversight of the processes and procedures that create a unified experience for all stakeholders, including the owners, operators, vendors, subcontractors and most importantly, the company’s clients. Mr. Novak, strongly believes in fostering an inclusive environment and allows for client relationships that truly grow into friendships.
+  //       </p>
+  //       <p>
+  //         Mr. Novak was raised primarily in Utah, and obtained his Bachelor’s of Science (B.S.) degree in Finance from the University of Utah. Thereafter, Mr. Novak obtained his Juris Doctorate (J.D.) from the University of Nevada Las Vegas and his Post-Doctoral Masters (LL.M) from Boston University. Mr. Novak began his career at Morgan Stanley as stock trader before completing law school and working in large law firm practices in San Francisco, Las Vegas and Washington, primarily focused on various aspects of real estate development, finance and the construction industry.
+  //       </p>
+  //       <p>
+  //         Mr. Novak spent the prior 10 years working for a private equity group where he specialized in founding, capitalizing and incubating small to medium sized businesses. In that position, Mr. Novak served in various roles including CEO, President, COO, Managing Director, General Counsel and Chief Legal Officer to several startups. Through this position Mr. Novak successfully structured, formed and deployed over $250 million in private equity and debt financings into over a hundred active business units all across the United States, some of which eventually went public on the NASDAQ or NYSE.
+  //       </p>
+  //       <p>
+  //         Outside of work Mr. Novak enjoys spending time in the gym, training for races, taking yoga classes, fine dining from his own kitchen or out of on the town, and attending live music events.
+  //       </p>
+  //       <p>
+  //         At scape, Mr. Novak hopes to build an enthusiastic team that provides a meaningful service to the community, which will foster a lasting impact in the lives of all those we do business with.
+  //       </p>
+  //     </>
+  //   ),
+  // },
   {
     name: 'Steve Mortensen',
     role: 'Co-Founder and Chief Vision Officer',

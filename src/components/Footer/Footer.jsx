@@ -43,7 +43,7 @@ const Footer = () => {
             <li><Link to="/team" className={styles.footerLink}>About Us</Link></li>
             <li><Link to="/services" className={styles.footerLink}>Services</Link></li>
             <li><Link to="/portfolio" className={styles.footerLink}>Portfolio</Link></li>
-            <li><Link to="/social" className={styles.footerLink}>Social Media</Link></li>
+            {/* <li><Link to="/social" className={styles.footerLink}>Social Media</Link></li> */}
             <li><Link to="/contact" className={styles.footerLink}>Contact Us</Link></li>
             <li><Link to="/faq" className={styles.footerLink}>FAQ</Link></li>
           </ul>
