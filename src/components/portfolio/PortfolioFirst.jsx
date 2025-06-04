@@ -6,6 +6,10 @@ import styles from './PortfolioFirst.module.css';
 import BennettImg from '../../assets/BennettProject/Project1.jpg';
 import KentImg from '../../assets/KentChristensenProject/Project1.jpg';
 import GardnerImg from '../../assets/GardnerProject/Project1.jpg';
+import HaProjectImg from '../../assets/HaProject/Project1.jpg';
+import ArProjectImg from '../../assets/ArProject/Project1.jpg';
+import GaProjectImg from '../../assets/GaProject/Project1.jpg';
+import TcProjectImg from '../../assets/TcProject/Project1.jpg';
 
 const projects = [
   {
@@ -23,6 +27,27 @@ const projects = [
     image: GardnerImg,
     link: '/portfolios/gnproject',
   },
+  {
+    title: 'HA Project',
+    image: HaProjectImg,
+    link: '/portfolios/haproject',
+  },
+  {
+    title: 'AR Project',
+    image: ArProjectImg,
+    link: '/portfolios/arproject',
+  },
+  {
+    title: 'GA Project',
+    image: GaProjectImg,
+    link: '/portfolios/gaproject',
+  },
+  {
+    title: 'TC Project',
+    image: TcProjectImg,
+    link: '/portfolios/tcproject',
+  },
+
 ];
 
 const PortfolioFirst = () => {

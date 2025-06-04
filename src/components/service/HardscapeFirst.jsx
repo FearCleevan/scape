@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./HardscapeFirst.module.css";
 
-// Import gallery images
+// Import gallery images in order
 import Asset1 from "../../assets/hardscape/hardscape1.jpg";
 import Asset2 from "../../assets/hardscape/hardscape2.jpg";
 import Asset3 from "../../assets/hardscape/hardscape3.jpg";
@@ -10,6 +10,7 @@ import Asset4 from "../../assets/hardscape/hardscape4.jpg";
 import Asset5 from "../../assets/hardscape/hardscape5.jpg";
 import Asset6 from "../../assets/hardscape/hardscape6.jpg";
 import Asset7 from "../../assets/hardscape/hardscape7.jpg";
+import Asset8 from "../../assets/hardscape/hardscape8.jpg";
 import Asset9 from "../../assets/hardscape/hardscape9.jpg";
 import Asset10 from "../../assets/hardscape/hardscape10.jpg";
 import Asset11 from "../../assets/hardscape/hardscape11.jpg";
@@ -18,23 +19,14 @@ import Asset13 from "../../assets/hardscape/hardscape13.jpg";
 import Asset14 from "../../assets/hardscape/hardscape14.jpg";
 import Asset15 from "../../assets/hardscape/hardscape15.jpg";
 import Asset16 from "../../assets/hardscape/hardscape16.jpg";
-import Asset17 from "../../assets/hardscape/hardscape17.jpg";
 
-
+// Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset9, Asset10,
-  Asset11, Asset12, Asset13, Asset14, Asset15, Asset16, Asset17
+  Asset1, Asset2, Asset3, Asset4, Asset5,
+  Asset6, Asset7, Asset8, Asset9, Asset10,
+  Asset11, Asset12, Asset13, Asset14,
+  Asset15, Asset16
 ];
-
-// Shuffle and pick 8 images for showcase
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 const hardscapeFeatures = [
   {
@@ -69,7 +61,8 @@ const hardscapeFeatures = [
 
 const HardscapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = shuffle(allAssets).slice(0, 17);
+  // Use all images in their original order
+  const showcaseImages = allAssets;
 
   return (
     <div className={styles.hardscapeContainer}>
@@ -79,6 +72,7 @@ const HardscapeFirst = () => {
           Hardscape enhances your outdoor spaces with expertly designed hardscape features, which refer to the non-living elements that provide structure and functionality to your landscape. Hardscaping includes durable components like patios, walkways, retaining walls, driveways, and outdoor kitchens, crafted from materials such as stone, brick, or concrete. These elements not only add aesthetic appeal but also improve usability, drainage, and longevity of your yard. Whether you’re looking to create a cozy seating area or a practical pathway, our hardscape solutions are tailored to complement your natural surroundings and elevate your outdoor living experience.
         </p>
       </div>
+
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Signature Hardscape Features</h2>
         <div className={styles.featuresList}>
@@ -93,6 +87,7 @@ const HardscapeFirst = () => {
           Get Started
         </button>
       </div>
+
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Hardscape Showcase</h2>
         <div className={styles.showcaseGrid}>

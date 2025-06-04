@@ -47,7 +47,7 @@ const ContactSecond = () => {
     }
 
     // Google Apps Script endpoint
-    const url = "https://script.google.com/macros/s/AKfycbx5u74Ht1SpqqIMqtSl3TWr_HkHK7egW4YZndZOsPs6LXN7Bz60uxgN2XsaCWJErEquIQ/exec";
+    const url = "https://script.google.com/macros/s/AKfycbzIVS6R4ruZ6wYIeu0vdjXh8W84F0rzmbM4GKFXs8O-hZI1hSA8fHfRSTfeiqXGraFpPQ/exec";
 
     try {
       const response = await fetch(url, {

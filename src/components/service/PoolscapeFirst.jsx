@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PoolscapeFirst.module.css";
 
-// Import gallery images
+// Import gallery images in order
 import Asset1 from "../../assets/poolscape/poolscape1.jpg";
 import Asset2 from "../../assets/poolscape/poolscape2.jpg";
 import Asset3 from "../../assets/poolscape/poolscape3.jpg";
@@ -18,21 +18,12 @@ import Asset12 from "../../assets/poolscape/poolscape12.jpg";
 import Asset13 from "../../assets/poolscape/poolscape13.jpg";
 import Asset14 from "../../assets/poolscape/poolscape14.jpg";
 
-
+// Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset8, Asset9, Asset10,
+  Asset1, Asset2, Asset3, Asset4, Asset5,
+  Asset6, Asset7, Asset8, Asset9, Asset10,
   Asset11, Asset12, Asset13, Asset14
 ];
-
-// Shuffle and pick 8 images for showcase
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 const poolscapeFeatures = [
   {
@@ -67,7 +58,8 @@ const poolscapeFeatures = [
 
 const PoolscapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = shuffle(allAssets).slice(0, 14);
+  // Use all images in their original order
+  const showcaseImages = allAssets;
 
   return (
     <div className={styles.poolscapeContainer}>
@@ -77,6 +69,7 @@ const PoolscapeFirst = () => {
           Poolscape specializes in creating your dream backyard oasis through our comprehensive pool construction services, tailored to enhance both beauty and functionality. Our process begins with expert design and planning, where we collaborate with you to craft a custom pool that fits your vision and space. We handle every detail, from excavation and pool installation to plumbing, electrical work, and safety features like fencing. Beyond the pool, we enhance your yard with surrounding features such as elegant hardscaping for patios and walkways, lush softscaping with plants and trees, and even custom additions like outdoor leisure spaces, lighting or water features, ensuring a seamless, stunning outdoor retreat for you to enjoy year-round.
         </p>
       </div>
+
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Signature Poolscape Services</h2>
         <div className={styles.featuresList}>
@@ -91,6 +84,7 @@ const PoolscapeFirst = () => {
           Get Started
         </button>
       </div>
+
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Poolscape Showcase</h2>
         <div className={styles.showcaseGrid}>

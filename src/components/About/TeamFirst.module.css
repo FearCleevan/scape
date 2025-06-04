@@ -12,7 +12,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* allow to grow on mobile/tablet if content overflows */
   height: auto;
   box-sizing: border-box;
 }
@@ -23,9 +22,10 @@
   margin: 0;
 }
 
+/* --- MAIN CHANGE: 3 cards per row by default --- */
 .teamMembers {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
@@ -47,7 +47,7 @@
 
 .memberImageContainer {
   width: 100%;
-  height: 485px; /* Increased from 385px to 485px */
+  height: 485px;
   overflow: hidden;
   position: relative;
 }
@@ -274,7 +274,6 @@
   transform: scale(1.18);
 }
 
-/* Team Heading */
 .teamHeading {
   text-align: center;
   color: white;
@@ -331,19 +330,34 @@
 }
 
 /* Tablet responsiveness */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .teamMembers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .memberImageContainer {
+    height: 500px;
+  }
+
+  .teamContent {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 900px) {
   .teamContainer {
     padding: 50px 0;
     min-height: 0;
   }
 
   .teamMembers {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 
   .memberImageContainer {
-    height: 340px;
+    height: 500px;
   }
 
   .profileContactWrapper {
@@ -361,8 +375,8 @@
   }
 
   .profileImage {
-    width: 280px;
-    height: 320px;
+    width: 210px;
+    height: 270px;
   }
 
   .teamHeading {
@@ -382,12 +396,12 @@
   }
 
   .teamMembers {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
 
   .memberImageContainer {
-    height: 200px;
+    height: 500px;
   }
 
   .memberName {
@@ -447,6 +461,10 @@
     gap: 9px;
   }
 
+  .memberCard{
+    margin: 50px;
+  }
+
   .memberImageContainer {
     height: 500px;
   }
@@ -457,8 +475,8 @@
   }
 
   .profileImage {
-    width: 170px;
-    height: 195px;
+    width: 140px;
+    height: 160px;
   }
 
   .profileContent {

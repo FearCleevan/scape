@@ -2,46 +2,55 @@ import React, { useState } from 'react';
 import styles from './GetQuote.module.css';
 import { useNavigate } from 'react-router-dom'; // If using react-router v6
 
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5wUCBQK2F_dZYV8ANvLVmbOgxuu5Z32BrrqHrPKoqOlo7c91sBiZ_4IY52t-w_zZnSA/exec';
+
 const GetQuote = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
     const [submittedAt, setSubmittedAt] = useState({ date: '', time: '' });
+    const [errorMsg, setErrorMsg] = useState('');
     const navigate = useNavigate(); // If not using react-router, replace with window.location
 
-    const handleSubmit = (e) => {
+    // Copy format from TeamFirst handleSubmit
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        const url = 'https://script.google.com/macros/s/AKfycby31IdUVTtEZ1VaKoy76AsERyU79iXCtaOYf84Gzp1RMOb_5VnMJRAeZcKcHRVdmvp-Ug/exec';
-        fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: (
-                `FirstName=${encodeURIComponent(e.target.firstName.value)}`
-                + `&LastName=${encodeURIComponent(e.target.lastName.value)}`
-                + `&Email=${encodeURIComponent(e.target.email.value)}`
-                + `&Phone=${encodeURIComponent(e.target.phone.value)}`
-            )
-        })
-        .then(res => res.json())
-        .then(data => {
+        setErrorMsg('');
+        setShowSuccess(false);
+
+        const formData = new FormData(e.target);
+        const params = new URLSearchParams();
+        for (const [key, value] of formData.entries()) {
+            params.append(key, value);
+        }
+
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: params.toString(),
+            });
+            const data = await response.json();
             setLoading(false);
             if (data.success) {
                 setSubmittedAt({ date: data.date, time: data.time });
                 setShowSuccess(true);
-                // Don't auto-close; let user choose action
+                // Optionally reset form fields if you want
+                e.target.reset();
+            } else {
+                setErrorMsg("Submission failed. Please try again.");
             }
-        })
-        .catch(error => {
+        } catch (error) {
             setLoading(false);
-            setIsOpen(false);
-            alert('There was a problem submitting the form.', error);
-        });
+            setErrorMsg("Submission failed. Please try again.", error);
+        }
     };
 
     const handleClose = () => {
         setShowSuccess(false);
         setIsOpen(false);
+        setErrorMsg('');
     };
 
     const handleNext = () => {
@@ -99,28 +108,35 @@ const GetQuote = () => {
                                         name="firstName"
                                         placeholder="First Name*"
                                         required
+                                        disabled={loading}
                                     />
                                     <input
                                         type="text"
                                         name="lastName"
                                         placeholder="Last Name*"
                                         required
+                                        disabled={loading}
                                     />
                                     <input
                                         type="email"
                                         name="email"
                                         placeholder="Email*"
                                         required
+                                        disabled={loading}
                                     />
                                     <input
                                         type="tel"
                                         name="phone"
                                         placeholder="Phone/Mobile*"
                                         required
+                                        disabled={loading}
                                     />
-                                    <button type="submit" className={styles.submitButton}>
-                                        Submit
+                                    <button type="submit" className={styles.submitButton} disabled={loading}>
+                                        {loading ? "Submitting..." : "Submit"}
                                     </button>
+                                    {errorMsg && (
+                                        <div className={styles.errorMsg}>{errorMsg}</div>
+                                    )}
                                 </form>
                                 <button
                                     className={styles.closeButton}

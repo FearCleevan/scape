@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./NightscapeFirst.module.css";
 
-// Import gallery images
+// Import gallery images in order
 import Asset1 from "../../assets/nightscape/nightscape1.jpg";
 import Asset2 from "../../assets/nightscape/nightscape2.jpg";
 import Asset3 from "../../assets/nightscape/nightscape3.jpg";
@@ -16,21 +16,13 @@ import Asset10 from "../../assets/nightscape/nightscape10.jpg";
 import Asset11 from "../../assets/nightscape/nightscape11.jpg";
 import Asset12 from "../../assets/nightscape/nightscape12.jpg";
 
-
+// Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset8, Asset9, Asset10,
+  Asset1, Asset2, Asset3, Asset4, Asset5,
+  Asset6, Asset7, Asset8, Asset9, Asset10,
   Asset11, Asset12
 ];
 
-// Shuffle and pick 8 images for showcase
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 const nightscapeFeatures = [
   {
@@ -65,7 +57,7 @@ const nightscapeFeatures = [
 
 const NightscapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = shuffle(allAssets).slice(0, 12);
+  const showcaseImages = allAssets;
 
   return (
     <div className={styles.nightscapeContainer}>

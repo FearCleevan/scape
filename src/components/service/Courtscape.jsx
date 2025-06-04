@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Courtscape.module.css';
-import backgroundVideo from '../../assets/videos/Background1.mp4';
+import backgroundVideo from '../../assets/videos/Background2.mp4';
 import courtscapeLogo from '../../assets/services/courtscape.png';
 import CourtscapeFirst from './CourtscapeFirst';
 
 const Courtscape = () => {
+
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
+    }
+  }, []);
+
   return (
     <div className={styles.homeContainer}>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video
+        ref={videoRef}
           autoPlay
           loop
           muted

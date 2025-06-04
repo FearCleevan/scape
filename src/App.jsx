@@ -27,6 +27,10 @@ import NewsletterVerification from './pages/NewsletterVerificartion';
 import BnProject from './components/portfolios/BnProject';
 import GnProject from './components/portfolios/GnProject';
 import KcProject from './components/portfolios/KcProject';
+import HaProject from './components/portfolios/HaProject';
+import ArProject from './components/portfolios/ArProject';
+import GaProject from './components/portfolios/GaProject';
+import TcProject from './components/portfolios/TcProject';
 
 function App() {
   return (
@@ -59,6 +63,10 @@ function App() {
         <Route path="/portfolios/bnproject" element={<BnProject />} />
         <Route path="/portfolios/gnproject" element={<GnProject />} />
         <Route path="/portfolios/kcproject" element={<KcProject />} />
+        <Route path="/portfolios/haproject" element={<HaProject />} />
+        <Route path="/portfolios/arproject" element={<ArProject />} />
+        <Route path="/portfolios/gaproject" element={<GaProject />} />
+        <Route path="/portfolios/tcproject" element={<TcProject />} />
         {/* Add other routes here */}
       </Routes>
     </>

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./WaterscapeFirst.module.css";
 
-// Import gallery images
+// Import gallery images in order
 import Asset1 from "../../assets/waterscape/waterscape1.jpg";
 import Asset2 from "../../assets/waterscape/waterscape2.jpg";
 import Asset3 from "../../assets/waterscape/waterscape3.jpg";
@@ -16,20 +16,12 @@ import Asset10 from "../../assets/waterscape/waterscape10.jpg";
 import Asset11 from "../../assets/waterscape/waterscape11.jpg";
 import Asset12 from "../../assets/waterscape/waterscape12.jpg";
 
+// Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset8, Asset9, Asset10,
+  Asset1, Asset2, Asset3, Asset4, Asset5,
+  Asset6, Asset7, Asset8, Asset9, Asset10,
   Asset11, Asset12
 ];
-
-// Shuffle and pick 8 images for showcase
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 const waterscapeFeatures = [
   {
@@ -54,7 +46,7 @@ const waterscapeFeatures = [
   },
   {
     title: "Rock & Boulder Features",
-    desc: "Natural stone elements are artfully arranged to complement water features, blending seamlessly with your yard’s existing character."
+    desc: "Natural stone elements are artfully arranged to complement water features, blending seamlessly with your yard's existing character."
   },
   {
     title: "Low-Maintenance Design",
@@ -64,16 +56,18 @@ const waterscapeFeatures = [
 
 const WaterscapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = shuffle(allAssets).slice(0, 12);
+  // Use all images in their original order
+  const showcaseImages = allAssets;
 
   return (
     <div className={styles.waterscapeContainer}>
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Waterscape</h1>
         <p className={styles.introText}>
-          Waterscape brings your outdoor vision to life with a variety of captivating water features designed to enhance the beauty and tranquility of your landscape&mdash;with or without the installation of a pool. Our water features encompass elegant fountains, cascading waterfalls, serene ponds, and bubbling streams, each crafted to create a peaceful focal point and promote a sense of calm in your yard. Every element is thoughtfully designed and installed to harmonize with your space, delivering a stunning, low-maintenance outdoor retreat tailored to your lifestyle.
+          Waterscape brings your outdoor vision to life with a variety of captivating water features designed to enhance the beauty and tranquility of your landscape—with or without the installation of a pool. Our water features encompass elegant fountains, cascading waterfalls, serene ponds, and bubbling streams, each crafted to create a peaceful focal point and promote a sense of calm in your yard. Every element is thoughtfully designed and installed to harmonize with your space, delivering a stunning, low-maintenance outdoor retreat tailored to your lifestyle.
         </p>
       </div>
+      
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Signature Waterscape Features</h2>
         <div className={styles.featuresList}>
@@ -88,6 +82,7 @@ const WaterscapeFirst = () => {
           Get Started
         </button>
       </div>
+      
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Waterscape Showcase</h2>
         <div className={styles.showcaseGrid}>

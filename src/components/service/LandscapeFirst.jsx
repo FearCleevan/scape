@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./LandscapeFirst.module.css";
 
-// Import all 40 images
+// Import all images in order
 import Asset1 from "../../assets/landscape/landscape1.jpg";
 import Asset2 from "../../assets/landscape/landscape2.jpg";
 import Asset3 from "../../assets/landscape/landscape3.jpg";
@@ -19,22 +19,12 @@ import Asset13 from "../../assets/landscape/landscape13.jpg";
 import Asset14 from "../../assets/landscape/landscape14.jpg";
 import Asset15 from "../../assets/landscape/landscape15.jpg";
 
-
-// Build image array
+// Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset8, Asset9, Asset10,
+  Asset1, Asset2, Asset3, Asset4, Asset5, 
+  Asset6, Asset7, Asset8, Asset9, Asset10,
   Asset11, Asset12, Asset13, Asset14, Asset15
 ];
-
-// Shuffle utility
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 const landscapeServices = [
   {
@@ -69,8 +59,9 @@ const landscapeServices = [
 
 const LandscapeFirst = () => {
   const navigate = useNavigate();
-  // Pick 8 unique images for 4 rows x 2 cols grid
-  const showcaseImages = shuffle(allAssets).slice(0, 15);
+  
+  // Use the first 15 images in order (or all if you have exactly 15)
+  const showcaseImages = allAssets.slice(0, 15);
 
   return (
     <div className={styles.landscapeContainer}>
@@ -80,6 +71,7 @@ const LandscapeFirst = () => {
           Landscape design is the art and science of creating harmonious outdoor spaces tailored to your unique vision and lifestyle. This landscape design process involves planning and integrating hardscape (like patios and walkways) and softscape (such as plants and trees) to enhance the beauty, functionality, and sustainability of your property. Our expert landscape design team collaborates with you to craft custom layouts that reflect your preferences, optimize space, and complement the natural environment. From initial concept to final installation, we deliver thoughtfully designed landscapes that elevate your home’s curb appeal and provide a perfect retreat for relaxation or recreation for your family and friends.
         </p>
       </div>
+      
       <div className={styles.servicesSection}>
         <h2 className={styles.servicesTitle}>Modern Landscape Services Offered</h2>
         <div className={styles.servicesList}>
@@ -94,6 +86,7 @@ const LandscapeFirst = () => {
           Get Started
         </button>
       </div>
+      
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Landscape Showcase</h2>
         <div className={styles.showcaseGrid}>

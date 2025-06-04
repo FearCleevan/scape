@@ -22,16 +22,6 @@ const allAssets = [
   Asset11, Asset12
 ];
 
-// Shuffle and pick 8 images for showcase
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
 const softscapeFeatures = [
   {
     title: "Custom Planting Design",
@@ -65,7 +55,8 @@ const softscapeFeatures = [
 
 const SoftscapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = shuffle(allAssets).slice(0, 12);
+  // Use all images in their original order
+  const showcaseImages = allAssets;
 
   return (
     <div className={styles.softscapeContainer}>
@@ -75,6 +66,7 @@ const SoftscapeFirst = () => {
           Softscape brings your outdoor spaces to life with beautifully designed elements, which encompass the living, natural features of your landscape. Softscaping includes plants, trees, shrubs, flowers, and grass, carefully selected to enhance beauty, provide shade, and promote biodiversity. These organic components add color, texture, and seasonal interest while supporting a healthy ecosystem. Whether you desire a vibrant garden, a serene lawn, or a sustainable planting plan, our softscape expertise ensures a thriving, picturesque environment tailored to your preferences and local climate.
         </p>
       </div>
+      
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Signature Softscape Features</h2>
         <div className={styles.featuresList}>
@@ -89,6 +81,7 @@ const SoftscapeFirst = () => {
           Get Started
         </button>
       </div>
+      
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Softscape Showcase</h2>
         <div className={styles.showcaseGrid}>

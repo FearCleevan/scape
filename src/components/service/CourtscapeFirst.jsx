@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CourtscapeFirst.module.css";
 
-// Import gallery images
+// Import gallery images in order
 import Asset1 from "../../assets/courtscape/courtscape1.jpg";
 import Asset2 from "../../assets/courtscape/courtscape2.jpg";
 import Asset3 from "../../assets/courtscape/courtscape3.jpg";
@@ -12,27 +12,12 @@ import Asset6 from "../../assets/courtscape/courtscape6.jpg";
 import Asset7 from "../../assets/courtscape/courtscape7.jpg";
 import Asset8 from "../../assets/courtscape/courtscape8.jpg";
 import Asset9 from "../../assets/courtscape/courtscape9.jpg";
-import Asset10 from "../../assets/courtscape/courtscape10.jpg";
-import Asset11 from "../../assets/courtscape/courtscape11.jpg";
-import Asset12 from "../../assets/courtscape/courtscape12.jpg";
-import Asset13 from "../../assets/courtscape/courtscape13.jpg";
-import Asset14 from "../../assets/courtscape/courtscape14.jpg";
 
-
+// Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12, Asset13, Asset14
+  Asset1, Asset2, Asset3, Asset4, Asset5,
+  Asset6, Asset7, Asset8, Asset9
 ];
-
-// Shuffle and pick 8 images for showcase
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 const courtscapeFeatures = [
   {
@@ -67,7 +52,8 @@ const courtscapeFeatures = [
 
 const CourtscapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = shuffle(allAssets).slice(0, 14);
+  // Use all images in their original order
+  const showcaseImages = allAssets;
 
   return (
     <div className={styles.courtscapeContainer}>
@@ -77,6 +63,7 @@ const CourtscapeFirst = () => {
           Courtscape specializes in creating dynamic outdoor spaces with our sport court installation services and related offerings, tailored to bring fun and functionality to your backyard. Our sport courts are custom-built for activities like basketball, tennis, or pickleball, using high-quality materials to ensure durability, safety, and optimal performance. Beyond the courts, we enhance your space with complementary features such as professional-grade sports lighting for evening play. Every detail is designed to integrate seamlessly into your landscape, providing a versatile, long-lasting area for recreation and family enjoyment.
         </p>
       </div>
+      
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Signature Courtscape Features</h2>
         <div className={styles.featuresList}>
@@ -91,6 +78,7 @@ const CourtscapeFirst = () => {
           Get Started
         </button>
       </div>
+      
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Courtscape Showcase</h2>
         <div className={styles.showcaseGrid}>

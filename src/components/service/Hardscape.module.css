@@ -18,12 +18,17 @@
   height: 100%;
   z-index: -1;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  /* This will help align the video at the bottom */
 }
 
 .backgroundVideo {
   width: 100%;
-  height: 100%;
+  height: 150%;
+  /* Extends height to allow cropping */
   object-fit: cover;
+  object-position: bottom;
 }
 
 .mainContent {

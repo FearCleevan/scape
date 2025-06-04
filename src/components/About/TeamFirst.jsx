@@ -10,35 +10,12 @@ import Andrew from '../../assets/teams/Andrew James-DO.jpg';
 import Troy from '../../assets/teams/Troy Clark-LLD.jpg';
 import Rene from '../../assets/teams/Rene Ignacio-LPD.jpg';
 
-// Social icons (use react-icons or your preferred icon set)
+// Social icons
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const teamMembers = [
-  // {
-  //   name: 'Peter J. Novak',
-  //   role: 'Chief Executive Officer',
-  //   image: Peter,
-  //   email: 'Peter.Novak@scapedbm.com',
-  //   bio: (
-  //     <>
-  //       <p>
-  //         Peter J. Novak is the Chief Executive Officer at scape, where he focuses on the implementation and oversight of the processes and procedures that create a unified experience for all stakeholders, including the owners, operators, vendors, subcontractors and most importantly, the company’s clients. Mr. Novak, strongly believes in fostering an inclusive environment and allows for client relationships that truly grow into friendships.
-  //       </p>
-  //       <p>
-  //         Mr. Novak was raised primarily in Utah, and obtained his Bachelor’s of Science (B.S.) degree in Finance from the University of Utah. Thereafter, Mr. Novak obtained his Juris Doctorate (J.D.) from the University of Nevada Las Vegas and his Post-Doctoral Masters (LL.M) from Boston University. Mr. Novak began his career at Morgan Stanley as stock trader before completing law school and working in large law firm practices in San Francisco, Las Vegas and Washington, primarily focused on various aspects of real estate development, finance and the construction industry.
-  //       </p>
-  //       <p>
-  //         Mr. Novak spent the prior 10 years working for a private equity group where he specialized in founding, capitalizing and incubating small to medium sized businesses. In that position, Mr. Novak served in various roles including CEO, President, COO, Managing Director, General Counsel and Chief Legal Officer to several startups. Through this position Mr. Novak successfully structured, formed and deployed over $250 million in private equity and debt financings into over a hundred active business units all across the United States, some of which eventually went public on the NASDAQ or NYSE.
-  //       </p>
-  //       <p>
-  //         Outside of work Mr. Novak enjoys spending time in the gym, training for races, taking yoga classes, fine dining from his own kitchen or out of on the town, and attending live music events.
-  //       </p>
-  //       <p>
-  //         At scape, Mr. Novak hopes to build an enthusiastic team that provides a meaningful service to the community, which will foster a lasting impact in the lives of all those we do business with.
-  //       </p>
-  //     </>
-  //   ),
-  // },
+  // ...team members array as before
+  // (omitted here for brevity, unchanged from your input)
   {
     name: 'Steve Mortensen',
     role: 'Co-Founder and Chief Vision Officer',
@@ -167,6 +144,8 @@ const teamMembers = [
   },
 ];
 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5wUCBQK2F_dZYV8ANvLVmbOgxuu5Z32BrrqHrPKoqOlo7c91sBiZ_4IY52t-w_zZnSA/exec";
+
 const TeamFirst = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [form, setForm] = useState({
@@ -174,8 +153,10 @@ const TeamFirst = () => {
     lastName: '',
     email: '',
     phone: '',
-    comment: '',
   });
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   function handleMemberClick(index) {
     setSelectedIndex(index);
@@ -197,17 +178,41 @@ const TeamFirst = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  // Updated handleSubmit to use application/x-www-form-urlencoded and Google Apps Script
+  async function handleSubmit(e) {
     e.preventDefault();
-    // Implement your submit logic here (e.g., send to API or email service)
-    alert('Your message has been submitted!');
-    setForm({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      comment: '',
-    });
+    setLoading(true);
+    setSuccessMsg('');
+    setErrorMsg('');
+
+    // Convert form data to URLSearchParams for x-www-form-urlencoded
+    const params = new URLSearchParams();
+    for (const [key, value] of Object.entries(form)) {
+      params.append(key, value);
+    }
+
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSuccessMsg(`Thank you! Your message was submitted successfully on ${data.date} at ${data.time}.`);
+        setForm({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+        });
+      } else {
+        setErrorMsg("Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setErrorMsg("Submission failed. Please try again.", err);
+    }
+    setLoading(false);
   }
 
   return (
@@ -271,7 +276,6 @@ const TeamFirst = () => {
                 </div>
               </div>
               {/* Right: Contact Us */}
-
               <div className={styles.contactCard}>
                 <form className={styles.contactForm} onSubmit={handleSubmit}>
                   <h3>Contact Us</h3>
@@ -283,6 +287,7 @@ const TeamFirst = () => {
                       value={form.firstName}
                       onChange={handleChange}
                       required
+                      disabled={loading}
                     />
                     <input
                       type="text"
@@ -291,6 +296,7 @@ const TeamFirst = () => {
                       value={form.lastName}
                       onChange={handleChange}
                       required
+                      disabled={loading}
                     />
                   </div>
                   <input
@@ -300,6 +306,7 @@ const TeamFirst = () => {
                     value={form.email}
                     onChange={handleChange}
                     required
+                    disabled={loading}
                   />
                   <input
                     type="text"
@@ -307,18 +314,13 @@ const TeamFirst = () => {
                     placeholder="Phone/Mobile"
                     value={form.phone}
                     onChange={handleChange}
+                    disabled={loading}
                   />
-                  <textarea
-                    name="comment"
-                    placeholder="Comment..."
-                    rows={4}
-                    value={form.comment}
-                    onChange={handleChange}
-                    required
-                  />
-                  <button type="submit" className={styles.submitButton}>
-                    Submit
+                  <button type="submit" className={styles.submitButton} disabled={loading}>
+                    {loading ? "Submitting..." : "Submit"}
                   </button>
+                  {successMsg && <div className={styles.successMsg}>{successMsg}</div>}
+                  {errorMsg && <div className={styles.errorMsg}>{errorMsg}</div>}
                   <span className={styles.contactOrText}>or Contact us on</span>
                 </form>
                 <div className={styles.socialIcons}>

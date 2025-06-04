@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./FirescapeFirst.module.css";
 
-// Import gallery images
+// Import gallery images in order
 import Asset1 from "../../assets/firescape/firescape1.jpg";
 import Asset2 from "../../assets/firescape/firescape2.jpg";
 import Asset3 from "../../assets/firescape/firescape3.jpg";
@@ -23,22 +23,13 @@ import Asset17 from "../../assets/firescape/firescape17.jpg";
 import Asset18 from "../../assets/firescape/firescape18.jpg";
 import Asset20 from "../../assets/firescape/firescape19.jpg";
 
-
+// Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12, Asset13, Asset14, Asset15, Asset16, Asset17, Asset18, Asset20,
-
+  Asset1, Asset2, Asset3, Asset4, Asset5,
+  Asset6, Asset7, Asset8, Asset9, Asset10,
+  Asset11, Asset12, Asset13, Asset14, Asset15,
+  Asset16, Asset17, Asset18, Asset20
 ];
-
-// Shuffle and pick 8 images for showcase
-function shuffle(array) {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 const firescapeFeatures = [
   {
@@ -73,16 +64,18 @@ const firescapeFeatures = [
 
 const FirescapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = shuffle(allAssets).slice(0, 19);
+  // Use all images in their original order
+  const showcaseImages = allAssets;
 
   return (
     <div className={styles.firescapeContainer}>
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Firescape</h1>
         <p className={styles.introText}>
-          Firescape creates inviting outdoor spaces with our expertly crafted fire features and complementary services, designed to add warmth and charm to your landscape. Our fire features include custom fire pits, elegant fireplaces, and modern fire tables, perfect for gathering with family and friends on cool evenings while enhancing your yard’s ambiance.
+          Firescape creates inviting outdoor spaces with our expertly crafted fire features and complementary services, designed to add warmth and charm to your landscape. Our fire features include custom fire pits, elegant fireplaces, and modern fire tables, perfect for gathering with family and friends on cool evenings while enhancing your yard's ambiance.
         </p>
       </div>
+
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Signature Firescape Features</h2>
         <div className={styles.featuresList}>
@@ -97,6 +90,7 @@ const FirescapeFirst = () => {
           Get Started
         </button>
       </div>
+
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Firescape Showcase</h2>
         <div className={styles.showcaseGrid}>

@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import PortfolioFirst from './PortfolioFirst';
 import Footer from '../Footer/Footer';
 import styles from './Portfolio.module.css';
-import backgroundVideo from '../../assets/videos/Background1.mp4';
+import backgroundVideo from '../../assets/videos/Background2.mp4';
 
 const Portfolio = () => {
+
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
+    }
+  }, []);
+
   return (
     <div className={styles.homeContainer}>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
