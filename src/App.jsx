@@ -20,8 +20,8 @@ import Testimonials from './components/About/Testimonials';
 // import DGallery from './components/portfolios/3DGallery';
 // import DroneShot from './components/portfolios/DroneShot';
 // import SocialVideo from './components/portfolios/SocialVideo';
-import Unsubscribe from './pages/Unsubscribe';
-import NewsletterVerification from './pages/NewsletterVerificartion';
+// import Unsubscribe from './pages/Unsubscribe';
+// import NewsletterVerification from './pages/NewsletterVerificartion';
 
 // **Import your project page**
 import BnProject from './components/portfolios/BnProject';
@@ -31,6 +31,7 @@ import HaProject from './components/portfolios/HaProject';
 import ArProject from './components/portfolios/ArProject';
 import GaProject from './components/portfolios/GaProject';
 import TcProject from './components/portfolios/TcProject';
+import CookieConsent from './components/CookieConsent';
 
 function App() {
   return (
@@ -57,8 +58,8 @@ function App() {
         <Route path="/services/waterscape" element={<Waterscape />} />
         <Route path="/services/firescape" element={<Firescape />} />
         <Route path="/services/courtscape" element={<Courtscape />} />
-        <Route path="/verify-newsletter" element={<NewsletterVerification />} />
-        <Route path="/unsubscribe" element={<Unsubscribe />} />
+        {/* <Route path="/verify-newsletter" element={<NewsletterVerification />} />
+        <Route path="/unsubscribe" element={<Unsubscribe />} /> */}
         {/* Add the new BnProject route */}
         <Route path="/portfolios/bnproject" element={<BnProject />} />
         <Route path="/portfolios/gnproject" element={<GnProject />} />
@@ -69,6 +70,7 @@ function App() {
         <Route path="/portfolios/tcproject" element={<TcProject />} />
         {/* Add other routes here */}
       </Routes>
+      <CookieConsent />
     </>
   );
 }

@@ -15,15 +15,13 @@ import Asset9 from "../../assets/landscape/landscape9.jpg";
 import Asset10 from "../../assets/landscape/landscape10.jpg";
 import Asset11 from "../../assets/landscape/landscape11.jpg";
 import Asset12 from "../../assets/landscape/landscape12.jpg";
-import Asset13 from "../../assets/landscape/landscape13.jpg";
-import Asset14 from "../../assets/landscape/landscape14.jpg";
-import Asset15 from "../../assets/landscape/landscape15.jpg";
+
 
 // Ordered image array
 const allAssets = [
   Asset1, Asset2, Asset3, Asset4, Asset5, 
   Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12, Asset13, Asset14, Asset15
+  Asset11, Asset12
 ];
 
 const landscapeServices = [
@@ -61,7 +59,7 @@ const LandscapeFirst = () => {
   const navigate = useNavigate();
   
   // Use the first 15 images in order (or all if you have exactly 15)
-  const showcaseImages = allAssets.slice(0, 15);
+  const showcaseImages = allAssets.slice(0, 12);
 
   return (
     <div className={styles.landscapeContainer}>

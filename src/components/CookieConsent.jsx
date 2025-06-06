@@ -75,7 +75,7 @@ export default function CookieConsent() {
               <p>
                 When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.
                 <br />
-                <a href="https://www.micron.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#0072ce", fontSize: 14 }}>Micron Privacy Notice</a>
+                <a href="https://scape.thelaunchpadteam.com/" target="_blank" rel="noopener noreferrer" className={styles.privacyLink}>scape privacy notice</a>
               </p>
             </div>
             <button className={`${styles.cookieBtn} ${styles.allowall}`} onClick={handleAllowAll}>Allow All</button>
@@ -94,7 +94,7 @@ export default function CookieConsent() {
               </div>
               <div className={styles.cookieSettingRow}>
                 <span>Strictly Necessary Cookies</span>
-                <span style={{ fontSize: 12, color: '#888' }}>Always Active</span>
+                <span className={styles.alwaysActive}>Always Active</span>
               </div>
               <div className={styles.cookieSettingRow}>
                 <span>Advertising Cookies</span>

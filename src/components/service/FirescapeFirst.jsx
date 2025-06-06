@@ -15,11 +15,8 @@ import Asset9 from "../../assets/firescape/firescape9.jpg";
 import Asset10 from "../../assets/firescape/firescape10.jpg";
 import Asset11 from "../../assets/firescape/firescape11.jpg";
 import Asset12 from "../../assets/firescape/firescape12.jpg";
-import Asset13 from "../../assets/firescape/firescape13.jpg";
-import Asset14 from "../../assets/firescape/firescape14.jpg";
 import Asset15 from "../../assets/firescape/firescape15.jpg";
 import Asset16 from "../../assets/firescape/firescape16.jpg";
-import Asset17 from "../../assets/firescape/firescape17.jpg";
 import Asset18 from "../../assets/firescape/firescape18.jpg";
 import Asset20 from "../../assets/firescape/firescape19.jpg";
 
@@ -27,8 +24,8 @@ import Asset20 from "../../assets/firescape/firescape19.jpg";
 const allAssets = [
   Asset1, Asset2, Asset3, Asset4, Asset5,
   Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12, Asset13, Asset14, Asset15,
-  Asset16, Asset17, Asset18, Asset20
+  Asset11, Asset12,  Asset15,
+  Asset16, Asset18, Asset20
 ];
 
 const firescapeFeatures = [

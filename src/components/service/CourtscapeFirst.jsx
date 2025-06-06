@@ -3,21 +3,18 @@ import { useNavigate } from "react-router-dom";
 import styles from "./CourtscapeFirst.module.css";
 
 // Import gallery images in order
-import Asset1 from "../../assets/courtscape/courtscape1.jpg";
 import Asset2 from "../../assets/courtscape/courtscape2.jpg";
 import Asset3 from "../../assets/courtscape/courtscape3.jpg";
 import Asset4 from "../../assets/courtscape/courtscape4.jpg";
 import Asset5 from "../../assets/courtscape/courtscape5.jpg";
-import Asset6 from "../../assets/courtscape/courtscape6.jpg";
 import Asset7 from "../../assets/courtscape/courtscape7.jpg";
 import Asset8 from "../../assets/courtscape/courtscape8.jpg";
-import Asset9 from "../../assets/courtscape/courtscape9.jpg";
 import Asset10 from "../../assets/courtscape/courtscape10.jpg";
 
 // Ordered image array
 const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset7, Asset8, Asset9, Asset10
+  Asset2, Asset3, Asset4, Asset5,
+  Asset7, Asset8, Asset10
 ];
 
 const courtscapeFeatures = [

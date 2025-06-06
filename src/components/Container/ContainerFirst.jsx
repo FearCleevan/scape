@@ -16,7 +16,7 @@ import PoolscapeImg from '../../assets/poolscape/poolscape1.jpg';
 import NightscapeImg from '../../assets/nightscape/nightscape1.jpg';
 import WaterscapeImg from '../../assets/waterscape/waterscape1.jpg';
 import FirescapeImg from '../../assets/firescape/firescape1.jpg';
-import CourtscapeImg from '../../assets/courtscape/courtscape1.jpg';
+import CourtscapeImg from '../../assets/courtscape/courtscape2.jpg';
 
 // Service color map
 const SERVICE_COLORS = {

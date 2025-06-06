@@ -8,9 +8,9 @@ import HardscapeImg from '../../assets/hardscape/hardscape1.jpg';
 import SoftscapeImg from '../../assets/softscape/softscape1.jpg';
 import PoolscapeImg from '../../assets/poolscape/poolscape1.jpg';
 import NightscapeImg from '../../assets/nightscape/nightscape1.jpg';
-import WaterscapeImg from '../../assets/waterscape/waterscape1.jpg';
-import FirescapeImg from '../../assets/firescape/firescape1.jpg';
-import CourtscapeImg from '../../assets/courtscape/courtscape1.jpg';
+import WaterscapeImg from '../../assets/waterscape/waterscape2.jpg';
+import FirescapeImg from '../../assets/firescape/firescape2.jpg';
+import CourtscapeImg from '../../assets/courtscape/courtscape2.jpg';
 
 const SERVICE_COLORS = {
   landscape: '#8B5B29',

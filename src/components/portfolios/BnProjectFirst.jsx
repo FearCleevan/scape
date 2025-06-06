@@ -7,16 +7,10 @@ import Img1 from '../../assets/BennettProject/Project1.jpg';
 import Img2 from '../../assets/BennettProject/Project2.jpg';
 import Img3 from '../../assets/BennettProject/Project3.jpg';
 import Img4 from '../../assets/BennettProject/Project4.jpg';
-import Img5 from '../../assets/BennettProject/Project5.jpg';
-import Img6 from '../../assets/BennettProject/Project6.jpg';
-import Img7 from '../../assets/BennettProject/Project7.jpg';
-import Img8 from '../../assets/BennettProject/Project8.jpg';
 import Img9 from '../../assets/BennettProject/Project9.jpg';
 import Img10 from '../../assets/BennettProject/Project10.jpg';
-import Img11 from '../../assets/BennettProject/Project11.jpg';
-import Img12 from '../../assets/BennettProject/Project12.jpg';
 
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12];
+const images = [Img1, Img2, Img3, Img4, Img9, Img10];
 
 const BnProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);

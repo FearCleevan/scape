@@ -15,17 +15,13 @@ import Asset9 from "../../assets/hardscape/hardscape9.jpg";
 import Asset10 from "../../assets/hardscape/hardscape10.jpg";
 import Asset11 from "../../assets/hardscape/hardscape11.jpg";
 import Asset12 from "../../assets/hardscape/hardscape12.jpg";
-import Asset13 from "../../assets/hardscape/hardscape13.jpg";
-import Asset14 from "../../assets/hardscape/hardscape14.jpg";
-import Asset15 from "../../assets/hardscape/hardscape15.jpg";
-import Asset16 from "../../assets/hardscape/hardscape16.jpg";
+
 
 // Ordered image array
 const allAssets = [
   Asset1, Asset2, Asset3, Asset4, Asset5,
   Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12, Asset13, Asset14,
-  Asset15, Asset16
+  Asset11, Asset12
 ];
 
 const hardscapeFeatures = [

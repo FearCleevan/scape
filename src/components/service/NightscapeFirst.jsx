@@ -9,8 +9,6 @@ import Asset3 from "../../assets/nightscape/nightscape3.jpg";
 import Asset4 from "../../assets/nightscape/nightscape4.jpg";
 import Asset5 from "../../assets/nightscape/nightscape5.jpg";
 import Asset6 from "../../assets/nightscape/nightscape6.jpg";
-import Asset7 from "../../assets/nightscape/nightscape7.jpg";
-import Asset8 from "../../assets/nightscape/nightscape8.jpg";
 import Asset9 from "../../assets/nightscape/nightscape9.jpg";
 import Asset10 from "../../assets/nightscape/nightscape10.jpg";
 import Asset11 from "../../assets/nightscape/nightscape11.jpg";
@@ -19,7 +17,7 @@ import Asset12 from "../../assets/nightscape/nightscape12.jpg";
 // Ordered image array
 const allAssets = [
   Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset7, Asset8, Asset9, Asset10,
+  Asset6, Asset9, Asset10,
   Asset11, Asset12
 ];
 
