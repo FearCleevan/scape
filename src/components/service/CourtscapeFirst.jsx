@@ -12,11 +12,12 @@ import Asset6 from "../../assets/courtscape/courtscape6.jpg";
 import Asset7 from "../../assets/courtscape/courtscape7.jpg";
 import Asset8 from "../../assets/courtscape/courtscape8.jpg";
 import Asset9 from "../../assets/courtscape/courtscape9.jpg";
+import Asset10 from "../../assets/courtscape/courtscape10.jpg";
 
 // Ordered image array
 const allAssets = [
   Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset7, Asset8, Asset9
+  Asset6, Asset7, Asset8, Asset9, Asset10
 ];
 
 const courtscapeFeatures = [

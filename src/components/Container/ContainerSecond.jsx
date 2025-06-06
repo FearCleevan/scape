@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './ContainerSecond.module.css';
 import Asset10 from '../../assets/gallery/Asset10.jpg';
 import Asset11 from '../../assets/gallery/Asset11.jpg';
@@ -8,6 +9,7 @@ const ContainerSecond = () => {
   const containerRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,14 @@ const ContainerSecond = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasAnimated]);
 
+  const handleTestimonialsClick = () => {
+    navigate('/testimonials');
+  };
+
+  const handlePortfolioClick = () => {
+    navigate('/portfolio');
+  };
+
   return (
     <div
       ref={containerRef}
@@ -39,12 +49,24 @@ const ContainerSecond = () => {
         <div className={`${styles.leftSection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.heading}>Building <span>Connections</span></h2>
           <p className={styles.subText}>50+ years experience | Merged Excellence | Relationship-Driven Spaces.</p>
-          <p className={styles.paragraph}>At scape, we believe landscapes are about more than beauty—they’re about connecting people and creating memories.</p>
+          <p className={styles.paragraph}>At scape, we believe landscapes are about more than beauty—they're about connecting people and creating memories.</p>
           <p className={styles.paragraph}>
             Our legacy, shaped by decades of partnership and innovation, stands for trust, transparency, and creative excellence. From intimate retreats to expansive estates, we design environments that inspire connection and reflect your unique vision.
           </p>
-          <p className={styles.smallText}>Hear from Our Clients</p>
-          <p className={styles.mediumText}>scape Project Gallery</p>
+          <p 
+            className={styles.smallText}
+            onClick={handleTestimonialsClick}
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}
+          >
+            Hear from Our Clients
+          </p>
+          <p 
+            className={styles.mediumText}
+            onClick={handlePortfolioClick}
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}
+          >
+            scape Project Gallery
+          </p>
         </div>
 
         {/* Right Section - Images */}

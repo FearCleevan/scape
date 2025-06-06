@@ -13,10 +13,9 @@ import Img7 from '../../assets/GardnerProject/Project7.jpg';
 import Img8 from '../../assets/GardnerProject/Project8.jpg';
 import Img9 from '../../assets/GardnerProject/Project9.jpg';
 import Img10 from '../../assets/GardnerProject/Project10.jpg';
-import Img11 from '../../assets/GardnerProject/Project11.jpg';
-import Img12 from '../../assets/GardnerProject/Project12.jpg';
 
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12];
+
+const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10];
 
 const GnProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);

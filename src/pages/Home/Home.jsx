@@ -9,7 +9,7 @@ import ContainerSecond from '../../components/Container/ContainerSecond';
 import ContainerThird from '../../components/Container/ContainerThird';
 import ContainerFourth from '../../components/Container/ContainerFourth';
 import ContainerFifth from '../../components/Container/ContainerFifth';
-import ContainerSixth from '../../components/Container/ContainerSixth';
+// import ContainerSixth from '../../components/Container/ContainerSixth';
 
 const Home = () => {
   const videoRef = useRef(null);
@@ -55,7 +55,7 @@ const Home = () => {
       <ContainerSecond />
       <ContainerThird />
       <ContainerFourth />
-      <ContainerSixth />
+      {/* <ContainerSixth /> */}
       <ContainerFifth />
       <Footer />
     </div>

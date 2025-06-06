@@ -332,3 +332,8 @@
     border-width: 0.5px;
   }
 }
+
+.smallText:hover, .mediumText:hover {
+  color: #a79e79;
+  transition: color 0.3s ease;
+}
