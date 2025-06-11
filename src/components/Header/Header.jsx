@@ -17,10 +17,9 @@ const SERVICE_COLORS = {
 };
 
 function getColoredServiceMenuTitle(title) {
-  // Always split at first "scape"
   const t = title.toLowerCase();
   const idx = t.indexOf('scape');
-  if (idx === -1) return title; // fallback
+  if (idx === -1) return title;
   const first = t.slice(0, idx);
   const second = t.slice(idx);
   const color = SERVICE_COLORS[t] || '#fff';
@@ -37,7 +36,17 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [showArrowUp, setShowArrowUp] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,7 +90,6 @@ const Header = () => {
       ]
     },
     { path: '/portfolio', name: 'Portfolio' },
-    // { path: '/social', name: 'Social Media' },
     { path: '/contact', name: 'Contact Us' },
     { path: '/faq', name: 'FAQ' }
   ];
@@ -93,19 +101,25 @@ const Header = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={`${styles.header} ${isMobile ? styles.mobileHeader : ''}`}>
         <div className={styles.logoContainer}>
           <Link to="/" className={styles.logo}>
-            <img src={logo} alt="SCAPEDBIM Logo" className={styles.logoImage} />
+            <img 
+              src={logo} 
+              alt="SCAPEDBIM Logo" 
+              className={`${styles.logoImage} ${isMobile ? styles.mobileLogo : ''}`} 
+            />
           </Link>
         </div>
 
-        <div className={`${styles.tagline} ${scrolled ? styles.taglineHidden : ''}`}>
-          Designing Landscapes that Build Relationships
-        </div>
+        {!isMobile && (
+          <div className={`${styles.tagline} ${scrolled ? styles.taglineHidden : ''}`}>
+            Designing Landscapes that Build Relationships
+          </div>
+        )}
 
         <button
-          className={styles.menuButton}
+          className={`${styles.menuButton} ${isMobile ? styles.mobileMenuButton : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -119,7 +133,7 @@ const Header = () => {
           />
         )}
 
-        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
+        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''} ${isMobile ? styles.mobileNav : ''}`}>
           <ul className={styles.navList}>
             {menuItems.map((item) => (
               <li key={item.path || item.name}>
@@ -127,7 +141,7 @@ const Header = () => {
                   <div className={styles.dropdown}>
                     <button
                       className={`${styles.navLink} ${styles.dropdownToggle} ${item.submenu.some(subItem => location.pathname === subItem.path) ? styles.active : ''
-                        }`}
+                        } ${isMobile ? styles.mobileNavLink : ''}`}
                       onClick={() => toggleDropdown(item.name)}
                     >
                       {item.name}
@@ -142,7 +156,7 @@ const Header = () => {
                           <Link
                             to={subItem.path}
                             className={`${styles.navLink} ${styles.dropdownLink} ${location.pathname === subItem.path ? styles.active : ''
-                              }`}
+                              } ${isMobile ? styles.mobileNavLink : ''}`}
                             onClick={closeAllMenus}
                             style={
                               subItem.name.endsWith('scape') && subItem.name !== 'services'
@@ -162,7 +176,7 @@ const Header = () => {
                   <Link
                     to={item.path}
                     className={`${styles.navLink} ${location.pathname === item.path ? styles.active : ''
-                      }`}
+                      } ${isMobile ? styles.mobileNavLink : ''}`}
                     onClick={closeAllMenus}
                   >
                     {item.name}

@@ -68,13 +68,13 @@ const WaterscapeFirst = () => {
         </p>
       </div>
       
-      <div className={styles.featuresSection}>
-        <h2 className={styles.featuresTitle}>Signature Waterscape Features</h2>
-        <div className={styles.featuresList}>
+      <div className={styles.servicesSection}>
+        <h2 className={styles.servicesTitle}>Signature Waterscape Features</h2>
+        <div className={styles.servicesList}>
           {waterscapeFeatures.map((feature, idx) => (
-            <div className={styles.featureCard} key={idx}>
-              <h3 className={styles.featureCardTitle}>{feature.title}</h3>
-              <p className={styles.featureCardDesc}>{feature.desc}</p>
+            <div className={styles.serviceCard} key={idx}>
+              <h3 className={styles.serviceCardTitle}>{feature.title}</h3>
+              <p className={styles.serviceCardDesc}>{feature.desc}</p>
             </div>
           ))}
         </div>

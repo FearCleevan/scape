@@ -135,3 +135,36 @@
   color: #7d7549;
   text-decoration: none;
 }
+
+/* Add these styles to your existing CSS */
+.getStartedContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.getStartedButton {
+  background-color: #a79e79;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0; /* No border-radius as requested */
+}
+
+.getStartedButton:hover {
+  background-color: #8a7d5a;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .getStartedButton {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+}

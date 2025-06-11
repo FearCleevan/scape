@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './FaqFirst.module.css';
 
 const FaqFirst = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  const handleGetStarted = () => {
+    navigate('/contact');
   };
 
   const faqSections = [
@@ -144,10 +150,10 @@ const FaqFirst = () => {
       <div className={styles.faqContent}>
         <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
         <p className={styles.faqSubtitle}>Find answers to common questions about our landscape design and construction services</p>
-        
+
         {faqSections.map((faq, index) => (
           <div key={index} className={styles.accordionSection}>
-            <div 
+            <div
               className={`${styles.accordionHeader} ${activeIndex === index ? styles.active : ''}`}
               onClick={() => toggleAccordion(index)}
             >
@@ -163,6 +169,16 @@ const FaqFirst = () => {
             )}
           </div>
         ))}
+
+        {/* Add the Get Started button */}
+        <div className={styles.getStartedContainer}>
+          <button
+            className={styles.getStartedButton}
+            onClick={handleGetStarted}
+          >
+            Get Started
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -52,6 +52,8 @@
   letter-spacing: 0.12px;
   margin: 0 auto 12px auto;
   max-width: 900px;
+  justify-content: justify;
+  text-align: justify;
 }
 
 .servicesSection {
@@ -132,6 +134,8 @@
   transform: scale(1.045);
 }
 
+/* Showcase Section */
+
 .showcaseSection {
   width: 100%;
   max-width: 1250px;
@@ -140,6 +144,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
 }
 
 .showcaseTitle {
@@ -155,15 +160,16 @@
 .showcaseGrid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 555px);
-  grid-template-rows: repeat(4, 370.07px);
-  gap: 30px 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   justify-content: center;
 }
 
 .showcaseImgWrapper {
-  width: 555px;
-  height: 370.07px;
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.67%;
+  /* 3:2 aspect ratio */
   overflow: hidden;
   box-shadow: 0 7px 32px 0 rgba(0, 0, 0, 0.10);
   background: #f2f2f2;
@@ -172,6 +178,9 @@
 }
 
 .showcaseImg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -198,35 +207,168 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .showcaseGrid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(8, 370.07px);
-    gap: 24px 0;
+/* Large tablets (1024px and below) */
+@media (max-width: 1024px) {
+  .introSection {
+    padding: 60px 20px 28px 20px;
   }
 
-  .showcaseImgWrapper {
-    width: 95vw;
-    max-width: 555px;
-    height: 370.07px;
+  .introTitle {
+    font-size: 48px;
+  }
+
+  .introText {
+    font-size: 18px;
+  }
+
+  .servicesTitle {
+    font-size: 32px;
+  }
+
+  .serviceCard {
+    padding: 22px 28px 18px 28px;
+  }
+
+  .showcaseGrid {
+    gap: 24px;
   }
 }
 
-@media (max-width: 700px) {
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .landscapeContainer {
+    padding-bottom: 50px;
+  }
+
   .introSection {
-    padding: 40px 8px 18px 8px;
+    padding: 50px 16px 24px 16px;
   }
 
-  .servicesSection,
+  .introTitle {
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+
+  .servicesTitle {
+    font-size: 28px;
+    margin-bottom: 28px;
+  }
+
+  .servicesList {
+    gap: 28px 20px;
+  }
+
+  .serviceCard {
+    min-width: 240px;
+    padding: 20px 24px 16px 24px;
+  }
+
+  .serviceCardTitle {
+    font-size: 20px;
+  }
+
+  .serviceCardDesc {
+    font-size: 14px;
+  }
+
+  .getStartedButton {
+    padding: 14px 40px;
+    font-size: 18px;
+  }
+
   .showcaseSection {
-    padding: 0 10px;
+    margin-top: 50px;
   }
 
-  .showcaseImgWrapper {
-    height: 200px;
+  .showcaseTitle {
+    font-size: 24px;
+    margin-bottom: 24px;
   }
 
   .showcaseGrid {
-    grid-template-rows: repeat(8, minmax(160px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .landscapeContainer {
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+
+  .introSection {
+    padding: 40px 12px 20px 12px;
+  }
+
+  .introTitle {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .introText {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .servicesTitle {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .servicesList {
+    gap: 20px;
+  }
+
+  .serviceCard {
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0 12px;
+    padding: 18px 20px 14px 20px;
+  }
+
+  .getStartedButton {
+    margin-top: 30px;
+    padding: 12px 36px;
+    font-size: 16px;
+  }
+
+  .showcaseSection {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .showcaseTitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+    margin-left: 4px;
+  }
+
+  .showcaseGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Small mobile devices (360px and below) */
+@media (max-width: 360px) {
+  .introTitle {
+    font-size: 32px;
+  }
+
+  .introText {
+    font-size: 15px;
+  }
+
+  .serviceCardTitle {
+    font-size: 18px;
+  }
+
+  .serviceCardDesc {
+    font-size: 13px;
+  }
+
+  .showcaseTitle {
+    font-size: 20px;
   }
 }

@@ -5,7 +5,7 @@
 }
 
 .portfolioContainer {
-  max-height: 3000px;
+  min-height: auto;
   width: 100%;
   background: #fff;
   display: flex;

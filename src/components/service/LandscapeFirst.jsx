@@ -16,7 +16,6 @@ import Asset10 from "../../assets/landscape/landscape10.jpg";
 import Asset11 from "../../assets/landscape/landscape11.jpg";
 import Asset12 from "../../assets/landscape/landscape12.jpg";
 
-
 // Ordered image array
 const allAssets = [
   Asset1, Asset2, Asset3, Asset4, Asset5, 
@@ -35,7 +34,7 @@ const landscapeServices = [
   },
   {
     title: "Botanical Softscape",
-    desc: "Curate a living tapestry of trees, shrubs, and flowers chosen for lasting color, texture, and seasonal interest—tailored to thrive in Utah’s unique climate."
+    desc: "Curate a living tapestry of trees, shrubs, and flowers chosen for lasting color, texture, and seasonal interest—tailored to thrive in Utah's unique climate."
   },
   {
     title: "Sustainable Irrigation & Drainage",
@@ -43,7 +42,7 @@ const landscapeServices = [
   },
   {
     title: "Ambience Outdoor Lighting",
-    desc: "Showcase your landscape’s elegance after dusk with thoughtfully placed pathway, accent, and architectural lighting to create a warm, inviting atmosphere."
+    desc: "Showcase your landscape's elegance after dusk with thoughtfully placed pathway, accent, and architectural lighting to create a warm, inviting atmosphere."
   },
   {
     title: "Eco-Conscious Solutions",
@@ -58,7 +57,7 @@ const landscapeServices = [
 const LandscapeFirst = () => {
   const navigate = useNavigate();
   
-  // Use the first 15 images in order (or all if you have exactly 15)
+  // Use the first 12 images in order
   const showcaseImages = allAssets.slice(0, 12);
 
   return (
@@ -66,7 +65,7 @@ const LandscapeFirst = () => {
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Landscape</h1>
         <p className={styles.introText}>
-          Landscape design is the art and science of creating harmonious outdoor spaces tailored to your unique vision and lifestyle. This landscape design process involves planning and integrating hardscape (like patios and walkways) and softscape (such as plants and trees) to enhance the beauty, functionality, and sustainability of your property. Our expert landscape design team collaborates with you to craft custom layouts that reflect your preferences, optimize space, and complement the natural environment. From initial concept to final installation, we deliver thoughtfully designed landscapes that elevate your home’s curb appeal and provide a perfect retreat for relaxation or recreation for your family and friends.
+          Landscape design is the art and science of creating harmonious outdoor spaces tailored to your unique vision and lifestyle. This landscape design process involves planning and integrating hardscape (like patios and walkways) and softscape (such as plants and trees) to enhance the beauty, functionality, and sustainability of your property. Our expert landscape design team collaborates with you to craft custom layouts that reflect your preferences, optimize space, and complement the natural environment. From initial concept to final installation, we deliver thoughtfully designed landscapes that elevate your home's curb appeal and provide a perfect retreat for relaxation or recreation for your family and friends.
         </p>
       </div>
       

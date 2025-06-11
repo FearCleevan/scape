@@ -69,13 +69,13 @@ const HardscapeFirst = () => {
         </p>
       </div>
 
-      <div className={styles.featuresSection}>
-        <h2 className={styles.featuresTitle}>Signature Hardscape Features</h2>
-        <div className={styles.featuresList}>
-          {hardscapeFeatures.map((feature, idx) => (
-            <div className={styles.featureCard} key={idx}>
-              <h3 className={styles.featureCardTitle}>{feature.title}</h3>
-              <p className={styles.featureCardDesc}>{feature.desc}</p>
+      <div className={styles.servicesSection}>
+        <h2 className={styles.servicesTitle}>Signature Hardscape Features</h2>
+        <div className={styles.servicesList}>
+          {hardscapeFeatures.map((service, idx) => (
+            <div className={styles.serviceCard} key={idx}>
+              <h3 className={styles.serviceCardTitle}>{service.title}</h3>
+              <p className={styles.serviceCardDesc}>{service.desc}</p>
             </div>
           ))}
         </div>

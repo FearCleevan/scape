@@ -297,4 +297,9 @@
     height: 40px;
     font-size: 1.45rem;
   }
+
+  .header {
+    background: rgba(0, 0, 0, 0.329);
+    padding: 0;
+  }
 }

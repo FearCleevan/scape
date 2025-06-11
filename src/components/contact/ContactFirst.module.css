@@ -70,6 +70,12 @@
   white-space: pre-line;
 }
 
+@media (max-width: 1366px) {
+  .contactContainer {
+    height: auto;
+  }
+}
+
 @media (max-width: 1200px) {
   .contactCards {
     gap: 20px;

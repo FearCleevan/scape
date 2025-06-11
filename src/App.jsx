@@ -32,6 +32,7 @@ import ArProject from './components/portfolios/ArProject';
 import GaProject from './components/portfolios/GaProject';
 import TcProject from './components/portfolios/TcProject';
 import CookieConsent from './components/CookieConsent';
+import PageNotFound from './components/notFound/PageNotFound';
 
 function App() {
   return (
@@ -69,6 +70,9 @@ function App() {
         <Route path="/portfolios/gaproject" element={<GaProject />} />
         <Route path="/portfolios/tcproject" element={<TcProject />} />
         {/* Add other routes here */}
+
+        {/* Catch-all route for 404 Not Found */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <CookieConsent />
     </>
