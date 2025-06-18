@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Testimonials.module.css';
@@ -7,7 +8,7 @@ import { Link } from 'react-router-dom';
 import TestimonialsFirst from './TestimonialsFirst';
 
 const Testimonials = () => {
-  
+
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -18,6 +19,10 @@ const Testimonials = () => {
 
   return (
     <div className={styles.homeContainer}>
+      <Helmet>
+        <title>SCAPE | Testimonials</title>
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video

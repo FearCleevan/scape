@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -9,7 +10,7 @@ import PoolscapeFirst from './PoolscapeFirst';
 
 const Poolscape = () => {
 
-    const videoRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -19,10 +20,14 @@ const Poolscape = () => {
 
   return (
     <div className={styles.homeContainer}>
+      <Helmet>
+        <title>SCAPE | Services / Poolscape</title>
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video
-        ref={videoRef}
+          ref={videoRef}
           autoPlay
           loop
           muted

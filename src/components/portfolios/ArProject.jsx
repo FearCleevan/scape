@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import ArProjectFirst from './ArProjectFirst';
@@ -17,6 +18,10 @@ const ArProject = () => {
 
   return (
     <div className={styles.homeContainer}>
+      <Helmet>
+        <title>SCAPE | Portfolio / Ar Project</title>
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video

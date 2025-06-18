@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import BnProjectFirst from './BnProjectFirst';
@@ -8,20 +9,24 @@ import backgroundVideo from '../../assets/videos/Background2.mp4';
 
 const BnProject = () => {
 
-    const videoRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
     }
   }, []);
-  
+
   return (
     <div className={styles.homeContainer}>
+      <Helmet>
+        <title>SCAPE | Portfolio / Bn Project</title>
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video
-        ref={videoRef}
+          ref={videoRef}
           autoPlay
           loop
           muted

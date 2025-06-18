@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Team.module.css';
@@ -8,17 +9,24 @@ import About from './About';
 import { Link } from 'react-router-dom';
 
 const Team = () => {
-
-    const videoRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
+      videoRef.current.playbackRate = 0.6;
     }
   }, []);
 
   return (
     <div className={styles.homeContainer}>
+      <Helmet>
+        <title>SCAPE | Scape Team / About Us</title>
+        <meta property="og:title" content="SCAPE | Scape Team / About Us" />
+        <meta name="description" content="Meet the SCAPE team and learn about our landscape design philosophy and company values." />
+        <meta property="og:description" content="Meet the SCAPE team and learn about our landscape design philosophy and company values." />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video 

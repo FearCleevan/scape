@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from '../Header/Header';
 import ContactFirst from './ContactFirst';
 import Footer from '../Footer/Footer';
@@ -19,6 +20,10 @@ const Contact = () => {
 
     return (
         <div className={styles.homeContainer}>
+            <Helmet>
+                <title>SCAPE | Contact Us</title>
+                <meta property="og:url" content={window.location.href} />
+            </Helmet>
             {/* Fullscreen video background */}
             <div className={styles.videoBackground}>
                 <video

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Services.module.css';
@@ -18,21 +19,25 @@ const Services = () => {
 
   return (
     <div className={styles.homeContainer}>
+      <Helmet>
+        <title>SCAPE | Services</title>
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
-        <video 
+        <video
           ref={videoRef}
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+          autoPlay
+          loop
+          muted
+          playsInline
           className={styles.backgroundVideo}
         >
           <source src={backgroundVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-      
+
       {/* Content container */}
       <Header />
       <div className={styles.mainContent}>

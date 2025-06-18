@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from '../../components/Header/Header';
 import ContainerFirst from '../../components/Container/ContainerFirst';
 import Footer from '../../components/Footer/Footer';
@@ -22,6 +23,13 @@ const Home = () => {
 
   return (
     <div className={styles.homeContainer}>
+      <Helmet>
+        <title>SCAPE | Design Build Maintain</title>
+        <meta property="og:title" content="SCAPE | Design Build Maintain" />
+        <meta name="description" content="Our award-winning team is dedicated to bringing your dream outdoor space to life, offering both beauty and functionality with a warranty that guarantees satisfaction." />
+        <meta property="og:description" content="Our award-winning team is dedicated to bringing your dream outdoor space to life, offering both beauty and functionality with a warranty that guarantees satisfaction." />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video
