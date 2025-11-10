@@ -4,12 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "upload:assets": "node scripts/bulk-upload.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.14.3",
+    "@cloudinary/url-gen": "^1.22.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.0",
@@ -17,7 +20,9 @@
     "@sendgrid/mail": "^8.1.5",
     "axios": "^1.9.0",
     "body-parser": "^2.2.0",
+    "cloudinary": "^2.8.0",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "framer-motion": "^12.12.1",
     "mongoose": "^8.15.0",

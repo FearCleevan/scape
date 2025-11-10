@@ -1,3 +1,5 @@
+//src/App.jsx
+
 import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/scroll/ScrollToTop';
 import Home from './pages/Home/Home';

@@ -4,22 +4,23 @@ import Header from '../../components/Header/Header';
 import ContainerFirst from '../../components/Container/ContainerFirst';
 import Footer from '../../components/Footer/Footer';
 import styles from './Home.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
 import { FiChevronDown } from 'react-icons/fi';
 import ContainerSecond from '../../components/Container/ContainerSecond';
 import ContainerThird from '../../components/Container/ContainerThird';
 import ContainerFourth from '../../components/Container/ContainerFourth';
 import ContainerFifth from '../../components/Container/ContainerFifth';
-// import ContainerSixth from '../../components/Container/ContainerSixth';
 
 const Home = () => {
   const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
+      videoRef.current.playbackRate = 0.6;
     }
   }, []);
+
+  // Use the correct public ID with the double folder structure
+  const optimizedVideoUrl = `https://res.cloudinary.com/dtebf3uea/video/upload/q_70/f_auto/vc_auto/scape/videos/scape/videos/Background2`;
 
   return (
     <div className={styles.homeContainer}>
@@ -30,7 +31,8 @@ const Home = () => {
         <meta property="og:description" content="Our award-winning team is dedicated to bringing your dream outdoor space to life, offering both beauty and functionality with a warranty that guarantees satisfaction." />
         <meta property="og:url" content={window.location.href} />
       </Helmet>
-      {/* Fullscreen video background */}
+      
+      {/* Optimized Cloudinary Video Background - using CORRECT public ID */}
       <div className={styles.videoBackground}>
         <video
           ref={videoRef}
@@ -40,7 +42,7 @@ const Home = () => {
           playsInline
           className={styles.backgroundVideo}
         >
-          <source src={backgroundVideo} type="video/mp4" />
+          <source src={optimizedVideoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -63,7 +65,6 @@ const Home = () => {
       <ContainerSecond />
       <ContainerThird />
       <ContainerFourth />
-      {/* <ContainerSixth /> */}
       <ContainerFifth />
       <Footer />
     </div>
