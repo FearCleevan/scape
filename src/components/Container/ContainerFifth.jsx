@@ -1,14 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './ContainerFifth.module.css';
-import backgroundImage from '../../assets/gallery/Asset8.jpg';
 import { useNavigate } from 'react-router-dom';
-// Import all the gallery images
-import Asset12 from '../../assets/gallery/Asset12.jpg';
-import Asset13 from '../../assets/gallery/Asset13.jpg';
-import Asset14 from '../../assets/gallery/Asset14.jpg';
-import Asset15 from '../../assets/gallery/Asset15.jpg';
-import Asset16 from '../../assets/gallery/Asset16.jpg';
-import Asset17 from '../../assets/gallery/Asset17.jpg';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 const ContainerFifth = () => {
   const containerRef = useRef(null);
@@ -39,6 +32,42 @@ const ContainerFifth = () => {
     navigate('/contact');
   };
 
+  // Build optimized URLs
+  const backgroundImageUrl = buildOptimizedUrl(IMAGE_ASSETS.gallery8, {
+    quality: '80',
+    format: 'auto'
+  });
+
+  const asset12Url = buildOptimizedUrl(IMAGE_ASSETS.gallery12, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const asset13Url = buildOptimizedUrl(IMAGE_ASSETS.gallery13, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const asset14Url = buildOptimizedUrl(IMAGE_ASSETS.gallery14, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const asset15Url = buildOptimizedUrl(IMAGE_ASSETS.gallery15, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const asset16Url = buildOptimizedUrl(IMAGE_ASSETS.gallery16, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const asset17Url = buildOptimizedUrl(IMAGE_ASSETS.gallery17, {
+    quality: '85',
+    format: 'auto'
+  });
+
   return (
     <div
       ref={containerRef}
@@ -46,7 +75,7 @@ const ContainerFifth = () => {
     >
       {/* Background Image */}
       <div className={styles.backgroundImage}>
-        <img src={backgroundImage} alt="Team background" className={styles.image} />
+        <img src={backgroundImageUrl} alt="Team background" className={styles.image} />
       </div>
 
       {/* Dark Overlay */}
@@ -61,10 +90,10 @@ const ContainerFifth = () => {
             At scape, we see every project as a collaboration—with you at the center. Our unified team approach is built on open communication and mutual respect.
           </p>
           <p className={styles.paragraph}>
-            We’re honored to build spaces that strengthen bonds between families, friends, and communities—environments where lasting memories are created together.
+            We're honored to build spaces that strengthen bonds between families, friends, and communities—environments where lasting memories are created together.
           </p>
           <p className={styles.paragraph}>
-            Join Team scape and let’s create something extraordinary, together.
+            Join Team scape and let's create something extraordinary, together.
           </p>
           <button className={styles.button} onClick={handleGetStarted}>
             Get Started
@@ -75,16 +104,16 @@ const ContainerFifth = () => {
         <div className={`${styles.rightSection} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.imageGrid}>
             <div className={styles.imageRow}>
-              <img src={Asset12} alt="Pool design" className={styles.gridImage} />
-              <img src={Asset13} alt="Pool design" className={styles.gridImage} />
+              <img src={asset12Url} alt="Pool design" className={styles.gridImage} loading="lazy" />
+              <img src={asset13Url} alt="Pool design" className={styles.gridImage} loading="lazy" />
             </div>
             <div className={styles.imageRow}>
-              <img src={Asset14} alt="Pool design" className={styles.gridImage} />
-              <img src={Asset15} alt="Pool design" className={styles.gridImage} />
+              <img src={asset14Url} alt="Pool design" className={styles.gridImage} loading="lazy" />
+              <img src={asset15Url} alt="Pool design" className={styles.gridImage} loading="lazy" />
             </div>
             <div className={styles.imageRow}>
-              <img src={Asset16} alt="Pool design" className={styles.gridImage} />
-              <img src={Asset17} alt="Pool design" className={styles.gridImage} />
+              <img src={asset16Url} alt="Pool design" className={styles.gridImage} loading="lazy" />
+              <img src={asset17Url} alt="Pool design" className={styles.gridImage} loading="lazy" />
             </div>
           </div>
         </div>

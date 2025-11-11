@@ -7,10 +7,7 @@ import styles from './ContainerFirst.module.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
-
-// Import Cloudinary components and assets
-import CloudinaryImage from '../../components/CloudinaryImage/CloudinaryImage';
-import { IMAGE_ASSETS } from '../../utils/cloudinary';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 // Service color map
 const SERVICE_COLORS = {
@@ -24,54 +21,78 @@ const SERVICE_COLORS = {
     courtscape: '#FF3131',
 };
 
-// Featured projects data with Cloudinary public IDs
+// Featured projects data with Cloudinary URLs
 const featuredProjectsWithImages = [
     {
         key: 'landscape',
         title: 'Landscape',
-        publicId: IMAGE_ASSETS.landscape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.landscape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "We design harmonious outdoor spaces that reflect your vision and lifestyle. Our team plans and integrates hardscape and softscape elements to enhance beauty, function, and sustainability, creating a custom retreat for relaxation and recreation."
     },
     {
         key: 'hardscape',
         title: 'Hardscape',
-        publicId: IMAGE_ASSETS.hardscape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.hardscape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "Our hardscape features—patios, walkways, walls, and outdoor kitchens—add structure, style, and function to your yard. Using quality materials, we build durable spaces that improve usability and blend naturally with your landscape."
     },
     {
         key: 'softscape',
         title: 'Softscape',
-        publicId: IMAGE_ASSETS.softscape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.softscape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "We bring your yard to life with plants, trees, and flowers, enhancing beauty and biodiversity. Our softscape designs add color, texture, and shade, creating a vibrant, healthy environment tailored to your preferences and climate."
     },
     {
         key: 'poolscape',
         title: 'Poolscape',
-        publicId: IMAGE_ASSETS.poolscape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.poolscape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "We create custom pools and surrounding features to transform your backyard into an oasis. From design to installation, we handle everything—including patios, landscaping, and lighting—for a seamless, stunning outdoor retreat."
     },
     {
         key: 'nightscape',
         title: 'Nightscape',
-        publicId: IMAGE_ASSETS.nightscape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.nightscape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "We enhance your evenings with custom outdoor lighting and integrated A/V systems. Enjoy a safe, inviting atmosphere for gatherings or relaxation, with smart controls and weatherproof technology that complement your landscape."
     },
     {
         key: 'waterscape',
         title: 'Waterscape',
-        publicId: IMAGE_ASSETS.waterscape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.waterscape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "We add elegance and tranquility with water features like fountains, waterfalls, ponds, and streams. Each is designed to fit your space and lifestyle, creating a peaceful, low-maintenance focal point for your yard."
     },
     {
         key: 'firescape',
         title: 'Firescape',
-        publicId: IMAGE_ASSETS.firescape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.firescape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "Our custom fire pits, fireplaces, and fire tables provide warmth and charm. Perfect for gathering on cool evenings, these features enhance your outdoor ambiance and invite cozy moments with family and friends."
     },
     {
         key: 'courtscape',
         title: 'Courtscape',
-        publicId: IMAGE_ASSETS.courtscape,
+        imageUrl: buildOptimizedUrl(IMAGE_ASSETS.courtscape, {
+            quality: '85',
+            format: 'auto'
+        }),
         description: "We build custom sport courts for basketball, tennis, pickleball, and more—complete with pro lighting and durable surfaces. Enjoy a versatile, long-lasting recreation area designed to blend with your outdoor space."
     }
 ];
@@ -126,14 +147,9 @@ const ContainerFirst = () => {
                                 onMouseEnter={() => setHoveredIndex(i)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
-                                <CloudinaryImage
-                                    publicId={project.publicId}
+                                <img
+                                    src={project.imageUrl}
                                     alt={project.title}
-                                    width={650} // Match your CSS max-width
-                                    height={455} // Match your CSS height
-                                    quality="85" // High quality
-                                    format="auto" // WebP/AVIF automatically
-                                    crop="fit" // CHANGED: Maintains aspect ratio instead of stretching
                                     className={`${styles.carouselImage} ${hoveredIndex === i ? styles.imageHover : ''}`}
                                     loading={i < 3 ? "eager" : "lazy"}
                                 />

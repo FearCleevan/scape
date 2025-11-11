@@ -9,7 +9,7 @@ const testimonials = [
         avatar: "https://randomuser.me/api/portraits/men/32.jpg",
         date: "April 12, 2025",
         rating: 5,
-        comment: `We couldn’t be happier with our experience working with the team at scape. From start to finish, their communication was exceptional—clear, consistent, and responsive throughout the entire process. The design, build, and installation of our home were thoroughly planned and executed with impressive attention to detail. The scope was clearly defined upfront, accurate, and delivered exactly as promised—on time and on budget. Their professionalism and quality of work exceeded our expectations. We highly recommend them for any landscaping project.`,
+        comment: `We couldn't be happier with our experience working with the team at scape. From start to finish, their communication was exceptional—clear, consistent, and responsive throughout the entire process. The design, build, and installation of our home were thoroughly planned and executed with impressive attention to detail. The scope was clearly defined upfront, accurate, and delivered exactly as promised—on time and on budget. Their professionalism and quality of work exceeded our expectations. We highly recommend them for any landscaping project.`,
     },
     {
         name: "Tyler and Leigh Bennett",
@@ -124,10 +124,14 @@ const TestimonialsFirst = () => {
                 {testimonials.map((t, idx) => (
                     <div className={styles.card} key={idx}>
                         <div className={styles.header}>
-                            <img src={t.avatar} alt={t.name} className={styles.avatar} />
+                            <img 
+                                src={t.avatar} 
+                                alt={t.name} 
+                                className={styles.avatar}
+                                loading="lazy" // Added lazy loading for avatars
+                            />
                             <div className={styles.userInfo}>
                                 <span className={styles.name}>{t.name}</span>
-                                
                                 <div className={styles.date}>{t.date}</div>
                             </div>
                             <div>

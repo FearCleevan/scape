@@ -1,31 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./FirescapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import gallery images in order
-import Asset1 from "../../assets/firescape/firescape1.jpg";
-import Asset2 from "../../assets/firescape/firescape2.jpg";
-import Asset3 from "../../assets/firescape/firescape3.jpg";
-import Asset4 from "../../assets/firescape/firescape4.jpg";
-import Asset5 from "../../assets/firescape/firescape5.jpg";
-import Asset6 from "../../assets/firescape/firescape6.jpg";
-import Asset7 from "../../assets/firescape/firescape7.jpg";
-import Asset8 from "../../assets/firescape/firescape8.jpg";
-import Asset9 from "../../assets/firescape/firescape9.jpg";
-import Asset10 from "../../assets/firescape/firescape10.jpg";
-import Asset11 from "../../assets/firescape/firescape11.jpg";
-import Asset12 from "../../assets/firescape/firescape12.jpg";
-import Asset15 from "../../assets/firescape/firescape15.jpg";
-import Asset16 from "../../assets/firescape/firescape16.jpg";
-import Asset18 from "../../assets/firescape/firescape18.jpg";
-import Asset20 from "../../assets/firescape/firescape19.jpg";
-
-// Ordered image array
-const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12,  Asset15,
-  Asset16, Asset18, Asset20
+// Image public IDs for Firescape with correct duplicate folder structure
+const firescapeImages = [
+  'scape/firescape/scape/firescape/firescape1',
+  'scape/firescape/scape/firescape/firescape2',
+  'scape/firescape/scape/firescape/firescape3',
+  'scape/firescape/scape/firescape/firescape4',
+  'scape/firescape/scape/firescape/firescape5',
+  'scape/firescape/scape/firescape/firescape6',
+  'scape/firescape/scape/firescape/firescape7',
+  'scape/firescape/scape/firescape/firescape8',
+  'scape/firescape/scape/firescape/firescape9',
+  'scape/firescape/scape/firescape/firescape10',
+  'scape/firescape/scape/firescape/firescape11',
+  'scape/firescape/scape/firescape/firescape12',
+  'scape/firescape/scape/firescape/firescape15',
+  'scape/firescape/scape/firescape/firescape16',
+  'scape/firescape/scape/firescape/firescape18',
+  'scape/firescape/scape/firescape/firescape19'
 ];
 
 const firescapeFeatures = [
@@ -61,8 +56,14 @@ const firescapeFeatures = [
 
 const FirescapeFirst = () => {
   const navigate = useNavigate();
-  // Use all images in their original order
-  const showcaseImages = allAssets;
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.firescapeContainer}>
@@ -91,12 +92,13 @@ const FirescapeFirst = () => {
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Firescape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {firescapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Firescape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

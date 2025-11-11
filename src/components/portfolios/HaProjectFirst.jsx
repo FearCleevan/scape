@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import styles from './HaProjectFirst.module.css';
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import images
-import Img1 from '../../assets/HaProject/Project1.jpg';
-import Img2 from '../../assets/HaProject/Project2.jpg';
-import Img3 from '../../assets/HaProject/Project3.jpg';
-import Img4 from '../../assets/HaProject/Project4.jpg';
-import Img5 from '../../assets/HaProject/Project5.jpg';
-import Img6 from '../../assets/HaProject/Project6.jpg';
-import Img7 from '../../assets/HaProject/Project7.jpg';
-import Img8 from '../../assets/HaProject/Project8.jpg';
-import Img9 from '../../assets/HaProject/Project9.jpg';
-import Img10 from '../../assets/HaProject/Project10.jpg';
-import Img11 from '../../assets/HaProject/Project11.jpg';
-import Img12 from '../../assets/HaProject/Project12.jpg';
-
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12];
+// Image public IDs for HaProject with correct duplicate folder structure
+const haProjectImages = [
+  'scape/projects/ha/scape/projects/ha/Project1',
+  'scape/projects/ha/scape/projects/ha/Project2',
+  'scape/projects/ha/scape/projects/ha/Project3',
+  'scape/projects/ha/scape/projects/ha/Project4',
+  'scape/projects/ha/scape/projects/ha/Project5',
+  'scape/projects/ha/scape/projects/ha/Project6',
+  'scape/projects/ha/scape/projects/ha/Project7',
+  'scape/projects/ha/scape/projects/ha/Project8',
+  'scape/projects/ha/scape/projects/ha/Project9',
+  'scape/projects/ha/scape/projects/ha/Project10',
+  'scape/projects/ha/scape/projects/ha/Project11',
+  'scape/projects/ha/scape/projects/ha/Project12'
+];
 
 const HaProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -35,19 +36,27 @@ const HaProjectFirst = () => {
 
     const showPrev = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setActiveIdx((prev) => (prev === 0 ? haProjectImages.length - 1 : prev - 1));
     };
 
     const showNext = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setActiveIdx((prev) => (prev === haProjectImages.length - 1 ? 0 : prev + 1));
+    };
+
+    // Build optimized image URLs
+    const getOptimizedImageUrl = (publicId) => {
+        return buildOptimizedUrl(publicId, {
+            quality: '85',
+            format: 'auto'
+        });
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.bnProjectContainer}>
                 <div className={styles.grid}>
-                    {images.map((img, i) => (
+                    {haProjectImages.map((publicId, i) => (
                         <div
                             key={i}
                             className={styles.card}
@@ -57,9 +66,10 @@ const HaProjectFirst = () => {
                             aria-label={`View Project Image ${i + 1}`}
                         >
                             <img
-                                src={img}
+                                src={getOptimizedImageUrl(publicId)}
                                 alt={`Project ${i + 1}`}
                                 className={styles.cardImage}
+                                loading="lazy"
                             />
                             <div className={styles.cardOverlay}>
                                 <span>View</span>
@@ -87,7 +97,7 @@ const HaProjectFirst = () => {
                             </button>
                             <div className={styles.modalImageContainer}>
                                 <img
-                                    src={images[activeIdx]}
+                                    src={getOptimizedImageUrl(haProjectImages[activeIdx])}
                                     alt={`Project ${activeIdx + 1}`}
                                     className={styles.modalImage}
                                 />

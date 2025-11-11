@@ -4,19 +4,30 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Hardscape.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
-import hardscapeLogo from '../../assets/services/hardscape.png';
+import { buildOptimizedVideoUrl, VIDEO_ASSETS } from '../../utils/cloudinary';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 import HardscapeFirst from './HardscapeFirst';
 
 const Hardscape = () => {
-
   const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
+      videoRef.current.playbackRate = 0.6;
     }
   }, []);
+
+  // Build optimized video URL
+  const optimizedVideoUrl = buildOptimizedVideoUrl(VIDEO_ASSETS.background2, {
+    quality: '70',
+    format: 'auto'
+  });
+
+  // Build optimized logo URL
+  const hardscapeLogoUrl = buildOptimizedUrl(IMAGE_ASSETS.hardscapeService, {
+    quality: '85',
+    format: 'auto'
+  });
 
   return (
     <div className={styles.homeContainer}>
@@ -27,14 +38,14 @@ const Hardscape = () => {
       {/* Fullscreen video background */}
       <div className={styles.videoBackground}>
         <video
-        ref={videoRef}
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           className={styles.backgroundVideo}
         >
-          <source src={backgroundVideo} type="video/mp4" />
+          <source src={optimizedVideoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -53,9 +64,10 @@ const Hardscape = () => {
           </div>
 
           <img
-            src={hardscapeLogo}
+            src={hardscapeLogoUrl}
             alt="Hardscape"
             className={styles.taglineImage}
+            loading="lazy"
           />
         </div>
       </div>

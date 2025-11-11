@@ -1,16 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ServicesFirst.module.css';
-
-// Import service-specific images
-import LandscapeImg from '../../assets/landscape/landscape1.jpg';
-import HardscapeImg from '../../assets/hardscape/hardscape1.jpg';
-import SoftscapeImg from '../../assets/softscape/softscape1.jpg';
-import PoolscapeImg from '../../assets/poolscape/poolscape1.jpg';
-import NightscapeImg from '../../assets/nightscape/nightscape1.jpg';
-import WaterscapeImg from '../../assets/waterscape/waterscape2.jpg';
-import FirescapeImg from '../../assets/firescape/firescape2.jpg';
-import CourtscapeImg from '../../assets/courtscape/courtscape2.jpg';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 const SERVICE_COLORS = {
   landscape: '#8B5B29',
@@ -70,54 +61,74 @@ const ServicesFirst = () => {
   const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
 
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
+
+  // Service images from Cloudinary
+  const serviceImages = {
+    landscape: IMAGE_ASSETS.landscape1,
+    hardscape: IMAGE_ASSETS.hardscape1,
+    softscape: IMAGE_ASSETS.softscape1,
+    poolscape: IMAGE_ASSETS.poolscape1,
+    nightscape: IMAGE_ASSETS.nightscape1,
+    waterscape: IMAGE_ASSETS.waterscape2,
+    firescape: IMAGE_ASSETS.firescape2,
+    courtscape: IMAGE_ASSETS.courtscape2
+  };
+
   const services = [
     {
       title: 'landscape',
       description:
         "Landscape design is the art and science of creating harmonious outdoor spaces tailored to your unique vision and lifestyle. Our collaborative process blends hardscape and softscape elements—patios, walkways, trees, and gardens—to deliver thoughtfully designed landscapes that enhance curb appeal and provide a perfect retreat for relaxation or recreation.",
-      image: LandscapeImg,
+      image: serviceImages.landscape,
     },
     {
       title: 'hardscape',
       description:
         "Hardscape enhances your outdoor spaces with expertly designed, durable features—patios, walkways, retaining walls, and outdoor kitchens—that provide structure and usability. Crafted from premium materials, our hardscape solutions are tailored to complement your natural surroundings and elevate your outdoor living experience.",
-      image: HardscapeImg,
+      image: serviceImages.hardscape,
     },
     {
       title: 'softscape',
       description:
-        "Softscape brings your landscape to life with carefully selected plants, trees, shrubs, and flowers that add beauty, color, and year-round interest. We design thriving, picturesque environments that support biodiversity and reflect your preferences and Utah’s climate.",
-      image: SoftscapeImg,
+        "Softscape brings your landscape to life with carefully selected plants, trees, shrubs, and flowers that add beauty, color, and year-round interest. We design thriving, picturesque environments that support biodiversity and reflect your preferences and Utah's climate.",
+      image: serviceImages.softscape,
     },
     {
       title: 'poolscape',
       description:
-        "Poolscape specializes in creating your dream backyard oasis through comprehensive pool construction and landscaping. From custom pool design and installation to elegant patios and lush plantings, we handle every detail for a seamless, stunning outdoor retreat you’ll love year-round.",
-      image: PoolscapeImg,
+        "Poolscape specializes in creating your dream backyard oasis through comprehensive pool construction and landscaping. From custom pool design and installation to elegant patios and lush plantings, we handle every detail for a seamless, stunning outdoor retreat you'll love year-round.",
+      image: serviceImages.poolscape,
     },
     {
       title: 'nightscape',
       description:
         "Nightscape elevates your outdoor experience with ambient lighting and outdoor A/V systems. We design and install pathway lights, accent lighting, and weatherproof speakers, creating a warm, inviting atmosphere perfect for gatherings or quiet evenings under the stars.",
-      image: NightscapeImg,
+      image: serviceImages.nightscape,
     },
     {
       title: 'waterscape',
       description:
         "Waterscape brings tranquility to your space with captivating water features—fountains, waterfalls, ponds, and streams—designed to harmonize with your landscape. Each water element is thoughtfully installed for stunning, low-maintenance beauty with or without a pool.",
-      image: WaterscapeImg,
+      image: serviceImages.waterscape,
     },
     {
       title: 'firescape',
       description:
         "Firescape creates inviting outdoor areas with custom fire features—fire pits, fireplaces, and modern fire tables—perfect for gathering with family and friends on cool evenings. Our expert designs add warmth, charm, and an unforgettable ambiance to your yard.",
-      image: FirescapeImg,
+      image: serviceImages.firescape,
     },
     {
       title: 'courtscape',
       description:
         "Courtscape specializes in dynamic outdoor spaces with custom sport court installations for basketball, tennis, and pickleball. Our courts are built for durability and performance, complemented by professional lighting and seamless integration into your landscape for years of recreation.",
-      image: CourtscapeImg,
+      image: serviceImages.courtscape,
     }
   ];
 
@@ -149,7 +160,9 @@ const ServicesFirst = () => {
               <div className={styles.serviceCard}>
                 <div
                   className={styles.serviceImage}
-                  style={{ backgroundImage: `url(${service.image})` }}
+                  style={{ 
+                    backgroundImage: `url(${getOptimizedImageUrl(service.image)})` 
+                  }}
                 >
                   <div
                     className={styles.serviceTitle}
@@ -183,14 +196,14 @@ const ServicesFirst = () => {
               <strong>Holistic Approach:</strong> From concept to installation, we handle every detail for seamless results.
             </li>
             <li>
-              <strong>Local Expertise:</strong> Tailored solutions for Utah’s unique climate and terrain.
+              <strong>Local Expertise:</strong> Tailored solutions for Utah's unique climate and terrain.
             </li>
             <li>
               <strong>Art Meets Function:</strong> Outdoor spaces designed for inspiration, connection, and lasting beauty.
             </li>
           </ul>
           <div className={styles.callToAction}>
-            Let’s reimagine your outdoor potential.
+            Let's reimagine your outdoor potential.
           </div>
         </div>
       </div>

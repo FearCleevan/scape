@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Team.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
+import { buildOptimizedVideoUrl, VIDEO_ASSETS } from '../../utils/cloudinary';
 import TeamFirst from './TeamFirst';
 import About from './About';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,12 @@ const Team = () => {
       videoRef.current.playbackRate = 0.6;
     }
   }, []);
+
+  // Build optimized video URL
+  const optimizedVideoUrl = buildOptimizedVideoUrl(VIDEO_ASSETS.background2, {
+    quality: '70',
+    format: 'auto'
+  });
 
   return (
     <div className={styles.homeContainer}>
@@ -37,7 +43,7 @@ const Team = () => {
           playsInline 
           className={styles.backgroundVideo}
         >
-          <source src={backgroundVideo} type="video/mp4" />
+          <source src={optimizedVideoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

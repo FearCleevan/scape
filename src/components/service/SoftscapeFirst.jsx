@@ -1,25 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SoftscapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import gallery images
-import Asset1 from "../../assets/softscape/softscape1.jpg";
-import Asset2 from "../../assets/softscape/softscape2.jpg";
-import Asset3 from "../../assets/softscape/softscape3.jpg";
-import Asset4 from "../../assets/softscape/softscape4.jpg";
-import Asset5 from "../../assets/softscape/softscape5.jpg";
-import Asset6 from "../../assets/softscape/softscape6.jpg";
-import Asset7 from "../../assets/softscape/softscape7.jpg";
-import Asset8 from "../../assets/softscape/softscape8.jpg";
-import Asset9 from "../../assets/softscape/softscape9.jpg";
-import Asset10 from "../../assets/softscape/softscape10.jpg";
-import Asset11 from "../../assets/softscape/softscape11.jpg";
-import Asset12 from "../../assets/softscape/softscape12.jpg";
-
-
-const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12
+// Image public IDs for Softscape with correct duplicate folder structure
+const softscapeImages = [
+  'scape/softscape/scape/softscape/softscape1',
+  'scape/softscape/scape/softscape/softscape2',
+  'scape/softscape/scape/softscape/softscape3',
+  'scape/softscape/scape/softscape/softscape4',
+  'scape/softscape/scape/softscape/softscape5',
+  'scape/softscape/scape/softscape/softscape6',
+  'scape/softscape/scape/softscape/softscape7',
+  'scape/softscape/scape/softscape/softscape8',
+  'scape/softscape/scape/softscape/softscape9',
+  'scape/softscape/scape/softscape/softscape10',
+  'scape/softscape/scape/softscape/softscape11',
+  'scape/softscape/scape/softscape/softscape12'
 ];
 
 const softscapeFeatures = [
@@ -55,8 +52,14 @@ const softscapeFeatures = [
 
 const SoftscapeFirst = () => {
   const navigate = useNavigate();
-  // Use all images in their original order
-  const showcaseImages = allAssets;
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.softscapeContainer}>
@@ -66,14 +69,13 @@ const SoftscapeFirst = () => {
           Softscape brings your outdoor spaces to life with beautifully designed elements, which encompass the living, natural features of your landscape. Softscaping includes plants, trees, shrubs, flowers, and grass, carefully selected to enhance beauty, provide shade, and promote biodiversity. These organic components add color, texture, and seasonal interest while supporting a healthy ecosystem. Whether you desire a vibrant garden, a serene lawn, or a sustainable planting plan, our softscape expertise ensures a thriving, picturesque environment tailored to your preferences and local climate.
         </p>
       </div>
-      
       <div className={styles.servicesSection}>
         <h2 className={styles.servicesTitle}>Signature Softscape Features</h2>
         <div className={styles.servicesList}>
-          {softscapeFeatures.map((feature, idx) => (
+          {softscapeFeatures.map((service, idx) => (
             <div className={styles.serviceCard} key={idx}>
-              <h3 className={styles.serviceCardTitle}>{feature.title}</h3>
-              <p className={styles.serviceCardDesc}>{feature.desc}</p>
+              <h3 className={styles.serviceCardTitle}>{service.title}</h3>
+              <p className={styles.serviceCardDesc}>{service.desc}</p>
             </div>
           ))}
         </div>
@@ -81,16 +83,16 @@ const SoftscapeFirst = () => {
           Get Started
         </button>
       </div>
-      
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Softscape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {softscapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Softscape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

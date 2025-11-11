@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import styles from './GaProjectFirst.module.css';
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import images
-import Img1 from '../../assets/GaProject/Project1.jpg';
-import Img2 from '../../assets/GaProject/Project2.jpg';
-import Img3 from '../../assets/GaProject/Project3.jpg';
-import Img4 from '../../assets/GaProject/Project4.jpg';
-import Img5 from '../../assets/GaProject/Project5.jpg';
-import Img6 from '../../assets/GaProject/Project6.jpg';
-import Img7 from '../../assets/GaProject/Project7.jpg';
-import Img8 from '../../assets/GaProject/Project8.jpg';
-import Img9 from '../../assets/GaProject/Project9.jpg';
-import Img10 from '../../assets/GaProject/Project10.jpg';
-import Img11 from '../../assets/GaProject/Project11.jpg';
-import Img12 from '../../assets/GaProject/Project12.jpg';
-
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12];
+// Image public IDs for GaProject with correct duplicate folder structure
+const gaProjectImages = [
+  'scape/projects/ga/scape/projects/ga/Project1',
+  'scape/projects/ga/scape/projects/ga/Project2',
+  'scape/projects/ga/scape/projects/ga/Project3',
+  'scape/projects/ga/scape/projects/ga/Project4',
+  'scape/projects/ga/scape/projects/ga/Project5',
+  'scape/projects/ga/scape/projects/ga/Project6',
+  'scape/projects/ga/scape/projects/ga/Project7',
+  'scape/projects/ga/scape/projects/ga/Project8',
+  'scape/projects/ga/scape/projects/ga/Project9',
+  'scape/projects/ga/scape/projects/ga/Project10',
+  'scape/projects/ga/scape/projects/ga/Project11',
+  'scape/projects/ga/scape/projects/ga/Project12'
+];
 
 const GaProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -35,19 +36,27 @@ const GaProjectFirst = () => {
 
     const showPrev = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setActiveIdx((prev) => (prev === 0 ? gaProjectImages.length - 1 : prev - 1));
     };
 
     const showNext = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setActiveIdx((prev) => (prev === gaProjectImages.length - 1 ? 0 : prev + 1));
+    };
+
+    // Build optimized image URLs
+    const getOptimizedImageUrl = (publicId) => {
+        return buildOptimizedUrl(publicId, {
+            quality: '85',
+            format: 'auto'
+        });
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.bnProjectContainer}>
                 <div className={styles.grid}>
-                    {images.map((img, i) => (
+                    {gaProjectImages.map((publicId, i) => (
                         <div
                             key={i}
                             className={styles.card}
@@ -57,9 +66,10 @@ const GaProjectFirst = () => {
                             aria-label={`View Project Image ${i + 1}`}
                         >
                             <img
-                                src={img}
+                                src={getOptimizedImageUrl(publicId)}
                                 alt={`Project ${i + 1}`}
                                 className={styles.cardImage}
+                                loading="lazy"
                             />
                             <div className={styles.cardOverlay}>
                                 <span>View</span>
@@ -87,7 +97,7 @@ const GaProjectFirst = () => {
                             </button>
                             <div className={styles.modalImageContainer}>
                                 <img
-                                    src={images[activeIdx]}
+                                    src={getOptimizedImageUrl(gaProjectImages[activeIdx])}
                                     alt={`Project ${activeIdx + 1}`}
                                     className={styles.modalImage}
                                 />

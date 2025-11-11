@@ -1,20 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CourtscapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import gallery images in order
-import Asset2 from "../../assets/courtscape/courtscape2.jpg";
-import Asset3 from "../../assets/courtscape/courtscape3.jpg";
-import Asset4 from "../../assets/courtscape/courtscape4.jpg";
-import Asset5 from "../../assets/courtscape/courtscape5.jpg";
-import Asset7 from "../../assets/courtscape/courtscape7.jpg";
-import Asset8 from "../../assets/courtscape/courtscape8.jpg";
-import Asset10 from "../../assets/courtscape/courtscape10.jpg";
-
-// Ordered image array
-const allAssets = [
-  Asset2, Asset3, Asset4, Asset5,
-  Asset7, Asset8, Asset10
+// Image public IDs for Courtscape with correct duplicate folder structure
+const courtscapeImages = [
+  'scape/courtscape/scape/courtscape/courtscape2',
+  'scape/courtscape/scape/courtscape/courtscape3',
+  'scape/courtscape/scape/courtscape/courtscape4',
+  'scape/courtscape/scape/courtscape/courtscape5',
+  'scape/courtscape/scape/courtscape/courtscape7',
+  'scape/courtscape/scape/courtscape/courtscape8',
+  'scape/courtscape/scape/courtscape/courtscape10'
 ];
 
 const courtscapeFeatures = [
@@ -50,8 +47,14 @@ const courtscapeFeatures = [
 
 const CourtscapeFirst = () => {
   const navigate = useNavigate();
-  // Use all images in their original order
-  const showcaseImages = allAssets;
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.courtscapeContainer}>
@@ -80,12 +83,13 @@ const CourtscapeFirst = () => {
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Courtscape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {courtscapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Courtscape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

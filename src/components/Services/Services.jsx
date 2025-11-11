@@ -3,19 +3,24 @@ import { Helmet } from 'react-helmet';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Services.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
+import { buildOptimizedVideoUrl, VIDEO_ASSETS } from '../../utils/cloudinary';
 import ServicesFirst from './ServicesFirst';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
-
   const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
+      videoRef.current.playbackRate = 0.6;
     }
   }, []);
+
+  // Build optimized video URL
+  const optimizedVideoUrl = buildOptimizedVideoUrl(VIDEO_ASSETS.background2, {
+    quality: '70',
+    format: 'auto'
+  });
 
   return (
     <div className={styles.homeContainer}>
@@ -33,7 +38,7 @@ const Services = () => {
           playsInline
           className={styles.backgroundVideo}
         >
-          <source src={backgroundVideo} type="video/mp4" />
+          <source src={optimizedVideoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

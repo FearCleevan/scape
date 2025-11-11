@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import styles from './KcProjectFirst.module.css';
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import images
-import Img1 from '../../assets/KentChristensenProject/Project1.jpg';
-import Img2 from '../../assets/KentChristensenProject/Project2.jpg';
-import Img3 from '../../assets/KentChristensenProject/Project3.jpg';
-import Img4 from '../../assets/KentChristensenProject/Project4.jpg';
-import Img5 from '../../assets/KentChristensenProject/Project5.jpg';
-import Img6 from '../../assets/KentChristensenProject/Project6.jpg';
-import Img7 from '../../assets/KentChristensenProject/Project7.jpg';
-import Img8 from '../../assets/KentChristensenProject/Project8.jpg';
-import Img9 from '../../assets/KentChristensenProject/Project9.jpg';
-import Img10 from '../../assets/KentChristensenProject/Project10.jpg';
-import Img11 from '../../assets/KentChristensenProject/Project11.jpg';
-import Img12 from '../../assets/KentChristensenProject/Project12.jpg';
-
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12];
+// Image public IDs for KcProject with correct duplicate folder structure
+const kcProjectImages = [
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project1',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project2',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project3',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project4',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project5',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project6',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project7',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project8',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project9',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project10',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project11',
+  'scape/projects/kent-christensen/scape/projects/kent-christensen/Project12'
+];
 
 const KcProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -35,19 +36,27 @@ const KcProjectFirst = () => {
 
     const showPrev = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setActiveIdx((prev) => (prev === 0 ? kcProjectImages.length - 1 : prev - 1));
     };
 
     const showNext = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setActiveIdx((prev) => (prev === kcProjectImages.length - 1 ? 0 : prev + 1));
+    };
+
+    // Build optimized image URLs
+    const getOptimizedImageUrl = (publicId) => {
+        return buildOptimizedUrl(publicId, {
+            quality: '85',
+            format: 'auto'
+        });
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.bnProjectContainer}>
                 <div className={styles.grid}>
-                    {images.map((img, i) => (
+                    {kcProjectImages.map((publicId, i) => (
                         <div
                             key={i}
                             className={styles.card}
@@ -57,9 +66,10 @@ const KcProjectFirst = () => {
                             aria-label={`View Project Image ${i + 1}`}
                         >
                             <img
-                                src={img}
+                                src={getOptimizedImageUrl(publicId)}
                                 alt={`Project ${i + 1}`}
                                 className={styles.cardImage}
+                                loading="lazy"
                             />
                             <div className={styles.cardOverlay}>
                                 <span>View</span>
@@ -87,7 +97,7 @@ const KcProjectFirst = () => {
                             </button>
                             <div className={styles.modalImageContainer}>
                                 <img
-                                    src={images[activeIdx]}
+                                    src={getOptimizedImageUrl(kcProjectImages[activeIdx])}
                                     alt={`Project ${activeIdx + 1}`}
                                     className={styles.modalImage}
                                 />

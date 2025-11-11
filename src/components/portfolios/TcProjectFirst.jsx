@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import styles from './TcProjectFirst.module.css';
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import images
-import Img1 from '../../assets/TcProject/Project1.jpg';
-import Img2 from '../../assets/TcProject/Project2.jpg';
-import Img3 from '../../assets/TcProject/Project3.jpg';
-import Img4 from '../../assets/TcProject/Project4.jpg';
-import Img5 from '../../assets/TcProject/Project5.jpg';
-import Img6 from '../../assets/TcProject/Project6.jpg';
-import Img7 from '../../assets/TcProject/Project7.jpg';
-import Img8 from '../../assets/TcProject/Project8.jpg';
-import Img9 from '../../assets/TcProject/Project9.jpg';
-import Img10 from '../../assets/TcProject/Project10.jpg';
-import Img11 from '../../assets/TcProject/Project11.jpg';
-import Img12 from '../../assets/TcProject/Project12.jpg';
-
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10, Img11, Img12];
+// Image public IDs for TcProject with correct duplicate folder structure
+const tcProjectImages = [
+  'scape/projects/tc/scape/projects/tc/Project1',
+  'scape/projects/tc/scape/projects/tc/Project2',
+  'scape/projects/tc/scape/projects/tc/Project3',
+  'scape/projects/tc/scape/projects/tc/Project4',
+  'scape/projects/tc/scape/projects/tc/Project5',
+  'scape/projects/tc/scape/projects/tc/Project6',
+  'scape/projects/tc/scape/projects/tc/Project7',
+  'scape/projects/tc/scape/projects/tc/Project8',
+  'scape/projects/tc/scape/projects/tc/Project9',
+  'scape/projects/tc/scape/projects/tc/Project10',
+  'scape/projects/tc/scape/projects/tc/Project11',
+  'scape/projects/tc/scape/projects/tc/Project12'
+];
 
 const TcProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -35,19 +36,27 @@ const TcProjectFirst = () => {
 
     const showPrev = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setActiveIdx((prev) => (prev === 0 ? tcProjectImages.length - 1 : prev - 1));
     };
 
     const showNext = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setActiveIdx((prev) => (prev === tcProjectImages.length - 1 ? 0 : prev + 1));
+    };
+
+    // Build optimized image URLs
+    const getOptimizedImageUrl = (publicId) => {
+        return buildOptimizedUrl(publicId, {
+            quality: '85',
+            format: 'auto'
+        });
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.bnProjectContainer}>
                 <div className={styles.grid}>
-                    {images.map((img, i) => (
+                    {tcProjectImages.map((publicId, i) => (
                         <div
                             key={i}
                             className={styles.card}
@@ -57,9 +66,10 @@ const TcProjectFirst = () => {
                             aria-label={`View Project Image ${i + 1}`}
                         >
                             <img
-                                src={img}
+                                src={getOptimizedImageUrl(publicId)}
                                 alt={`Project ${i + 1}`}
                                 className={styles.cardImage}
+                                loading="lazy"
                             />
                             <div className={styles.cardOverlay}>
                                 <span>View</span>
@@ -87,7 +97,7 @@ const TcProjectFirst = () => {
                             </button>
                             <div className={styles.modalImageContainer}>
                                 <img
-                                    src={images[activeIdx]}
+                                    src={getOptimizedImageUrl(tcProjectImages[activeIdx])}
                                     alt={`Project ${activeIdx + 1}`}
                                     className={styles.modalImage}
                                 />

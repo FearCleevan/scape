@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './ContainerFourth.module.css';
-import Asset38 from '../../assets/gallery/Asset38.jpg';
-import Asset35 from '../../assets/gallery/Asset35.jpg';
-import Asset18 from '../../assets/gallery/Asset18.jpg';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 const ContainerFourth = () => {
   const containerRef = useRef(null);
@@ -28,13 +26,28 @@ const ContainerFourth = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasAnimated]);
 
+  // Build optimized URLs
+  const backgroundImageUrl = buildOptimizedUrl(IMAGE_ASSETS.gallery38, {
+    quality: '80',
+    format: 'auto'
+  });
+
+  const image35Url = buildOptimizedUrl(IMAGE_ASSETS.gallery35, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const image18Url = buildOptimizedUrl(IMAGE_ASSETS.gallery18, {
+    quality: '85',
+    format: 'auto'
+  });
+
   return (
     <div
       ref={containerRef}
       className={styles.container}
-      style={{ backgroundImage: `url(${Asset38})` }}
+      style={{ backgroundImage: `url(${backgroundImageUrl})` }}
     >
-
       <div className={styles.contentWrapper}>
         {/* Left Section - Text Content */}
         <div className={`${styles.leftSection} ${isVisible ? styles.fadeIn : ''}`}>
@@ -48,16 +61,18 @@ const ContainerFourth = () => {
         <div className={styles.rightSection}>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideDown : ''}`}>
             <img
-              src={Asset35}
+              src={image35Url}
               alt="3D pool rendering"
               className={styles.image}
+              loading="lazy"
             />
           </div>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideUp : ''}`}>
             <img
-              src={Asset18}
+              src={image18Url}
               alt="Pool design visualization"
               className={styles.image}
+              loading="lazy"
             />
           </div>
         </div>

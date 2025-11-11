@@ -1,26 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./NightscapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import gallery images in order
-import Asset1 from "../../assets/nightscape/nightscape1.jpg";
-import Asset2 from "../../assets/nightscape/nightscape2.jpg";
-import Asset3 from "../../assets/nightscape/nightscape3.jpg";
-import Asset4 from "../../assets/nightscape/nightscape4.jpg";
-import Asset5 from "../../assets/nightscape/nightscape5.jpg";
-import Asset6 from "../../assets/nightscape/nightscape6.jpg";
-import Asset9 from "../../assets/nightscape/nightscape9.jpg";
-import Asset10 from "../../assets/nightscape/nightscape10.jpg";
-import Asset11 from "../../assets/nightscape/nightscape11.jpg";
-import Asset12 from "../../assets/nightscape/nightscape12.jpg";
-
-// Ordered image array
-const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset9, Asset10,
-  Asset11, Asset12
+// Image public IDs for Nightscape with correct duplicate folder structure
+const nightscapeImages = [
+  'scape/nightscape/scape/nightscape/nightscape1',
+  'scape/nightscape/scape/nightscape/nightscape2',
+  'scape/nightscape/scape/nightscape/nightscape3',
+  'scape/nightscape/scape/nightscape/nightscape4',
+  'scape/nightscape/scape/nightscape/nightscape5',
+  'scape/nightscape/scape/nightscape/nightscape6',
+  'scape/nightscape/scape/nightscape/nightscape9',
+  'scape/nightscape/scape/nightscape/nightscape10',
+  'scape/nightscape/scape/nightscape/nightscape11',
+  'scape/nightscape/scape/nightscape/nightscape12'
 ];
-
 
 const nightscapeFeatures = [
   {
@@ -55,7 +50,14 @@ const nightscapeFeatures = [
 
 const NightscapeFirst = () => {
   const navigate = useNavigate();
-  const showcaseImages = allAssets;
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.nightscapeContainer}>
@@ -82,12 +84,13 @@ const NightscapeFirst = () => {
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Nightscape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {nightscapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Nightscape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

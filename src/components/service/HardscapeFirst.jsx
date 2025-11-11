@@ -1,27 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./HardscapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import gallery images in order
-import Asset1 from "../../assets/hardscape/hardscape1.jpg";
-import Asset2 from "../../assets/hardscape/hardscape2.jpg";
-import Asset3 from "../../assets/hardscape/hardscape3.jpg";
-import Asset4 from "../../assets/hardscape/hardscape4.jpg";
-import Asset5 from "../../assets/hardscape/hardscape5.jpg";
-import Asset6 from "../../assets/hardscape/hardscape6.jpg";
-import Asset7 from "../../assets/hardscape/hardscape7.jpg";
-import Asset8 from "../../assets/hardscape/hardscape8.jpg";
-import Asset9 from "../../assets/hardscape/hardscape9.jpg";
-import Asset10 from "../../assets/hardscape/hardscape10.jpg";
-import Asset11 from "../../assets/hardscape/hardscape11.jpg";
-import Asset12 from "../../assets/hardscape/hardscape12.jpg";
-
-
-// Ordered image array
-const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12
+// Image public IDs for Hardscape with correct duplicate folder structure
+const hardscapeImages = [
+  'scape/hardscape/scape/hardscape/hardscape1',
+  'scape/hardscape/scape/hardscape/hardscape2',
+  'scape/hardscape/scape/hardscape/hardscape3',
+  'scape/hardscape/scape/hardscape/hardscape4',
+  'scape/hardscape/scape/hardscape/hardscape5',
+  'scape/hardscape/scape/hardscape/hardscape6',
+  'scape/hardscape/scape/hardscape/hardscape7',
+  'scape/hardscape/scape/hardscape/hardscape8',
+  'scape/hardscape/scape/hardscape/hardscape9',
+  'scape/hardscape/scape/hardscape/hardscape10',
+  'scape/hardscape/scape/hardscape/hardscape11',
+  'scape/hardscape/scape/hardscape/hardscape12'
 ];
 
 const hardscapeFeatures = [
@@ -57,15 +52,21 @@ const hardscapeFeatures = [
 
 const HardscapeFirst = () => {
   const navigate = useNavigate();
-  // Use all images in their original order
-  const showcaseImages = allAssets;
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.hardscapeContainer}>
       <div className={styles.introSection}>
         <h1 className={styles.introTitle}>Hardscape</h1>
         <p className={styles.introText}>
-          Hardscape enhances your outdoor spaces with expertly designed hardscape features, which refer to the non-living elements that provide structure and functionality to your landscape. Hardscaping includes durable components like patios, walkways, retaining walls, driveways, and outdoor kitchens, crafted from materials such as stone, brick, or concrete. These elements not only add aesthetic appeal but also improve usability, drainage, and longevity of your yard. Whether you’re looking to create a cozy seating area or a practical pathway, our hardscape solutions are tailored to complement your natural surroundings and elevate your outdoor living experience.
+          Hardscape enhances your outdoor spaces with expertly designed hardscape features, which refer to the non-living elements that provide structure and functionality to your landscape. Hardscaping includes durable components like patios, walkways, retaining walls, driveways, and outdoor kitchens, crafted from materials such as stone, brick, or concrete. These elements not only add aesthetic appeal but also improve usability, drainage, and longevity of your yard. Whether you're looking to create a cozy seating area or a practical pathway, our hardscape solutions are tailored to complement your natural surroundings and elevate your outdoor living experience.
         </p>
       </div>
 
@@ -87,12 +88,13 @@ const HardscapeFirst = () => {
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Hardscape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {hardscapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Hardscape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

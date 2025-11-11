@@ -7,9 +7,14 @@ import {
   FaFacebook,
   FaInstagram,
 } from 'react-icons/fa';
-import ScapeLogo from '../../assets/images/ScapeLogoW.png';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 const Footer = () => {
+  // Build optimized logo URL
+  const logoUrl = buildOptimizedUrl(IMAGE_ASSETS.scapeLogoW, {
+    quality: '85',
+    format: 'auto'
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,7 +34,7 @@ const Footer = () => {
         <div className={styles.footerSection}>
           <div className={styles.logoContainer}>
             <Link to="/">
-              <img src={ScapeLogo} alt="SCAPE Logo" className={styles.logo} />
+              <img src={logoUrl} alt="SCAPE Logo" className={styles.logo} />
             </Link>
           </div>
           <p className={styles.footerText}>

@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ContainerSecond.module.css';
-import Asset10 from '../../assets/gallery/Asset10.jpg';
-import Asset11 from '../../assets/gallery/Asset11.jpg';
-import Asset12 from '../../assets/gallery/Asset12.jpg';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 const ContainerSecond = () => {
   const containerRef = useRef(null);
@@ -38,11 +36,27 @@ const ContainerSecond = () => {
     navigate('/portfolio');
   };
 
+  // Build optimized URLs
+  const backgroundImageUrl = buildOptimizedUrl(IMAGE_ASSETS.gallery10, {
+    quality: '80',
+    format: 'auto'
+  });
+
+  const image11Url = buildOptimizedUrl(IMAGE_ASSETS.gallery11, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const image12Url = buildOptimizedUrl(IMAGE_ASSETS.gallery12, {
+    quality: '85',
+    format: 'auto'
+  });
+
   return (
     <div
       ref={containerRef}
       className={styles.container}
-      style={{ backgroundImage: `url(${Asset10})` }}
+      style={{ backgroundImage: `url(${backgroundImageUrl})` }}
     >
       <div className={styles.contentWrapper}>
         {/* Left Section - Text Content */}
@@ -73,16 +87,18 @@ const ContainerSecond = () => {
         <div className={styles.rightSection}>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideDown : ''}`}>
             <img
-              src={Asset11}
+              src={image11Url}
               alt="Luxury landscape design"
               className={styles.image}
+              loading="lazy"
             />
           </div>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideUp : ''}`}>
             <img
-              src={Asset12}
+              src={image12Url}
               alt="Modern pool design"
               className={styles.image}
+              loading="lazy"
             />
           </div>
         </div>

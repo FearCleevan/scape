@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import styles from './PageNotFound.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
+import { buildOptimizedVideoUrl, VIDEO_ASSETS } from '../../utils/cloudinary';
 
 const PageNotFound = () => {
   const videoRef = useRef(null);
@@ -12,6 +12,12 @@ const PageNotFound = () => {
       videoRef.current.playbackRate = 0.6;
     }
   }, []);
+
+  // Build optimized video URL
+  const optimizedVideoUrl = buildOptimizedVideoUrl(VIDEO_ASSETS.background2, {
+    quality: '70',
+    format: 'auto'
+  });
 
   return (
     <div className={styles.homeContainer}>
@@ -25,7 +31,7 @@ const PageNotFound = () => {
           playsInline
           className={styles.backgroundVideo}
         >
-          <source src={backgroundVideo} type="video/mp4" />
+          <source src={optimizedVideoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -37,7 +43,7 @@ const PageNotFound = () => {
           <h1>404</h1>
           <h2 className={styles.title}>Page Not Found</h2>
           <p className={styles.message}>
-            Oops! The page you’re looking for doesn’t exist or has been moved.
+            Oops! The page you're looking for doesn't exist or has been moved.
           </p>
           <a href="/" className={styles.homeButton}>
             Back to Home

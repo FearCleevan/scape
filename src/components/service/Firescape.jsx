@@ -4,19 +4,30 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Firescape.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
-import firescapeLogo from '../../assets/services/firescape.png';
+import { buildOptimizedVideoUrl, VIDEO_ASSETS } from '../../utils/cloudinary';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 import FirescapeFirst from './FirescapeFirst';
 
 const Firescape = () => {
-
     const videoRef = useRef(null);
 
     useEffect(() => {
         if (videoRef.current) {
-            videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
+            videoRef.current.playbackRate = 0.6;
         }
     }, []);
+
+    // Build optimized video URL
+    const optimizedVideoUrl = buildOptimizedVideoUrl(VIDEO_ASSETS.background2, {
+        quality: '70',
+        format: 'auto'
+    });
+
+    // Build optimized logo URL
+    const firescapeLogoUrl = buildOptimizedUrl(IMAGE_ASSETS.firescapeService, {
+        quality: '85',
+        format: 'auto'
+    });
 
     return (
         <div className={styles.homeContainer}>
@@ -34,7 +45,7 @@ const Firescape = () => {
                     playsInline
                     className={styles.backgroundVideo}
                 >
-                    <source src={backgroundVideo} type="video/mp4" />
+                    <source src={optimizedVideoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -43,7 +54,6 @@ const Firescape = () => {
             <Header />
             <div className={styles.mainContent}>
                 <div className={styles.content}>
-
                     {/* Breadcrumb Navigation */}
                     <div className={styles.breadcrumb}>
                         <Link to="/" className={styles.breadcrumbLink}>home</Link>
@@ -53,9 +63,10 @@ const Firescape = () => {
                         <span className={styles.activeBreadcrumb}>firescape</span>
                     </div>
                     <img
-                        src={firescapeLogo}
+                        src={firescapeLogoUrl}
                         alt="Firescape"
                         className={styles.taglineImage}
+                        loading="lazy"
                     />
                 </div>
             </div>

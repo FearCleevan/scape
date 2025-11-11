@@ -1,28 +1,24 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PoolscapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import gallery images in order
-import Asset1 from "../../assets/poolscape/poolscape1.jpg";
-import Asset2 from "../../assets/poolscape/poolscape2.jpg";
-import Asset3 from "../../assets/poolscape/poolscape3.jpg";
-import Asset4 from "../../assets/poolscape/poolscape4.jpg";
-import Asset5 from "../../assets/poolscape/poolscape5.jpg";
-import Asset6 from "../../assets/poolscape/poolscape6.jpg";
-import Asset7 from "../../assets/poolscape/poolscape7.jpg";
-import Asset8 from "../../assets/poolscape/poolscape8.jpg";
-import Asset9 from "../../assets/poolscape/poolscape9.jpg";
-import Asset10 from "../../assets/poolscape/poolscape10.jpg";
-import Asset11 from "../../assets/poolscape/poolscape11.jpg";
-import Asset12 from "../../assets/poolscape/poolscape12.jpg";
-import Asset13 from "../../assets/poolscape/poolscape13.jpg";
-import Asset14 from "../../assets/poolscape/poolscape14.jpg";
-
-// Ordered image array
-const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12, Asset13, Asset14
+// Image public IDs for Poolscape with correct duplicate folder structure
+const poolscapeImages = [
+  'scape/poolscape/scape/poolscape/poolscape1',
+  'scape/poolscape/scape/poolscape/poolscape2',
+  'scape/poolscape/scape/poolscape/poolscape3',
+  'scape/poolscape/scape/poolscape/poolscape4',
+  'scape/poolscape/scape/poolscape/poolscape5',
+  'scape/poolscape/scape/poolscape/poolscape6',
+  'scape/poolscape/scape/poolscape/poolscape7',
+  'scape/poolscape/scape/poolscape/poolscape8',
+  'scape/poolscape/scape/poolscape/poolscape9',
+  'scape/poolscape/scape/poolscape/poolscape10',
+  'scape/poolscape/scape/poolscape/poolscape11',
+  'scape/poolscape/scape/poolscape/poolscape12',
+  'scape/poolscape/scape/poolscape/poolscape13',
+  'scape/poolscape/scape/poolscape/poolscape14'
 ];
 
 const poolscapeFeatures = [
@@ -58,8 +54,14 @@ const poolscapeFeatures = [
 
 const PoolscapeFirst = () => {
   const navigate = useNavigate();
-  // Use all images in their original order
-  const showcaseImages = allAssets;
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.poolscapeContainer}>
@@ -69,14 +71,13 @@ const PoolscapeFirst = () => {
           Poolscape specializes in creating your dream backyard oasis through our comprehensive pool construction services, tailored to enhance both beauty and functionality. Our process begins with expert design and planning, where we collaborate with you to craft a custom pool that fits your vision and space. We handle every detail, from excavation and pool installation to plumbing, electrical work, and safety features like fencing. Beyond the pool, we enhance your yard with surrounding features such as elegant hardscaping for patios and walkways, lush softscaping with plants and trees, and even custom additions like outdoor leisure spaces, lighting or water features, ensuring a seamless, stunning outdoor retreat for you to enjoy year-round.
         </p>
       </div>
-
       <div className={styles.servicesSection}>
         <h2 className={styles.servicesTitle}>Signature Poolscape Services</h2>
         <div className={styles.servicesList}>
-          {poolscapeFeatures.map((feature, idx) => (
+          {poolscapeFeatures.map((service, idx) => (
             <div className={styles.serviceCard} key={idx}>
-              <h3 className={styles.serviceCardTitle}>{feature.title}</h3>
-              <p className={styles.serviceCardDesc}>{feature.desc}</p>
+              <h3 className={styles.serviceCardTitle}>{service.title}</h3>
+              <p className={styles.serviceCardDesc}>{service.desc}</p>
             </div>
           ))}
         </div>
@@ -84,16 +85,16 @@ const PoolscapeFirst = () => {
           Get Started
         </button>
       </div>
-
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Poolscape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {poolscapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Poolscape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

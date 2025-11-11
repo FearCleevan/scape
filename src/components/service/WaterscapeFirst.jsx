@@ -1,26 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./WaterscapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import gallery images in order
-import Asset1 from "../../assets/waterscape/waterscape1.jpg";
-import Asset2 from "../../assets/waterscape/waterscape2.jpg";
-import Asset3 from "../../assets/waterscape/waterscape3.jpg";
-import Asset4 from "../../assets/waterscape/waterscape4.jpg";
-import Asset5 from "../../assets/waterscape/waterscape5.jpg";
-import Asset6 from "../../assets/waterscape/waterscape6.jpg";
-import Asset7 from "../../assets/waterscape/waterscape7.jpg";
-import Asset8 from "../../assets/waterscape/waterscape8.jpg";
-import Asset9 from "../../assets/waterscape/waterscape9.jpg";
-import Asset10 from "../../assets/waterscape/waterscape10.jpg";
-import Asset11 from "../../assets/waterscape/waterscape11.jpg";
-import Asset12 from "../../assets/waterscape/waterscape12.jpg";
-
-// Ordered image array
-const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5,
-  Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12
+// Image public IDs for Waterscape with correct duplicate folder structure
+const waterscapeImages = [
+  'scape/waterscape/scape/waterscape/waterscape1',
+  'scape/waterscape/scape/waterscape/waterscape2',
+  'scape/waterscape/scape/waterscape/waterscape3',
+  'scape/waterscape/scape/waterscape/waterscape4',
+  'scape/waterscape/scape/waterscape/waterscape5',
+  'scape/waterscape/scape/waterscape/waterscape6',
+  'scape/waterscape/scape/waterscape/waterscape7',
+  'scape/waterscape/scape/waterscape/waterscape8',
+  'scape/waterscape/scape/waterscape/waterscape9',
+  'scape/waterscape/scape/waterscape/waterscape10',
+  'scape/waterscape/scape/waterscape/waterscape11',
+  'scape/waterscape/scape/waterscape/waterscape12'
 ];
 
 const waterscapeFeatures = [
@@ -56,8 +52,14 @@ const waterscapeFeatures = [
 
 const WaterscapeFirst = () => {
   const navigate = useNavigate();
-  // Use all images in their original order
-  const showcaseImages = allAssets;
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.waterscapeContainer}>
@@ -67,14 +69,13 @@ const WaterscapeFirst = () => {
           Waterscape brings your outdoor vision to life with a variety of captivating water features designed to enhance the beauty and tranquility of your landscape—with or without the installation of a pool. Our water features encompass elegant fountains, cascading waterfalls, serene ponds, and bubbling streams, each crafted to create a peaceful focal point and promote a sense of calm in your yard. Every element is thoughtfully designed and installed to harmonize with your space, delivering a stunning, low-maintenance outdoor retreat tailored to your lifestyle.
         </p>
       </div>
-      
       <div className={styles.servicesSection}>
         <h2 className={styles.servicesTitle}>Signature Waterscape Features</h2>
         <div className={styles.servicesList}>
-          {waterscapeFeatures.map((feature, idx) => (
+          {waterscapeFeatures.map((service, idx) => (
             <div className={styles.serviceCard} key={idx}>
-              <h3 className={styles.serviceCardTitle}>{feature.title}</h3>
-              <p className={styles.serviceCardDesc}>{feature.desc}</p>
+              <h3 className={styles.serviceCardTitle}>{service.title}</h3>
+              <p className={styles.serviceCardDesc}>{service.desc}</p>
             </div>
           ))}
         </div>
@@ -82,16 +83,16 @@ const WaterscapeFirst = () => {
           Get Started
         </button>
       </div>
-      
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Waterscape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {waterscapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Waterscape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

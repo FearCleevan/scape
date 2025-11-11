@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './ContainerThird.module.css';
-import Asset4 from '../../assets/images/Asset4.jpg'; // Replace video import with image
-import Asset28 from '../../assets/gallery/Asset28.jpg';
-import Asset29 from '../../assets/gallery/Asset29.jpg';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 const ContainerThird = () => {
   const containerRef = useRef(null);
@@ -28,22 +26,38 @@ const ContainerThird = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasAnimated]);
 
+  // Build optimized URLs
+  const backgroundImageUrl = buildOptimizedUrl(IMAGE_ASSETS.asset4, {
+    quality: '80',
+    format: 'auto'
+  });
+
+  const image28Url = buildOptimizedUrl(IMAGE_ASSETS.gallery28, {
+    quality: '85',
+    format: 'auto'
+  });
+
+  const image29Url = buildOptimizedUrl(IMAGE_ASSETS.gallery29, {
+    quality: '85',
+    format: 'auto'
+  });
+
   return (
     <div
       ref={containerRef}
       className={styles.container}
     >
-      {/* Replace video with image background */}
+      {/* Optimized Background Image */}
       <div 
         className={styles.backgroundImage}
-        style={{ backgroundImage: `url(${Asset4})` }}
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       ></div>
 
-      {/* Dark Overlay (kept for consistency) */}
+      {/* Dark Overlay */}
       <div className={styles.videoOverlay}></div>
 
       <div className={styles.contentWrapper}>
-        {/* Left Section - Text Content (unchanged) */}
+        {/* Left Section - Text Content */}
         <div className={`${styles.leftSection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.heading}>Award-Winning <span>Craft</span></h2>
           <p className={styles.subText}>Designs that Inspire Community</p>
@@ -55,13 +69,23 @@ const ContainerThird = () => {
           </p>
         </div>
 
-        {/* Right Section - Images (unchanged) */}
+        {/* Right Section - Optimized Images */}
         <div className={styles.rightSection}>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideDown : ''}`}>
-            <img src={Asset28} alt="Award winning design" className={styles.image} />
+            <img 
+              src={image28Url} 
+              alt="Award winning design" 
+              className={styles.image} 
+              loading="lazy"
+            />
           </div>
           <div className={`${styles.imageContainer} ${isVisible ? styles.slideUp : ''}`}>
-            <img src={Asset29} alt="Innovative pool design" className={styles.image} />
+            <img 
+              src={image29Url} 
+              alt="Innovative pool design" 
+              className={styles.image} 
+              loading="lazy"
+            />
           </div>
         </div>
       </div>

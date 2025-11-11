@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import styles from './BnProjectFirst.module.css';
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import images
-import Img1 from '../../assets/BennettProject/Project1.jpg';
-import Img2 from '../../assets/BennettProject/Project2.jpg';
-import Img3 from '../../assets/BennettProject/Project3.jpg';
-import Img4 from '../../assets/BennettProject/Project4.jpg';
-import Img9 from '../../assets/BennettProject/Project9.jpg';
-import Img10 from '../../assets/BennettProject/Project10.jpg';
-
-const images = [Img1, Img2, Img3, Img4, Img9, Img10];
+// Image public IDs for BnProject with correct duplicate folder structure
+const bnProjectImages = [
+  'scape/projects/bennett/scape/projects/bennett/Project1',
+  'scape/projects/bennett/scape/projects/bennett/Project2',
+  'scape/projects/bennett/scape/projects/bennett/Project3',
+  'scape/projects/bennett/scape/projects/bennett/Project4',
+  'scape/projects/bennett/scape/projects/bennett/Project9',
+  'scape/projects/bennett/scape/projects/bennett/Project10'
+];
 
 const BnProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -29,19 +30,27 @@ const BnProjectFirst = () => {
 
     const showPrev = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setActiveIdx((prev) => (prev === 0 ? bnProjectImages.length - 1 : prev - 1));
     };
 
     const showNext = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setActiveIdx((prev) => (prev === bnProjectImages.length - 1 ? 0 : prev + 1));
+    };
+
+    // Build optimized image URLs
+    const getOptimizedImageUrl = (publicId) => {
+        return buildOptimizedUrl(publicId, {
+            quality: '85',
+            format: 'auto'
+        });
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.bnProjectContainer}>
                 <div className={styles.grid}>
-                    {images.map((img, i) => (
+                    {bnProjectImages.map((publicId, i) => (
                         <div
                             key={i}
                             className={styles.card}
@@ -51,9 +60,10 @@ const BnProjectFirst = () => {
                             aria-label={`View Project Image ${i + 1}`}
                         >
                             <img
-                                src={img}
+                                src={getOptimizedImageUrl(publicId)}
                                 alt={`Project ${i + 1}`}
                                 className={styles.cardImage}
+                                loading="lazy"
                             />
                             <div className={styles.cardOverlay}>
                                 <span>View</span>
@@ -81,7 +91,7 @@ const BnProjectFirst = () => {
                             </button>
                             <div className={styles.modalImageContainer}>
                                 <img
-                                    src={images[activeIdx]}
+                                    src={getOptimizedImageUrl(bnProjectImages[activeIdx])}
                                     alt={`Project ${activeIdx + 1}`}
                                     className={styles.modalImage}
                                 />

@@ -4,12 +4,11 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Courtscape.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
-import courtscapeLogo from '../../assets/services/courtscape.png';
+import { buildOptimizedVideoUrl, VIDEO_ASSETS } from '../../utils/cloudinary';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 import CourtscapeFirst from './CourtscapeFirst';
 
 const Courtscape = () => {
-
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -17,6 +16,18 @@ const Courtscape = () => {
       videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
     }
   }, []);
+
+  // Build optimized video URL
+  const optimizedVideoUrl = buildOptimizedVideoUrl(VIDEO_ASSETS.background2, {
+    quality: '70',
+    format: 'auto'
+  });
+
+  // Build optimized logo URL
+  const courtscapeLogoUrl = buildOptimizedUrl(IMAGE_ASSETS.courtscapeService, {
+    quality: '85',
+    format: 'auto'
+  });
 
   return (
     <div className={styles.homeContainer}>
@@ -34,7 +45,7 @@ const Courtscape = () => {
           playsInline
           className={styles.backgroundVideo}
         >
-          <source src={backgroundVideo} type="video/mp4" />
+          <source src={optimizedVideoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -53,9 +64,10 @@ const Courtscape = () => {
             <span className={styles.activeBreadcrumb}>courtscape</span>
           </div>
           <img
-            src={courtscapeLogo}
+            src={courtscapeLogoUrl}
             alt="Courtscape"
             className={styles.taglineImage}
+            loading="lazy"
           />
         </div>
       </div>

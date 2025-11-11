@@ -4,19 +4,24 @@ import Header from '../Header/Header';
 import ContactFirst from './ContactFirst';
 import Footer from '../Footer/Footer';
 import styles from './Contact.module.css';
-import backgroundVideo from '../../assets/videos/Background2.mp4';
 import { Link } from 'react-router-dom';
 import ContactSecond from './ContactSecond';
-
+import { buildOptimizedVideoUrl, VIDEO_ASSETS } from '../../utils/cloudinary';
 
 const Contact = () => {
-
     const videoRef = useRef(null);
+    
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.playbackRate = 0.6; // Adjust this value to change playback speed (0.6 = 60% speed)
         }
     }, []);
+
+    // Build optimized video URL
+    const optimizedVideoUrl = buildOptimizedVideoUrl(VIDEO_ASSETS.background2, {
+        quality: '70',
+        format: 'auto'
+    });
 
     return (
         <div className={styles.homeContainer}>
@@ -34,7 +39,7 @@ const Contact = () => {
                     playsInline
                     className={styles.backgroundVideo}
                 >
-                    <source src={backgroundVideo} type="video/mp4" />
+                    <source src={optimizedVideoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

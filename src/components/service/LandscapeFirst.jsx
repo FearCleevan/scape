@@ -1,26 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./LandscapeFirst.module.css";
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import all images in order
-import Asset1 from "../../assets/landscape/landscape1.jpg";
-import Asset2 from "../../assets/landscape/landscape2.jpg";
-import Asset3 from "../../assets/landscape/landscape3.jpg";
-import Asset4 from "../../assets/landscape/landscape4.jpg";
-import Asset5 from "../../assets/landscape/landscape5.jpg";
-import Asset6 from "../../assets/landscape/landscape6.jpg";
-import Asset7 from "../../assets/landscape/landscape7.jpg";
-import Asset8 from "../../assets/landscape/landscape8.jpg";
-import Asset9 from "../../assets/landscape/landscape9.jpg";
-import Asset10 from "../../assets/landscape/landscape10.jpg";
-import Asset11 from "../../assets/landscape/landscape11.jpg";
-import Asset12 from "../../assets/landscape/landscape12.jpg";
-
-// Ordered image array
-const allAssets = [
-  Asset1, Asset2, Asset3, Asset4, Asset5, 
-  Asset6, Asset7, Asset8, Asset9, Asset10,
-  Asset11, Asset12
+// Image public IDs for Landscape with correct duplicate folder structure
+const landscapeImages = [
+  'scape/landscape/scape/landscape/landscape1',
+  'scape/landscape/scape/landscape/landscape2',
+  'scape/landscape/scape/landscape/landscape3',
+  'scape/landscape/scape/landscape/landscape4',
+  'scape/landscape/scape/landscape/landscape5',
+  'scape/landscape/scape/landscape/landscape6',
+  'scape/landscape/scape/landscape/landscape7',
+  'scape/landscape/scape/landscape/landscape8',
+  'scape/landscape/scape/landscape/landscape9',
+  'scape/landscape/scape/landscape/landscape10',
+  'scape/landscape/scape/landscape/landscape11',
+  'scape/landscape/scape/landscape/landscape12'
 ];
 
 const landscapeServices = [
@@ -56,9 +52,14 @@ const landscapeServices = [
 
 const LandscapeFirst = () => {
   const navigate = useNavigate();
-  
-  // Use the first 12 images in order
-  const showcaseImages = allAssets.slice(0, 12);
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   return (
     <div className={styles.landscapeContainer}>
@@ -87,12 +88,13 @@ const LandscapeFirst = () => {
       <div className={styles.showcaseSection}>
         <h2 className={styles.showcaseTitle}>Landscape Showcase</h2>
         <div className={styles.showcaseGrid}>
-          {showcaseImages.map((img, i) => (
+          {landscapeImages.map((publicId, i) => (
             <div className={styles.showcaseImgWrapper} key={i}>
               <img
-                src={img}
+                src={getOptimizedImageUrl(publicId)}
                 alt={`Landscape Showcase ${i + 1}`}
                 className={styles.showcaseImg}
+                loading="lazy"
                 style={{ animationDelay: `${i * 0.08}s` }}
               />
             </div>

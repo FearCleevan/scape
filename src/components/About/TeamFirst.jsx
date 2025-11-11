@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import styles from './TeamFirst.module.css';
-
-// Import team images
-import Kent from '../../assets/teams/Kent Christensen-CF CCO.jpg';
-import Peter from '../../assets/teams/Peter J. Novak-CEO.jpg';
-import Steve from '../../assets/teams/Steve Mortensen-CF CVO.jpg';
-import Ryan from '../../assets/teams/Ryan Kerekes-CFO.jpeg';
-import Andrew from '../../assets/teams/Andrew James-DO.jpg';
-import Troy from '../../assets/teams/Troy Clark-LLD.jpg';
-import Rene from '../../assets/teams/Rene Ignacio-LPD.jpg';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 // Social icons
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa';
 
+// Team member images from Cloudinary
+const teamImages = {
+  kent: 'scape/teams/scape/teams/Kent Christensen-CF CCO',
+  peter: 'scape/teams/scape/teams/Peter J. Novak-CEO',
+  steve: 'scape/teams/scape/teams/Steve Mortensen-CF CVO',
+  ryan: 'scape/teams/scape/teams/Ryan Kerekes-CFO',
+  andrew: 'scape/teams/scape/teams/Andrew James-DO',
+  troy: 'scape/teams/scape/teams/Troy Clark-LLD',
+  rene: 'scape/teams/scape/teams/Rene Ignacio-LPD'
+};
+
 const teamMembers = [
-  // ...team members array as before
-  // (omitted here for brevity, unchanged from your input)
   {
     name: 'Steve Mortensen',
     role: 'Co-Founder and Chief Vision Officer',
-    image: Steve,
+    image: teamImages.steve,
     email: 'info@scapedbm.com',
     bio: (
       <>
@@ -30,7 +31,7 @@ const teamMembers = [
           Steve was born and raised in Utah County and holds a Bachelor of Science (B.S.) degree in Business Administration from Utah Valley University. Steve has worked on a diverse range of projects, from intimate residential gardens to expansive commercial landscapes. His landscape philosophy centers on harmonizing functionality with aesthetic beauty; creating spaces that not only captivate the eye but also become usable environments for the family to entertain in and grow.
         </p>
         <p>
-          When Steve’s not creating new landscape master pieces, or consulting with clients, he enjoys spending time with his family and friends, golfing and creating music. He is also is an active participant in the construction community along the Wasatch Front and enjoys networking with local business leaders.
+          When Steve's not creating new landscape master pieces, or consulting with clients, he enjoys spending time with his family and friends, golfing and creating music. He is also is an active participant in the construction community along the Wasatch Front and enjoys networking with local business leaders.
         </p>
         <p>
           At scape Steve continues to inspire his team and clients alike, crafting landscapes that help build relationships and leave a lasting impact.
@@ -41,7 +42,7 @@ const teamMembers = [
   {
     name: 'Kent Christensen',
     role: 'Co-Founder and Chief Construction Officer',
-    image: Kent,
+    image: teamImages.kent,
     email: 'info@scapedbm.com',
     bio: (
       <>
@@ -52,7 +53,7 @@ const teamMembers = [
           Kent was born and raised in Boise Idaho and relocated to Utah County in 2002. He played baseball at University of Southern California and later completed his Bachelor of Science (B.S.) degree in Business Management from the University of Phoenix. He has spent his career on diverse range of projects including large scale apartment communities such as Wolverine Crossing in Orem, Utah and several estate sized homesteads across the Wasatch Front.
         </p>
         <p>
-          When Kent’s not devoting his time to his obligations at scape, he enjoys spending time with his grandkids, street touring his motorcycle, mountain biking and golfing. He has completed several Iron Man triathlons competitions, ran the New York marathon five times and completed several century rides (over 100 miles) on his street bike. He is an active member in several construction trade associations and groups in northern Utah.
+          When Kent's not devoting his time to his obligations at scape, he enjoys spending time with his grandkids, street touring his motorcycle, mountain biking and golfing. He has completed several Iron Man triathlons competitions, ran the New York marathon five times and completed several century rides (over 100 miles) on his street bike. He is an active member in several construction trade associations and groups in northern Utah.
         </p>
         <p>
           At scape, Kent prides himself on investing the necessary time and cultivating the relationships with his clients in order to execute their vision of their dream estate through his construction team.
@@ -61,14 +62,30 @@ const teamMembers = [
     ),
   },
   {
+    name: 'Peter J. Novak',
+    role: 'Chief Executive Officer',
+    image: teamImages.peter,
+    email: 'info@scapedbm.com',
+    bio: (
+      <>
+        <p>
+          Peter J. Novak serves as the Chief Executive Officer of scape, bringing strategic vision and leadership to drive the company's growth and innovation in landscape design. With extensive experience in business management and development, Peter oversees the company's operations, strategic direction, and client relationships.
+        </p>
+        <p>
+          Under Peter's leadership, scape continues to expand its portfolio of transformative landscape projects while maintaining the highest standards of quality and client satisfaction.
+        </p>
+      </>
+    ),
+  },
+  {
     name: 'Ryan Kerekes',
     role: 'Chief Financial Officer',
-    image: Ryan,
+    image: teamImages.ryan,
     email: 'Finance@scapedbm.com',
     bio: (
       <>
         <p>
-          Ryan Kerekes comes to scape with over 20 years of experience in the private sector working in both accounting and financial management. Ryan holds a Bachelor’s of Science (B.S.) degree in accounting and a Master’s degree in business administration from the University of Utah.
+          Ryan Kerekes comes to scape with over 20 years of experience in the private sector working in both accounting and financial management. Ryan holds a Bachelor's of Science (B.S.) degree in accounting and a Master's degree in business administration from the University of Utah.
         </p>
         <p>
           Ryan has built a career grounded in strategic leadership and operational excellence by overseeing and managing the financial analysis, reporting, risk management, cash management, shareholder communication, strategic financial leadership, and overall financial health of IC Group.  He has served as the Chief Financial Officer of IC Group for the past six years and currently contributes to the company's long-term vision and governance as a member of its Board of Directors.
@@ -85,7 +102,7 @@ const teamMembers = [
   {
     name: 'Andrew James',
     role: 'Director of Operations',
-    image: Andrew,
+    image: teamImages.andrew,
     email: 'info@scapedbm.com',
     bio: (
       <>
@@ -93,13 +110,13 @@ const teamMembers = [
           Andrew James is the dedicated Director of Operations of scape, with a knack for bringing complex visions to life—on time, on budget, and with an eye for detail that elevates every project. With over a decade of experience managing high-impact initiatives across construction and operational development, he thrives at the intersection of strategy, coordination, and boots-on-the-ground problem-solving.
         </p>
         <p>
-          Andrew moved to Utah over 20 years ago and earned a Bachelor’s of Science degree in political science from Brigham Young University and has spent much of his career overseeing projects throughout the Mountain West. Whether leading multi-site expansions or fine-tuning internal workflows, he is known for building strong teams, clear communication, and delivering lasting results.
+          Andrew moved to Utah over 20 years ago and earned a Bachelor's of Science degree in political science from Brigham Young University and has spent much of his career overseeing projects throughout the Mountain West. Whether leading multi-site expansions or fine-tuning internal workflows, he is known for building strong teams, clear communication, and delivering lasting results.
         </p>
         <p>
           Outside the office, Andrew is most at home in the outdoors—carving fresh powder at Sundance, hiking the Uintas, or camping with friends and family. A firm believer that balance fuels performance, he brings the same focus and energy to the trailhead as he does to the jobsite.
         </p>
         <p>
-          At every stage, Andrew’s leadership is grounded in integrity, efficiency, and a love for managing projects that stand the test of time.
+          At every stage, Andrew's leadership is grounded in integrity, efficiency, and a love for managing projects that stand the test of time.
         </p>
       </>
     ),
@@ -107,18 +124,18 @@ const teamMembers = [
   {
     name: 'Troy Clark',
     role: 'Lead Landscape Designer',
-    image: Troy,
+    image: teamImages.troy,
     email: 'Design@scapedbm.com',
     bio: (
       <>
         <p>
-          Troy Clark serves as the Lead Project Designer at scape and is known for his creativity and passion for landscape design. With several years of experience in landscape architecture and, he has cultivated a reputation for transforming client visions into breathtaking, functional landscapes that harmonize with their natural surroundings. His vision is what helps shapes client’s ideas into design realities.
+          Troy Clark serves as the Lead Project Designer at scape and is known for his creativity and passion for landscape design. With several years of experience in landscape architecture and, he has cultivated a reputation for transforming client visions into breathtaking, functional landscapes that harmonize with their natural surroundings. His vision is what helps shapes client's ideas into design realities.
         </p>
         <p>
-          Troy is known for his ability to understand client’s desired outcomes and his communication, responsiveness and overall approach to the landscape design process is what sets him apart.
+          Troy is known for his ability to understand client's desired outcomes and his communication, responsiveness and overall approach to the landscape design process is what sets him apart.
         </p>
         <p>
-          Troy is a long-time resident of Utah County and achieved a Bachelor of Science (B.S.) degree in Business Administration from Utah Valley University and has been working in several client focused roles for nearly 20 years. When Troy’s not creating new design master pieces, or consulting with clients, he enjoys playing basketball, golfing and watching his four kids compete in dance and a variety of different sports.
+          Troy is a long-time resident of Utah County and achieved a Bachelor of Science (B.S.) degree in Business Administration from Utah Valley University and has been working in several client focused roles for nearly 20 years. When Troy's not creating new design master pieces, or consulting with clients, he enjoys playing basketball, golfing and watching his four kids compete in dance and a variety of different sports.
         </p>
         <p>
           At scape, Troy focuses all his efforts to collaborate and communicate with his clients in order to enable them to fully express their vision on their landscape design.
@@ -129,7 +146,7 @@ const teamMembers = [
   {
     name: 'René Ignacio',
     role: 'Lead Project Manager',
-    image: Rene,
+    image: teamImages.rene,
     email: 'Projects@scapedbm.com',
     bio: (
       <>
@@ -157,6 +174,14 @@ const TeamFirst = () => {
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Build optimized image URLs
+  const getOptimizedImageUrl = (publicId) => {
+    return buildOptimizedUrl(publicId, {
+      quality: '85',
+      format: 'auto'
+    });
+  };
 
   function handleMemberClick(index) {
     setSelectedIndex(index);
@@ -232,9 +257,10 @@ const TeamFirst = () => {
               >
                 <div className={styles.memberImageContainer}>
                   <img
-                    src={member.image}
+                    src={getOptimizedImageUrl(member.image)}
                     alt={member.name}
                     className={styles.memberImage}
+                    loading="lazy"
                   />
                 </div>
                 <div className={styles.memberInfo}>
@@ -253,9 +279,10 @@ const TeamFirst = () => {
               {/* Left: Profile */}
               <div className={styles.profileCard}>
                 <img
-                  src={teamMembers[selectedIndex].image}
+                  src={getOptimizedImageUrl(teamMembers[selectedIndex].image)}
                   alt={teamMembers[selectedIndex].name}
                   className={styles.profileImage}
+                  loading="lazy"
                 />
                 <div className={styles.profileContent}>
                   <h3 className={styles.profileName}>

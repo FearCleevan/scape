@@ -1,53 +1,65 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './PortfolioFirst.module.css';
-
-// Import project images
-import BennettImg from '../../assets/BennettProject/Project1.jpg';
-import KentImg from '../../assets/KentChristensenProject/Project1.jpg';
-import GardnerImg from '../../assets/GardnerProject/Project1.jpg';
-import HaProjectImg from '../../assets/HaProject/Project1.jpg';
-import ArProjectImg from '../../assets/ArProject/Project1.jpg';
-import GaProjectImg from '../../assets/GaProject/Project1.jpg';
-import TcProjectImg from '../../assets/TcProject/Project1.jpg';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
 const projects = [
   {
     title: 'BN Project',
-    image: BennettImg,
+    imageUrl: buildOptimizedUrl(IMAGE_ASSETS.bnProject1, {
+      quality: '85',
+      format: 'auto'
+    }),
     link: '/portfolios/bnproject',
   },
   {
     title: 'KC Project',
-    image: KentImg,
+    imageUrl: buildOptimizedUrl(IMAGE_ASSETS.kcProject1, {
+      quality: '85',
+      format: 'auto'
+    }),
     link: '/portfolios/kcproject',
   },
   {
     title: 'GN Project',
-    image: GardnerImg,
+    imageUrl: buildOptimizedUrl(IMAGE_ASSETS.gnProject1, {
+      quality: '85',
+      format: 'auto'
+    }),
     link: '/portfolios/gnproject',
   },
   {
     title: 'HA Project',
-    image: HaProjectImg,
+    imageUrl: buildOptimizedUrl(IMAGE_ASSETS.haProject1, {
+      quality: '85',
+      format: 'auto'
+    }),
     link: '/portfolios/haproject',
   },
   {
     title: 'AR Project',
-    image: ArProjectImg,
+    imageUrl: buildOptimizedUrl(IMAGE_ASSETS.arProject1, {
+      quality: '85',
+      format: 'auto'
+    }),
     link: '/portfolios/arproject',
   },
   {
     title: 'GA Project',
-    image: GaProjectImg,
+    imageUrl: buildOptimizedUrl(IMAGE_ASSETS.gaProject1, {
+      quality: '85',
+      format: 'auto'
+    }),
     link: '/portfolios/gaproject',
   },
   {
     title: 'TC Project',
-    image: TcProjectImg,
+    imageUrl: buildOptimizedUrl(IMAGE_ASSETS.tcProject1, {
+      quality: '85',
+      format: 'auto'
+    }),
     link: '/portfolios/tcproject',
   },
-
 ];
 
 const PortfolioFirst = () => {
@@ -60,7 +72,7 @@ const PortfolioFirst = () => {
           <div
             className={styles.card}
             key={project.title}
-            style={{ backgroundImage: `url(${project.image})` }}
+            style={{ backgroundImage: `url(${project.imageUrl})` }}
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >

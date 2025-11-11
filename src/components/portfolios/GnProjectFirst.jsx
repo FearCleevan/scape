@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import styles from './GnProjectFirst.module.css';
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import images
-import Img1 from '../../assets/GardnerProject/Project1.jpg';
-import Img2 from '../../assets/GardnerProject/Project2.jpg';
-import Img3 from '../../assets/GardnerProject/Project3.jpg';
-import Img4 from '../../assets/GardnerProject/Project4.jpg';
-import Img5 from '../../assets/GardnerProject/Project5.jpg';
-import Img6 from '../../assets/GardnerProject/Project6.jpg';
-import Img7 from '../../assets/GardnerProject/Project7.jpg';
-import Img8 from '../../assets/GardnerProject/Project8.jpg';
-
-
-
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8];
+// Image public IDs for GnProject with correct duplicate folder structure
+const gnProjectImages = [
+  'scape/projects/gardner/scape/projects/gardner/Project1',
+  'scape/projects/gardner/scape/projects/gardner/Project2',
+  'scape/projects/gardner/scape/projects/gardner/Project3',
+  'scape/projects/gardner/scape/projects/gardner/Project4',
+  'scape/projects/gardner/scape/projects/gardner/Project5',
+  'scape/projects/gardner/scape/projects/gardner/Project6',
+  'scape/projects/gardner/scape/projects/gardner/Project7',
+  'scape/projects/gardner/scape/projects/gardner/Project8'
+];
 
 const GnProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -33,19 +32,27 @@ const GnProjectFirst = () => {
 
     const showPrev = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setActiveIdx((prev) => (prev === 0 ? gnProjectImages.length - 1 : prev - 1));
     };
 
     const showNext = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setActiveIdx((prev) => (prev === gnProjectImages.length - 1 ? 0 : prev + 1));
+    };
+
+    // Build optimized image URLs
+    const getOptimizedImageUrl = (publicId) => {
+        return buildOptimizedUrl(publicId, {
+            quality: '85',
+            format: 'auto'
+        });
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.bnProjectContainer}>
                 <div className={styles.grid}>
-                    {images.map((img, i) => (
+                    {gnProjectImages.map((publicId, i) => (
                         <div
                             key={i}
                             className={styles.card}
@@ -55,9 +62,10 @@ const GnProjectFirst = () => {
                             aria-label={`View Project Image ${i + 1}`}
                         >
                             <img
-                                src={img}
+                                src={getOptimizedImageUrl(publicId)}
                                 alt={`Project ${i + 1}`}
                                 className={styles.cardImage}
+                                loading="lazy"
                             />
                             <div className={styles.cardOverlay}>
                                 <span>View</span>
@@ -85,7 +93,7 @@ const GnProjectFirst = () => {
                             </button>
                             <div className={styles.modalImageContainer}>
                                 <img
-                                    src={images[activeIdx]}
+                                    src={getOptimizedImageUrl(gnProjectImages[activeIdx])}
                                     alt={`Project ${activeIdx + 1}`}
                                     className={styles.modalImage}
                                 />

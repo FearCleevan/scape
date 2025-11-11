@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import styles from './ArProjectFirst.module.css';
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 
-// Import images
-import Img1 from '../../assets/ArProject/Project1.jpg';
-import Img2 from '../../assets/ArProject/Project2.jpg';
-import Img3 from '../../assets/ArProject/Project3.jpg';
-import Img4 from '../../assets/ArProject/Project4.jpg';
-import Img5 from '../../assets/ArProject/Project5.jpg';
-import Img6 from '../../assets/ArProject/Project6.jpg';
-import Img7 from '../../assets/ArProject/Project7.jpg';
-import Img8 from '../../assets/ArProject/Project8.jpg';
-
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8];
+// Image public IDs for ArProject with correct duplicate folder structure
+const arProjectImages = [
+  'scape/projects/arproject/scape/projects/arproject/Project1',
+  'scape/projects/arproject/scape/projects/arproject/Project2',
+  'scape/projects/arproject/scape/projects/arproject/Project3',
+  'scape/projects/arproject/scape/projects/arproject/Project4',
+  'scape/projects/arproject/scape/projects/arproject/Project5',
+  'scape/projects/arproject/scape/projects/arproject/Project6',
+  'scape/projects/arproject/scape/projects/arproject/Project7',
+  'scape/projects/arproject/scape/projects/arproject/Project8'
+];
 
 const ArProjectFirst = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -31,19 +32,27 @@ const ArProjectFirst = () => {
 
     const showPrev = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setActiveIdx((prev) => (prev === 0 ? arProjectImages.length - 1 : prev - 1));
     };
 
     const showNext = (e) => {
         e.stopPropagation();
-        setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setActiveIdx((prev) => (prev === arProjectImages.length - 1 ? 0 : prev + 1));
+    };
+
+    // Build optimized image URLs
+    const getOptimizedImageUrl = (publicId) => {
+        return buildOptimizedUrl(publicId, {
+            quality: '85',
+            format: 'auto'
+        });
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.bnProjectContainer}>
                 <div className={styles.grid}>
-                    {images.map((img, i) => (
+                    {arProjectImages.map((publicId, i) => (
                         <div
                             key={i}
                             className={styles.card}
@@ -53,9 +62,10 @@ const ArProjectFirst = () => {
                             aria-label={`View Project Image ${i + 1}`}
                         >
                             <img
-                                src={img}
+                                src={getOptimizedImageUrl(publicId)}
                                 alt={`Project ${i + 1}`}
                                 className={styles.cardImage}
+                                loading="lazy"
                             />
                             <div className={styles.cardOverlay}>
                                 <span>View</span>
@@ -83,7 +93,7 @@ const ArProjectFirst = () => {
                             </button>
                             <div className={styles.modalImageContainer}>
                                 <img
-                                    src={images[activeIdx]}
+                                    src={getOptimizedImageUrl(arProjectImages[activeIdx])}
                                     alt={`Project ${activeIdx + 1}`}
                                     className={styles.modalImage}
                                 />

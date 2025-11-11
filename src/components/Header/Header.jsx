@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowUp } from 'react-icons/fa';
 import styles from './Header.module.css';
-import logo from '../../assets/images/ScapeLogoW.png';
+import { buildOptimizedUrl, IMAGE_ASSETS } from '../../utils/cloudinary';
 import GetQuote from '../getquote/GetQuote';
 
 const SERVICE_COLORS = {
@@ -38,6 +38,12 @@ const Header = () => {
   const [showArrowUp, setShowArrowUp] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
+
+  // Build optimized logo URL
+  const logoUrl = buildOptimizedUrl(IMAGE_ASSETS.scapeLogoW, {
+    quality: '85',
+    format: 'auto'
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -105,7 +111,7 @@ const Header = () => {
         <div className={styles.logoContainer}>
           <Link to="/" className={styles.logo}>
             <img 
-              src={logo} 
+              src={logoUrl} 
               alt="SCAPEDBIM Logo" 
               className={`${styles.logoImage} ${isMobile ? styles.mobileLogo : ''}`} 
             />
