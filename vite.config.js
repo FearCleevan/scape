@@ -4,10 +4,11 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Ensure this is set to root
+  base: '/',
   build: {
     outDir: 'dist',
-    sourcemap: false
+    sourcemap: false,
+    emptyOutDir: true
   },
   server: {
     historyApiFallback: true,
