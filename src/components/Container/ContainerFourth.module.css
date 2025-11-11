@@ -7,7 +7,7 @@
 .container {
   min-height: 953px;
   height: auto;
-  background-image: url('../../assets/gallery/Asset10.jpg');
+  background-image: url('https://res.cloudinary.com/dtebf3uea/image/upload/q_auto,f_auto/scape/gallery/scape/gallery/Asset10');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
