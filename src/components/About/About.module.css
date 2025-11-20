@@ -171,35 +171,41 @@
 @media (max-width: 1024px) {
   .aboutCard {
     flex-direction: column;
+    margin-bottom: 20px
   }
-  
+
   .aboutCard:nth-child(even) {
     flex-direction: column;
   }
-  
+
   .aboutImage, .aboutCardContent {
     width: 100%;
   }
-  
+
   .aboutImage {
     height: 300px;
   }
 }
 
 @media (max-width: 768px) {
+  .aboutCard {
+    flex-direction: column;
+    margin-bottom: 20px
+  }
+
   .aboutContainer {
     padding: 60px 0;
   }
-  
+
   .aboutTitle {
     font-size: 2rem;
   }
-  
+
   .aboutCardContentFull {
     position: relative;
     background: #2c3e50;
   }
-  
+
   .missionStatement {
     padding: 40px 20px;
   }
@@ -232,6 +238,16 @@
 }
 
 @media (max-width: 768px) {
+
+  .aboutCard {
+    margin-bottom: 20px
+  }
+
+  
+  .missionStatement {
+    margin-top: 500px;
+  }
+
   .visionStatement {
     padding: 40px 20px;
   }
